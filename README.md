@@ -13,3 +13,23 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
+
+To start a local network:
+
+```shell
+npx hardhat node
+```
+
+To deploy smart contract on a local network:
+
+```shell
+npx hardhat --network localhost run scripts/deploy.js
+```
+
+To start react web app:
+
+```shell
+cd frontend
+npm install
+npm run start:frondend
+```
