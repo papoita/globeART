@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-/// @custom:security-contact mjstaus@gmail.com
+/// @custom:security-contact <emergency contact email here>
 contract GlobeArtNFT is ERC721, Ownable {
     using Counters for Counters.Counter;
 
