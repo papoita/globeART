@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "@openzeppelin/contracts": "^4.6.0"
   }
 }
