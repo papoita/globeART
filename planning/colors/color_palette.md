@@ -15,7 +15,7 @@ https://colorhunt.co/palette/2a09443b185fa12568fec260
 
 From these options chose the one with least variation but rather a degree of shades change from same color. similar to what big websites do.
 
-#FFC93C
-#DBF6E9
-#9DDFD3
-#31326F
+#FFC93C yellow
+#DBF6E9 aquamarine
+#9DDFD3 dark aquamarine
+#31326F dark blue
