@@ -1,0 +1,44 @@
+section {
+  color: 31326F;
+  border: DBF6E9 0.5em line;
+}
+section div {
+  color: 9DDFD3;
+  font-size: 2.4rem;
+}
+section:hover {
+  box-shadow: 5px 5px 5px 5px grey;
+}
+section.my-class {
+  background-color: DBF6E9;
+}
+
+.header-styles, .my-header {
+  font-size: 36px;
+}
+
+.my-header {
+  background-color: FFC93C;
+}
+
+.my-awesome-style {
+  color: tomato;
+}
+
+.small-square {
+  font-size: 6.25px;
+  width: 25px;
+  height: 25px;
+}
+
+.medium-square {
+  font-size: 12.5px;
+  width: 50px;
+  height: 50px;
+}
+
+.large-square {
+  font-size: 25px;
+  width: 100px;
+  height: 100px;
+}
