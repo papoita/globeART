@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <h1>globeART</h1>
-      <Header />
+      <Header className="" name="Julian" message="NFT art collection for wanderlusts" />
     </div>
   );
 }
