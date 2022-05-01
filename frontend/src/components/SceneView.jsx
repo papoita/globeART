@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { useScene } from "esri-loader-hooks";
 
 // hooks allow us to create a map component as a function

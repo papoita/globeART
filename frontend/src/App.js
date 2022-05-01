@@ -1,12 +1,13 @@
-// import logo from './logo.svg';
+import logo from './logo.svg';
+import React from "react";
 import './App.css';
 
 import SceneView from "./components/SceneView";
 import Header from './components/Header';
 import Buy from './components/Buy';
 
-// import esriConfig from "@arcgis/core/config.js";
-// esriConfig.assetsPath = "./assets";
+import esriConfig from "@arcgis/core/config.js";
+esriConfig.assetsPath = "./assets";
 
 function App() {
   return (
@@ -20,3 +21,7 @@ function App() {
 }
 
 export default App;
+
+
+
+
