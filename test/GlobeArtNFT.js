@@ -3,7 +3,6 @@ const { ethers } = require("hardhat");
 
 describe("deployment", function () {
  
-  
   it("deploys successfully ", async function () {
     const NFT = await ethers.getContractFactory("GlobeArtNFT");
     const nft = await NFT.deploy();
