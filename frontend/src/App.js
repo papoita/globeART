@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import React from "react";
 import './App.css';
 
@@ -13,9 +13,10 @@ function App() {
   return (
     <div className="App">
       <h1>globeART</h1>
+      <SceneView />
       <Header className="" name="Julian" message="NFT art collection for wanderlusts" />
       <Buy></Buy>
-      <SceneView />
+      
     </div>
   );
 }
