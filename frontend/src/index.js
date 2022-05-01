@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+//import { setDefaultOptions } from "esri-loader";
+
+// configure esri-loader
+//setDefaultOptions({ css: true });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
