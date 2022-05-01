@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <h1>globeART</h1>
+      
       <SceneView />
       <Header className="" name="Julian" message="NFT art collection for wanderlusts" />
       <Buy></Buy>
