@@ -1,39 +1,22 @@
-//import React from "react";
-//import { useScene } from "esri-loader-hooks";
-import SceneView from "@arcgis/core/views/SceneView";
+import React from "react";
+import { useScene } from "esri-loader-hooks";
 
 // hooks allow us to create a map component as a function
-const view = new SceneView({
+function SceneView() {
   // takes initial map and view properties as a POJO
-  
-    map: new Map({
+  const properties = {
+    map: {
       basemap: "hybrid",
       ground: "world-elevation"
-    }),
-    container: "viewDiv"
-  });
-
-  view.when(function() {
-    // SceneView is now ready for display and can be used. Here we will
-    // use goTo to view a particular location at a given zoom level, camera
-    // heading and tilt.
-    view.goTo({
-      center: [-75, 45],
-      zoom: 13,
-      heading: 30,
-      tilt: 60
-    })
-  })
-  .catch(function(err) {
-    // A rejected view indicates a fatal error making it unable to display,
-    // this usually means that WebGL is not available, or too old.
-    console.error("SceneView rejected:", err);
-  });
-
-   
+    },
+    view: {
+      scale: 4000000000, // Sets the initial scale to 1:100,000,000
+      center: [-75.69, 45.42] // Sets the center point of view with lon/lat
+    }
+  };
   // returns a ref you can use to assign a container DOM node
-//   const [ref] = useScene(properties);
-//   return <div style={{ height: 400 }} ref={ref} />;
-// }
+  const [ref] = useScene(properties);
+  return <div style={{ height: 400 }} ref={ref} />;
+}
 
 export default SceneView;
