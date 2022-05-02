@@ -5,7 +5,8 @@ import './App.css';
 import SceneView from "./components/SceneView";
 import Header from './components/Header';
 import Buy from './components/Buy';
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
+import './App.css';
 
 import esriConfig from "@arcgis/core/config.js";
 esriConfig.assetsPath = "./assets";
@@ -14,10 +15,12 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <h1>globeART</h1>
+      
       <SceneView />
+      
       <Header className="" name="Julian" message="NFT art collection for wanderlusts" />
       <Buy></Buy>
+      
       
     </div>
   );
