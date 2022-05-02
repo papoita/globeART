@@ -1,27 +1,39 @@
-//primary
-$primary-font-color: 31326F;
-$primary-header-background-color: FFC93C;
-$primary-font-size:24px;
+$theme-colors: (
+  "primary":    #31326F,
+  // "secondary":  $secondary,
+  // "success":    $success,
+  // "info":       $info,
+  // "warning":    $warning,
+  // "danger":     $danger,
+  // "light":      $light,
+  // "dark":       $dark
+);
 
 
-//secondary
-$secondary-font-color: 9DDFD3;
-$secondary-header-background-color: DBF6E9;
-
-//border
-$border-style: line; 
-$border-width: 0.5em ;
-$border-color: DBF6E9;
-$border: $border-color $border-width $border-style;
-
-//buttons
-$primary-btn-color: grey;
-$primary-btn-background-color: grey;
-$cursor: pointer;
-
-$secondary-btn-color: grey;
-$secondary-btn-background-color: grey;
+// //primary
+// $primary-font-color: 31326F;
+// $primary-header-background-color: FFC93C;
+// $primary-font-size:24px;
 
 
-//on action
-$after-selecting-hover-color: DBF6E9;
+// //secondary
+// $secondary-font-color: 9DDFD3;
+// $secondary-header-background-color: DBF6E9;
+
+// //border
+// $border-style: line; 
+// $border-width: 0.5em ;
+// $border-color: DBF6E9;
+// $border: $border-color $border-width $border-style;
+
+// //buttons
+// $primary-btn-color: grey;
+// $primary-btn-background-color: grey;
+// $cursor: pointer;
+
+// $secondary-btn-color: grey;
+// $secondary-btn-background-color: grey;
+
+
+// //on action
+// $after-selecting-hover-color: DBF6E9;
