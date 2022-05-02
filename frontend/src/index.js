@@ -1,6 +1,8 @@
+//any global changes concerning visuals
 import React from 'react';
 import ReactDOM from "react-dom";
 import './index.css';
+import './styles/input.scss'
 import reportWebVitals from './reportWebVitals';
 
 import App from "./App";
