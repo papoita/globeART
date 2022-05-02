@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import 'https://js.arcgis.com/4.23/@arcgis/core/assets/esri/themes/light/main.css';
 html,
 body,
@@ -15,3 +19,4 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
