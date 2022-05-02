@@ -13,13 +13,12 @@ contract GlobeArtNFT is ERC721, Ownable {
 
     constructor() ERC721("globeArtNFT", "GAN") {}
 
-    function _baseURI() internal pure override returns (string memory) {
-        return "www.baseURIhere.com";
+    function createGlobeArtNFT(string memory tokenURI) external onlyOwner {
+       uint256 tokenId = _tokenIdCounter.current();
+        _tokenIdCounter.increment();
+        _safeMint(msg.sender, tokenId);
+        _setTokenURI(newItemId, tokenURI);
+        return(tokenId);
     }
 
-    function safeMint(address to) public onlyOwner {
-        uint256 tokenId = _tokenIdCounter.current();
-        _tokenIdCounter.increment();
-        _safeMint(to, tokenId);
-    }
 }
