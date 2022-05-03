@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import { Button } from "react-bootstrap";
 
 // let count = 0;
 
@@ -17,10 +18,10 @@ import {useState} from 'react';
 
   return (
     <>
-    <h2>Start your collection</h2>
     
-    <button onClick={ increment }>Buy now</button>
-    <h3>The NFT buying intention is { count }</h3>
+    
+    < Button gb="primary" onClick={ increment }> Start your collection <br/> Buy now</Button>
+    {/* <div> console.log(The NFT buying intention is { count })</div> */}
     </>
   );
 };
