@@ -34,19 +34,18 @@ describe("Minting NFTs", function () {
     await contract.deployed();
   })
   it("should allow the contract deployer to mint an NFT", async function () {
-    await contract.connect(deployer).createGlobeArtNFT("Test URI", "Test Collection")
+    await contract.connect(deployer).createGlobeArtNFT("Test URI")
     expect(await contract.tokenCount()).to.equal(1);
     expect(await contract.balanceOf(deployer.address)).to.equal(1);
   });
   it("should fail if address other than deployer attempts to mint an NFT", async function () {
-    await expect(contract.connect(addr1).createGlobeArtNFT("Test URI", "Test Collection")).to.be.revertedWith("Ownable: caller is not the owner")
+    await expect(contract.connect(addr1).createGlobeArtNFT("Test URI")).to.be.revertedWith("Ownable: caller is not the owner")
     expect(await contract.tokenCount()).to.equal(0);
     
   });
-  it("should track each minted NFT's URI and collection", async function () {
+  it("should track each minted NFT's URI", async function () {
     //owner mints NFT
-    await contract.connect(deployer).createGlobeArtNFT("Test URI", "Test Collection")
+    await contract.connect(deployer).createGlobeArtNFT("Test URI")
     expect(await contract.tokenURI(1)).to.equal("Test URI");
-    expect(await contract.nftsCollections(1)).to.equal("Test Collection");
   });
-})
+});
