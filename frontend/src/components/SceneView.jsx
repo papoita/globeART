@@ -1,6 +1,8 @@
 import React from 'react';
 import { useScene } from "esri-loader-hooks";
 
+
+
 // hooks allow us to create a map component as a function
 function SceneView() {
   // takes initial map and view properties as a POJO
@@ -16,7 +18,8 @@ function SceneView() {
   };
   // returns a ref you can use to assign a container DOM node
   const [ref] = useScene(properties);
-  return <div style={{ height: 400 }} ref={ref} />;
+  return (
+  <div style={{ height: 700 }} ref={ref} > </div>);
 }
 
 export default SceneView;
