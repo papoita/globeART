@@ -1,6 +1,6 @@
 import React from 'react';
 import { useScene } from "esri-loader-hooks";
-import { Card} from "react-bootstrap";
+
 
 
 // hooks allow us to create a map component as a function
@@ -19,7 +19,7 @@ function SceneView() {
   // returns a ref you can use to assign a container DOM node
   const [ref] = useScene(properties);
   return (
-  <Card><div style={{ height: 700 }} ref={ref} > </div></Card>);
+  <div style={{ height: 700 }} ref={ref} > </div>);
 }
 
 export default SceneView;
