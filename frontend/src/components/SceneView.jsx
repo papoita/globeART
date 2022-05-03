@@ -19,7 +19,7 @@ function SceneView() {
   // returns a ref you can use to assign a container DOM node
   const [ref] = useScene(properties);
   return (
-  <div style={{ height: 700 }} ref={ref} > </div>);
+  <div style={{ height: 780 }} ref={ref} > </div>);
 }
 
 export default SceneView;
