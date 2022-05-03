@@ -6,7 +6,7 @@ const Aside = () => {
     <Card border="primary" style={{ height: 700 }}>
       <Card.Img variant="top" src="./name.png" />
       <Card.Body variant="dark">
-        <Card.Title>NFT art collection for wanderlusts</Card.Title>
+        <Card.Title> <h1>NFT art collection for wanderlusts</h1></Card.Title>
         <Card.Text>
           <p>
             Do you love travelling and art, but tired of collecting fridge
@@ -19,7 +19,7 @@ const Aside = () => {
           </p>
           <p> The more you travel, the more you can collect.</p>
         </Card.Text>
-        <Button gb="primary">Go somewhere</Button>
+        <Button gb="primary">Start your Collection</Button>
       </Card.Body>
     </Card>
   );
