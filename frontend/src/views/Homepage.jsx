@@ -13,15 +13,15 @@ function Homepage() {
     <div className="Homepage">
       <Navigation />
       <Row>
-        <Col sm={8}><SceneView /></Col>
-        
-        <Col sm={4}><Aside /></Col>
-        
+        <Col sm={9} style={{ paddingRight: "0px" }}>
+          <SceneView />
+        </Col>
+
+        <Col sm={3} style={{ paddingLeft: "0px" }}>
+          <Aside />
+        </Col>
       </Row>
       <Footer />
-
-      
-      
     </div>
   );
 }
