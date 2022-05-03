@@ -6,17 +6,24 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @custom:security-contact <emergency contact email here>
 contract GlobeArtNFT is ERC721URIStorage, Ownable {
- 
-    mapping(uint256=> string) public nftsCollections;
+
     uint public tokenCount;
-   
+    
+    //nftID -> collection 
+    mapping(uint256=> string) public nftIdToCollection;
+
     constructor() ERC721("globeArtNFT", "GANFT") {}
 
     function createGlobeArtNFT(string memory tokenURI, string memory collectionName) external onlyOwner returns(uint) {
         tokenCount ++;
         _safeMint(msg.sender, tokenCount);
         _setTokenURI(tokenCount, tokenURI);
-        nftsCollections[tokenCount]=collectionName;
+        nftIdToCollection[tokenCount]=collectionName;
+        
         return(tokenCount);
     }
+    function getCollection(uint _tokenId) public returns(string memory) {
+      string memory collection = nftIdToCollection[_tokenId];
+      return collection;
+   }
 }
