@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Carousel, Card, Button } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import Navigation from "./Navigation";
 import Buy from "./Buy";
 
