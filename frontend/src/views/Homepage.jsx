@@ -7,11 +7,16 @@ import SceneView from "../components/SceneView";
 import Navigation from "../components/Navigation";
 import Aside from "../components/Aside";
 import Footer from "../components/Footer";
+import Location from "../components/Location";
+
 
 function Homepage() {
   return (
+    
+    
     <div className="Homepage">
       <Navigation />
+      <Location/>
       <Row>
         <Col sm={9} style={{ paddingRight: "0px" }}>
           <SceneView />
@@ -23,6 +28,7 @@ function Homepage() {
       </Row>
       <Footer />
     </div>
+    
   );
 }
 
