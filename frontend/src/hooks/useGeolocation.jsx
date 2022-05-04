@@ -9,6 +9,8 @@ export default function useGeolocation() {
     country: "",
   });
 
+  const [allow, setAllow] = useState(false);
+
   const onSuccess = (location) => {
     let lat = location.coords.latitude;
     let lon = location.coords.longitude;
@@ -17,6 +19,7 @@ export default function useGeolocation() {
     axios
       .get(apiURL)
       .then((res) => {
+        console.log(res.data);
         setLocation((prev) => ({
           ...prev,
           displayLocation: true,
@@ -41,15 +44,17 @@ export default function useGeolocation() {
   };
 
   useEffect(() => {
+    console.log(location);
     if (!navigator.geolocation) {
       onError({
         code: 0,
         message: "Geolocation is not supported by your browser",
       });
     }
+    if (allow) {
+      navigator.geolocation.getCurrentPosition(onSuccess, onError);
+     }
+  }, [allow]);
 
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
-  }, []);
-
-  return location;
+  return {location, allow, setAllow};
 }
