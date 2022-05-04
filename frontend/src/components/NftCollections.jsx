@@ -8,8 +8,8 @@ function NftCollections() {
   return (
     <>
       <Navigation />
-      <Carousel className="m-5">
-        <Carousel.Item >
+      <Carousel  className="m-5 p-5">
+        <Carousel.Item  >
         <img className="d-block w-100" src="athens.png" alt="Third slide" />
 
           <Carousel.Caption>
@@ -19,8 +19,8 @@ function NftCollections() {
             </p>
             <Buy />
           </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item style={{ width: "100vw", height: "100vh" }}>
+        </Carousel.Item >
+        <Carousel.Item >
           <img className="d-block w-100" src="berlin.png" alt="Second slide" />
 
           <Carousel.Caption>
