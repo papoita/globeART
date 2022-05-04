@@ -7,11 +7,8 @@ const Aside = () => {
     <Card border="primary" style={{ height: 780 }}>
       <Card.Img variant="top" src="./samplenft.png" />
       <Card.Body variant="dark">
-      <Card.Img style={{  width: '20rem' }}src="./logonamesm.png"></Card.Img>
-        <Card.Title>
-          
-          
-        </Card.Title>
+        <Card.Img style={{ width: "20rem" }} src="./logonamesm.png"></Card.Img>
+        <Card.Title></Card.Title>
         <Card.Text>
           <br />
           <br />

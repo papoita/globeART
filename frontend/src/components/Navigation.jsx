@@ -1,11 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  Navbar,
-  Nav,
-  Container,
-  NavDropdown,
-  Image,
-} from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Image } from "react-bootstrap";
 
 function Navigation() {
   return (
