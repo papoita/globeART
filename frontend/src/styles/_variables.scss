@@ -1,13 +1,15 @@
 $theme-colors: (
-  "primary":    #31326F,
-   "secondary":  #9DDFD3,
+  "primary": #31326f,
+  "secondary": #9ddfd3,
   // "success":    $success,
   // "info":       $info,
-   "warning":    #FFC93C,
+  "warning": #ffc93c,
   // "danger":     $danger,
   // "light":      $light,
-  // "dark":       $dark
+  // "dark":       $dark,,
 );
+$carousel-control-width: 15%;
+$carousel-control-color: #9ddfd3;
 
 
 // //primary
@@ -15,13 +17,12 @@ $theme-colors: (
 // $primary-header-background-color: FFC93C;
 // $primary-font-size:24px;
 
-
 // //secondary
 // $secondary-font-color: 9DDFD3;
 // $secondary-header-background-color: DBF6E9;
 
 // //border
-// $border-style: line; 
+// $border-style: line;
 // $border-width: 0.5em ;
 // $border-color: DBF6E9;
 // $border: $border-color $border-width $border-style;
@@ -33,7 +34,6 @@ $theme-colors: (
 
 // $secondary-btn-color: grey;
 // $secondary-btn-background-color: grey;
-
 
 // //on action
 // $after-selecting-hover-color: DBF6E9;
