@@ -29,7 +29,7 @@ function NftCollections() {
             <Buy />
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item $carousel-control-width>
+        <Carousel.Item >
           <img className="d-block w-100" src="cairo.png" alt="Third slide" />
 
           <Carousel.Caption>
