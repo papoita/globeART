@@ -6,22 +6,24 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import esriConfig from "@arcgis/core/config.js";
 
 import Homepage from "./views/Homepage";
 import NftCollections from "./components/NftCollections";
+import Store from "./components/Store";
 
-import esriConfig from "@arcgis/core/config.js";
+import useWeb3 from "./hooks/useWeb3";
 
 esriConfig.assetsPath = "./assets";
 
 function App() {
  
+  const { account, store, nft, web3Handler } = useWeb3();
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Homepage account={ account} web3Handler= { web3Handler }/>} />
         <Route path="/nftcollection" element={<NftCollections />} />
       </Routes>
     </Router>

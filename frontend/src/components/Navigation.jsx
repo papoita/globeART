@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container, NavDropdown, Image, Button } from "react-bootstrap";
 
-import useWeb3 from "../hooks/useWeb3";
-
-function Navigation() {
-  const { account, web3Handler } = useWeb3();
+function Navigation({account, web3Handler}) {
 
   return (
     <Navbar bg="primary" variant="dark" expand="lg">
@@ -45,19 +42,18 @@ function Navigation() {
       <Container>
         <Nav>
         {account ? (
-      <Nav.Link
-          href={`https://etherscan.io/address/${account}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="button nav-button btn-sm mx-4">
-          <Button variant="outline-light">
-              {account.slice(0, 5) + '...' + account.slice(38, 42)}
-          </Button>
-
-      </Nav.Link>
-  ) : (
-      <Button onClick={web3Handler} variant="outline-light">Connect Wallet</Button>
-  )}
+          <Nav.Link
+            href={`https://etherscan.io/address/${account}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button nav-button btn-sm mx-4">
+            <Button variant="outline-light">
+                {account.slice(0, 5) + '...' + account.slice(38, 42)}
+            </Button>
+          </Nav.Link>
+        ) : (
+          <Button onClick={web3Handler} variant="outline-light">Connect Wallet</Button>
+        )}
         </Nav>
       </Container>
     </Navbar>
