@@ -20,7 +20,7 @@ const Aside = () => {
         </Card.Text>
         <Card.Text className="p-2">The more you travel, the more you can collect.</Card.Text>
 
-        <Button className="m-1 p-2  fs-5 fw-bold vh-100" style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} as={Link} to="/nftglobegallery">
+        <Button className="m-1 p-2  fs-5 fw-bold " style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} as={Link} to="/nftglobegallery">
           Start your Collection
         </Button>
       </Card.Body>
