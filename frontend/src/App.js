@@ -25,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage account={ account} web3Handler= { web3Handler }/>} />
         <Route path="/nftcollection" element={<NftCollections />} />
+        <Route path="/store" element={<Store account={ account } web3Handler= { web3Handler} nft={ nft } store={ store } />} />
       </Routes>
     </Router>
   );
