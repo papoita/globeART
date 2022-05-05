@@ -43,6 +43,7 @@ export default function useWeb3() {
     account, 
     store, 
     nft,
+    loading,
     web3Handler
   }
 }
