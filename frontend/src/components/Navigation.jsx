@@ -3,7 +3,7 @@ import { Navbar, Nav, Container, NavDropdown, Image } from "react-bootstrap";
 
 function Navigation() {
   return (
-    <Navbar bg="primary" variant="dark" expand="lg">
+    <Navbar className="sticky-top" bg="primary" variant="dark" expand="lg">
       <Container>
         <Navbar.Brand thumbnail="true" src="./logosm.png" as={Link} to="/">
           {" "}
