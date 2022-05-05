@@ -17,10 +17,11 @@ const Buy = () => {
   };
 
   return (
-    <Card style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} className="w-100, h-100 " >
-      <Card.Body className="d-flex flex-wrap align-items-center align-content-center justify-content-center" >
-        <Card.Text  className="d-grip  p-5 fs-3 fw-bold " > Start your Collection</Card.Text>
-          <Button gb="primary" onClick={increment} size="lg" className="d-grip  m-5 fs-3 ">
+    <Card style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}  className="d-flex flex-wrap text-center">
+      <Card.Body  >
+        <Card.Text  className="d-grip  p-1 fs-3 fw-bold align-content-center" > Start your Collection</Card.Text>
+        <Card.Text  className="d-grip  p-1 fs-5  align-content-center" > The 2022 Collection is very special as the first one that globeART has created, expect amazing graphics and contrasting colors to match that adrenaline rush of traveling the world again! </Card.Text>
+          <Button gb="primary" onClick={increment} size="lg" className="d-grip m-2 p-3  fs-4 align-middle text-center">
             Buy now
           </Button>
         
@@ -30,3 +31,4 @@ const Buy = () => {
 };
 
 export default Buy;
+
