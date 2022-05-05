@@ -9,7 +9,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 import Homepage from "./views/Homepage";
-import NftCollections from "./components/NftCollections";
+import NftGallery from "./views/NftGallery";
+import NftBuyItem from "./views/NftBuyItem";
 
 import esriConfig from "@arcgis/core/config.js";
 
@@ -22,7 +23,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/nftcollection" element={<NftCollections />} />
+        <Route path="/nftglobegallery" element={<NftGallery />} />
+        <Route path="/nftbuyitem" element={<NftBuyItem />} />
       </Routes>
     </Router>
   );

@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 
 function Footer() {
   return (
-    <Card className="text-center">
+    <Card className="text-muted text-center" bg="primary" variant="light"  >
       <Card.Header>Contact Us</Card.Header>
 
       <Card.Footer className="text-muted">

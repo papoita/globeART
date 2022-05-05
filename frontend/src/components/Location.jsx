@@ -7,7 +7,7 @@ function Location() {
 
   return (
     <>
-      <Alert bg="warning" variant="warning" show={!allow}>
+      <Alert className="m-0" style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} show={!allow}>
         <Alert.Heading>Allow Location</Alert.Heading>
         <p>
           In order to collect NFTs you have to physically be in the location.
@@ -16,7 +16,7 @@ function Location() {
 
         <hr />
         <div className="d-flex justify-content-end">
-          <Button onClick={() => setAllow(true)} variant="outline-warning">
+          <Button className= "fw-bold" onClick={() => setAllow(true)} variant="primary">
             Allow
           </Button>
         </div>
