@@ -5,7 +5,7 @@ function Navigation() {
   return (
     <Navbar className="sticky-top" bg="primary" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand thumbnail="true" src="./logosm.png" as={Link} to="/">
+        <Navbar.Brand className="fs-3 fw-bold" thumbnail="true" src="./logosm.png" as={Link} to="/">
           {" "}
           <Image bg="primary" style={{ width: "5rem" }} src="./logosm.png" />
           globeART
@@ -16,7 +16,7 @@ function Navigation() {
       <Container>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/nftglobegallery">NFT Art Gallery</Nav.Link>
+            <Nav.Link className="fw-bold" as={Link} to="/nftglobegallery">NFT Art Gallery</Nav.Link>
             <Nav.Link href="#link">About Us</Nav.Link>
 
             <NavDropdown title="Collections" id="basic-nav-dropdown">
