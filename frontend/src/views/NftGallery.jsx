@@ -2,7 +2,7 @@ import React from "react";
 
 import { Carousel, Button} from "react-bootstrap";
 import Navigation from "../components/Navigation";
-
+import Footer from "../components/Footer";
 
 function NftGallery() {
   return (
@@ -60,6 +60,7 @@ function NftGallery() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <Footer />
     </>
   );
 }
