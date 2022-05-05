@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 
 function Footer() {
   return (
-    <Card style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}className="text-center" variant="dark">
+    <Card className="text-muted text-center" bg="primary" variant="light"  >
       <Card.Header>Contact Us</Card.Header>
 
       <Card.Footer className="text-muted">
