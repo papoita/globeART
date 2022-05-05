@@ -5,8 +5,10 @@ function Footer() {
   return (
     <Card className="text-center">
       <Card.Header>Contact Us</Card.Header>
-      
-      <Card.Footer className="text-muted">links to github, twitter, linkedin, fb</Card.Footer>
+
+      <Card.Footer className="text-muted">
+        links to github, twitter, linkedin, fb
+      </Card.Footer>
     </Card>
   );
 }

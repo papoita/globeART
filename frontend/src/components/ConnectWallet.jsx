@@ -1,5 +1,5 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React from "react";
+import { useEffect } from "react";
 
 export default function ConnectWallet() {
   const connectWallet = async () => {
@@ -7,15 +7,15 @@ export default function ConnectWallet() {
       const { ethereum } = window;
 
       if (!ethereum) {
-        alert('Please install MetaMask!');
+        alert("Please install MetaMask!");
         return;
       }
 
       const accounts = await ethereum.request({
-        method: 'eth_requestAccounts',
+        method: "eth_requestAccounts",
       });
 
-      console.log('Connected', accounts[0]);
+      console.log("Connected", accounts[0]);
     } catch (error) {
       console.log(error);
     }
