@@ -20,7 +20,7 @@ const Aside = () => {
         </Card.Text>
         <Card.Text className="p-2">The more you travel, the more you can collect.</Card.Text>
 
-        <Button gb="primary" as={Link} to="/nftcollection">
+        <Button gb="primary" as={Link} to="/nftglobegallery">
           Start your Collection
         </Button>
       </Card.Body>
