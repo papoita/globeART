@@ -20,7 +20,7 @@ function Navigation() {
             <Nav.Link href="#link">About Us</Nav.Link>
 
             <NavDropdown title="Collections" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">
+              <NavDropdown.Item href="/personalcollection">
                 My Personal Collection
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/nftglobegallery">
