@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Carousel, Button } from "react-bootstrap";
+import { Carousel, Button} from "react-bootstrap";
 import Navigation from "../components/Navigation";
 
 
@@ -17,7 +17,7 @@ function NftGallery() {
             <p>
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
             </p>
-            <Button className= "fw-bold" style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}>
+            <Button className= "fw-bold" style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} href="/nftbuyitem" alt="Buy item">
               + Details
             </Button>
           </Carousel.Caption>
