@@ -15,7 +15,7 @@ function NftBuyItem() {
           <Col lg={9}>
             <NftItem />
           </Col>
-          <Col lg={3}  className="align-middle " >
+          <Col lg={3}  className="align-items-center h-100 align-middle " >
             <Buy />
           </Col>
         </Row>
