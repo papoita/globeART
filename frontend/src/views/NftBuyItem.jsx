@@ -10,12 +10,12 @@ function NftBuyItem() {
   return (
     <>
       <Navigation />
-      <Container display="flex"  >
-        <Row >
-          <Col sm={7}>
+      <Container  md="auto" >
+        <Row className="justify-content-center">
+          <Col lg={9}>
             <NftItem />
           </Col>
-          <Col sm={4} >
+          <Col lg={3}  className="align-middle " >
             <Buy />
           </Col>
         </Row>
@@ -26,3 +26,4 @@ function NftBuyItem() {
 }
 
 export default NftBuyItem;
+//align-middle align-items-center align-content-center justify-content-center
