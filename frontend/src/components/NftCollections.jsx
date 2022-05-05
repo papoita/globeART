@@ -8,7 +8,7 @@ function NftCollections() {
   return (
     <>
       <Navigation />
-      <Carousel  className="m-5 p-5">
+      <Carousel  className="m-3 p-4">
         <Carousel.Item  >
         <img className="d-block w-100" src="athens.png" alt="Third slide" />
 
