@@ -9,7 +9,7 @@ import places from './places';
 
    
     return <ReactGlobe
-      globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+      globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
       backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
 
       labelsData={places}
@@ -18,7 +18,7 @@ import places from './places';
       labelText={d => d.name}
       labelSize={d => 0.5 + d.size }
       labelDotRadius={d => 0.5 + d.size}
-      labelColor={() => 'rgba(255, 165, 0, 0.75)'}
+      labelColor={() => 'rgba(238, 130, 238, 0.75)'}
       labelResolution={2}
     />;
   };
