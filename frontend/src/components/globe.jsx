@@ -20,6 +20,7 @@ import places from './places';
       labelDotRadius={d => 0.5 + d.size}
       labelColor={() => 'rgba(238, 130, 238, 0.75)'}
       labelResolution={2}
+      // labelLink={d => 'href=d.link'}
     />;
   };
 

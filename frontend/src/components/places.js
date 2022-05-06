@@ -1,5 +1,5 @@
 const places = [
-  { name: "Athens", lat: 37.983810, lng: 23.727539, size: 0.2, color: "white" },
+  { name: "Athens", lat: 37.983810, lng: 23.727539, size: 0.2, color: "white", link:"/images/athens.png" },
   {
     name: "Berlin",
     lat: 52.520008,
