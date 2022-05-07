@@ -3,7 +3,7 @@ import React from "react";
 import "../App.css";
 import { Row, Col } from "react-bootstrap";
 //import ReactGlobe from 'react-globe.gl';
-import { SizeMe } from 'react-sizeme'
+import { SizeMe } from "react-sizeme";
 
 //import SceneView from "../components/SceneView";
 import Navigation from "../components/Navigation";
