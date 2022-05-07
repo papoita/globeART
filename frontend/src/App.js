@@ -13,6 +13,8 @@ import Store from "./components/Store";
 import NftGallery from "./views/NftGallery";
 import NftBuyItem from "./views/NftBuyItem";
 import PersonalCollection from "./views/PersonalCollection";
+import SimpleGlobe from "./components/globe";
+import SceneView from "./components/SceneView";
 
 import useWeb3 from "./hooks/useWeb3";
 
@@ -34,6 +36,9 @@ function App() {
         <Route path="/nftglobegallery" element={<NftGallery account={ account} web3Handler={ web3Handler } nft={ nft } store={ store }/>} />
         <Route path="/nftbuyitem" element={<NftBuyItem />} />
         <Route path="/personalcollection" element={<PersonalCollection />} />
+        <Route path="/globe" element={<SimpleGlobe />} />
+        <Route path="/esri" element={<SceneView />} />
+
       </Routes>
     </Router>
   );

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Aside = () => {
   return (
-    <Card className="rounded-0 " border="primary" style={{ height: 780 }}>
+    <Card className="rounded-0 " border="primary" style={{ height: 926 }}>
       <Card.Img className="rounded-0" variant="top" src="./samplenft.png" />
       <Card.Body variant="dark">
         <Card.Img  src="./logonamesm.png"></Card.Img>
