@@ -13,12 +13,12 @@ export const MetaMaskProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   // Initial Loading
-  useEffect(() => {
-    connect().then((val) => {
-      setIsLoading(false);
-    });
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   connect().then((val) => {
+  //     setIsLoading(false);
+  //   });
+  //   // eslint-disable-next-line
+  // }, []);
 
   const handleIsActive = useCallback(() => {
     console.log("App is connected with Metamask", active);
