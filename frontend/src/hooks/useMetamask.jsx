@@ -5,7 +5,9 @@ import { useWeb3React } from "@web3-react/core";
 export const MetaMaskContext = React.createContext(null);
 
 export const MetaMaskProvider = ({ children }) => {
-  const { activate, account, active } = useWeb3React();
+  // eslint-disable-next-line
+  const { activate, account, library, connector, active, deactivate } =
+    useWeb3React();
 
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,8 +40,17 @@ export const MetaMaskProvider = ({ children }) => {
     }
   };
 
+  const disconnect = async () => {
+    console.log("Disconnecting from App");
+    try {
+      await deactivate();
+    } catch (error) {
+      console.log("Error on disconnecting: ", error);
+    }
+  };
+
   const values = useMemo(
-    () => ({ isActive, account, isLoading, connect }),
+    () => ({ isActive, isLoading, account, connect, disconnect }),
     // eslint-disable-next-line
     [isActive, isLoading, account]
   );
