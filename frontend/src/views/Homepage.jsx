@@ -12,10 +12,10 @@ import Footer from "../components/Footer";
 import Location from "../components/Location";
 import SimpleGlobe from "../components/globe";
 
-function Homepage() {
+function Homepage({ account, web3Handler }) {
   return (
     <div className="Homepage">
-      <Navigation />
+      <Navigation account={account} web3Handler={web3Handler} />
       <Location />
       <Row>
         <Col sm={9} style={{ paddingRight: "0px" }}>
