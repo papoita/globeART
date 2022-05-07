@@ -42,7 +42,7 @@ const data = [
 ];
 
 async function mintThenList (URI, collection) {
-  const uri = `https://gateway.pinata.cloud/ipfs/Qmci41CzeYp3K9LfFCkYXUfQWZGLn6dAkw7ieYjNrsrMn9?filename=${URI}`;
+  const uri = `https://gateway.pinata.cloud/ipfs/QmRE7CyTgX7WNgMY6ZiouyecoadTQNwXw5HV7ePggTBCyW/${URI}`;
   const toWei = (num) => ethers.utils.parseEther(num.toString());
 
   [deployer] = await ethers.getSigners();
