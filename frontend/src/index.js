@@ -14,12 +14,10 @@ function getLibrary(provider, connector) {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Web3ReactProvider getLibrary={getLibrary}>
-      <MetaMaskProvider>
-        <App />
-      </MetaMaskProvider>
-    </Web3ReactProvider>
-  </React.StrictMode>,
+  <Web3ReactProvider getLibrary={getLibrary}>
+    <MetaMaskProvider>
+      <App />
+    </MetaMaskProvider>
+  </Web3ReactProvider>,
   document.getElementById("root")
 );
