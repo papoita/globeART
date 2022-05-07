@@ -13,6 +13,7 @@ import NftGallery from "./views/NftGallery";
 import NftBuyItem from "./views/NftBuyItem";
 import PersonalCollection from "./views/PersonalCollection";
 import SimpleGlobe from "./components/globe";
+import SceneView from "./components/SceneView";
 
 import esriConfig from "@arcgis/core/config.js";
 
@@ -29,6 +30,8 @@ function App() {
         <Route path="/nftbuyitem" element={<NftBuyItem />} />
         <Route path="/personalcollection" element={<PersonalCollection />} />
         <Route path="/globe" element={<SimpleGlobe />} />
+        <Route path="/esri" element={<SceneView />} />
+
       </Routes>
     </Router>
   );
