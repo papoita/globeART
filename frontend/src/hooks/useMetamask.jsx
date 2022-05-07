@@ -1,21 +1,21 @@
-import React, { useState, userEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { injected } from "../components/wallet/connectors";
 import { useWeb3React } from "@web3-react/core";
 
 export const MetaMaskContext = React.createContext(null);
 
 export const MetaMaskProvider = ({ children }) => {
-  const { activate, account, libraby, connector, active, deactive } =
-    useWeb3React();
+  const { activate, account, active } = useWeb3React();
 
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   // Initial Loading
-  userEffect(() => {
+  useEffect(() => {
     connect().then((val) => {
       setIsLoading(false);
     });
+    // eslint-disable-next-line
   }, []);
 
   const handleIsActive = useCallback(() => {
@@ -23,7 +23,7 @@ export const MetaMaskProvider = ({ children }) => {
     setIsActive(active);
   }, [active]);
 
-  userEffect(() => {
+  useEffect(() => {
     handleIsActive();
   }, [handleIsActive]);
 
@@ -40,6 +40,7 @@ export const MetaMaskProvider = ({ children }) => {
 
   const values = useMemo(
     () => ({ isActive, account, isLoading, connect }),
+    // eslint-disable-next-line
     [isActive, isLoading, account]
   );
 
