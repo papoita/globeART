@@ -3,11 +3,17 @@ import React from "react";
 import { Carousel, Button} from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
+import { SizeMe } from "react-sizeme";
 
 function NftGallery() {
   return (
     <>
       <Navigation />
+      <SizeMe>
+            {({ size: { width } }) => (
+              <Carousel width={width} height={width / (4 / 3)} />
+            )}
+          </SizeMe>
       <Carousel  className="m-3 p-4">
         <Carousel.Item  >
         <img className="d-block w-100" src="images/athens.png" alt="Third slide" />
