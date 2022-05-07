@@ -1,16 +1,23 @@
-import { useState } from "react"
-import { ethers } from "ethers"
+import { useState } from "react";
+import { ethers } from "ethers";
 
-import StoreAddress from "../contractsData/Store-address.json"
-import StoreAbi from "../contractsData/Store.json"
-import NFTAddress from "../contractsData/GlobeArtNFT-address.json"
-import NFTAbi from "../contractsData/GlobeArtNFT.json"
+import StoreAddress from "../contractsData/Store-address.json";
+import StoreAbi from "../contractsData/Store.json";
+import NFTAddress from "../contractsData/GlobeArtNFT-address.json";
+import NFTAbi from "../contractsData/GlobeArtNFT.json";
 
 export default function useWeb3() {
-  const [loading, setLoading] = useState(true)
-  const [account, setAccount] = useState(null)
-  const [nft, setNFT] = useState({})
-  const [store, setStore] = useState({})
+  const [account, setAccount] = useState(null);
+  const [nft, setNFT] = useState({});
+  const [store, setStore] = useState({});
+
+  const loadContracts = async (signer) => {
+    // Get deployed copies of contracts
+    const store = new ethers.Contract(StoreAddress.address, StoreAbi.abi, signer)
+    setStore(store)
+    const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer)
+    setNFT(nft)
+  }
 
   const web3Handler = async () => {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -31,19 +38,11 @@ export default function useWeb3() {
     })
     loadContracts(signer)
   }
-  const loadContracts = async (signer) => {
-    // Get deployed copies of contracts
-    const store = new ethers.Contract(StoreAddress.address, StoreAbi.abi, signer)
-    setStore(store)
-    const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer)
-    setNFT(nft)
-    setLoading(false)
-  }
+  
   return {
     account, 
     store, 
     nft,
-    loading,
     web3Handler
   }
 }
