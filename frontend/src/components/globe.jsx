@@ -5,12 +5,19 @@ import places from './places';
 
 
   const SimpleGlobe = () => {
- 
-
+    const props = {
+      
+      setFocus: {
+        "New York": [40.73061, -73.935242]
+      }
+    };
    
-    return <ReactGlobe
+   
+    return <ReactGlobe {...props}
       globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
       backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+     
+      
 
       labelsData={places}
       labelLat={d => d.lat}
