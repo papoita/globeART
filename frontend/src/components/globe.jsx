@@ -25,3 +25,5 @@ import places from './places';
   };
 
   export default SimpleGlobe;
+
+  //onGlobeClick?: (coords: { lat, lng }, event: MouseEvent) => void;
