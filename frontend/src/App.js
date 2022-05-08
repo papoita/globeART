@@ -18,11 +18,11 @@ function App() {
   const [alert, setAlert] = useState(true);
 
   useEffect(() => {
- //   web3Handler();
+   web3Handler();
   }, []);
 
   const { account, store, nft, web3Handler } = useWeb3();
-  console.log("App variable", store);
+
   return (
     <Router>
       <Routes>
@@ -30,7 +30,6 @@ function App() {
           path="/"
           element={<Homepage alert={alert} setAlert={setAlert} />}
         />
-
         <Route
           path="/nftglobegallery"
           element={
@@ -46,7 +45,13 @@ function App() {
           path="/nftbuyitem"
           element={<NftBuyItem alert={alert} setAlert={setAlert} />}
         />
-        <Route path="/personalcollection" element={<PersonalCollection />} />
+        <Route path="/personalcollection" 
+        element={<PersonalCollection 
+          account={account}
+          web3Handler={web3Handler}
+          nft={nft}
+          store={store}
+        />} />
         <Route path="/globe" element={<SimpleGlobe />} />
       </Routes>
     </Router>

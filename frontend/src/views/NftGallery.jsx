@@ -2,26 +2,28 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import axios from "axios";
 
-import { Carousel, Button, Card, CardGroup } from "react-bootstrap";
+import { Carousel, Button, Card, CardGroup, Container, Row } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { SizeMe } from "react-sizeme";
 
 function NftGallery({ account, web3Handler, store, nft }) {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     loadStoreItems();
   }, []);
 
-  console.log("outside", store);
+  const buyStoreItem = async (item) => {
+    const price = ethers.utils.parseEther(item.price)
+    await (await store.purchaseItem(item.itemId, { value: price })).wait()
+    loadStoreItems()
+  }
 
   const loadStoreItems = async () => {
     // load all items
-    console.log("Store", store);
-    return
     const itemCount = await store.callStatic.itemCount();
-    console.log(Number(itemCount.toString()));
     let items = [];
 
     for (let i = 1; i <= Number(itemCount.toString()); i++) {
@@ -30,16 +32,14 @@ function NftGallery({ account, web3Handler, store, nft }) {
       const uri = await nft.tokenURI(item.tokenId);
       // use uri to fetch the nft metadata stored on ipfs
       const response = await axios.get(uri);
-      console.log(response.data);
       const metadata = await response.data;
       // get item price
       const price = await store.getPrice(item.itemId);
-      console.log(ethers.utils.formatEther(item.price));
 
       // Add item to items array
 
       items.push({
-        price: ethers.utils.formatEther(item.price),
+        price: ethers.utils.formatEther(price),
         itemId: item.itemId._hex,
         seller: item.seller,
         collection: item.collection,
@@ -48,9 +48,13 @@ function NftGallery({ account, web3Handler, store, nft }) {
         image: metadata.image,
       });
     }
+    setLoading(false)
     setItems(items);
   };
 
+  if (loading) return (
+      <h2>Loading...</h2>
+  )
   return (
     <>
       <Navigation account={account} web3Handler={web3Handler} />
@@ -106,8 +110,9 @@ function NftGallery({ account, web3Handler, store, nft }) {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel> */}
-
       <CardGroup className="m-4">
+    <Container>
+      <Row>
         <h2>GlobeART Collections</h2>
         {items.length > 0 ? (
           items.map((item, idx) => (
@@ -115,26 +120,29 @@ function NftGallery({ account, web3Handler, store, nft }) {
               <Card.Img
                 variant="top"
                 src={item.image}
-                style={{ width: "200px" }}
+                style={{ width: "400px" }}
               />
               <Card.Body
                 style={{
                   background: "linear-gradient(#B2FBED, #9198e5)",
-                  width: "200px",
+                  width: "400px",
                 }}>
                 <Card.Title>{item.collection}</Card.Title>
-                <Card.Text>{item.name}</Card.Text>
                 <Card.Text>
-                  <small bg="primary">Price: {item.price}</small>
+                  <small bg="primary">Price: {item.price} ETH</small>
                 </Card.Text>
+                <Button onClick={() => buyStoreItem(item)}>Buy Now!</Button>
               </Card.Body>
             </Card>
           ))
-        ) : (
-          <div style={{ padding: "1rem 0" }}>
+          ) : (
+            <div style={{ padding: "1rem 0" }}>
             <h2>No listed assets</h2>
           </div>
         )}
+
+          </Row>
+        </Container>
       </CardGroup>
       <Footer />
     </>
