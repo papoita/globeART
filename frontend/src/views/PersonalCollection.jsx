@@ -23,7 +23,7 @@ function PersonalCollection({store, nft, account}) {
         const uri = await nft.tokenURI(i.tokenId)
         // use uri to fetch the nft metadata stored on ipfs 
         const response = await axios.get(uri)
-        const metadata = await response.json()
+        const metadata = await response.data
       
         let purchasedItem = {
           price: ethers.utils.formatEther(i.price),
