@@ -12,6 +12,7 @@ export default function useWeb3() {
   const [nft, setNFT] = useState({});
   const [store, setStore] = useState({});
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const loadContracts = async (signer) => {
     // Get deployed copies of contracts
@@ -77,7 +78,14 @@ export default function useWeb3() {
         image: metadata.image,
       });
     }
+    setLoading(false);
     setItems(items);
+  };
+
+  const buyStoreItem = async (item) => {
+    const price = ethers.utils.parseEther(item.price);
+    await (await store.purchaseItem(item.itemId, { value: price })).wait();
+    loadStoreItems();
   };
 
   return {
@@ -87,5 +95,7 @@ export default function useWeb3() {
     web3Handler,
     loadStoreItems,
     items,
+    loading,
+    buyStoreItem,
   };
 }

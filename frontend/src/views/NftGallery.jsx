@@ -21,9 +21,9 @@ function NftGallery({
   nft,
   loadStoreItems,
   items,
+  buyStoreItem,
+  loading,
 }) {
-  const [loading, setLoading] = useState(true);
-
   console.log("outside", store);
   console.log("Items", items);
 
@@ -31,11 +31,7 @@ function NftGallery({
     loadStoreItems();
   }, []);
 
-  const buyStoreItem = async (item) => {
-    const price = ethers.utils.parseEther(item.price);
-    await (await store.purchaseItem(item.itemId, { value: price })).wait();
-    loadStoreItems();
-  };
+  if (loading) return <h2>Loading...</h2>;
 
   return (
     <>
