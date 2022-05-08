@@ -4,10 +4,10 @@ import { Navbar, Nav, Container, Button, Image } from "react-bootstrap";
 import useMetaMask from "../hooks/useMetamask";
 
 function Navigation() {
-  const { connect, isActive, account, disconnect, isDisable } = useMetaMask();
+  const { connect, isActive, account, isDisable } = useMetaMask();
 
   return (
-    <Navbar className="sticky-top" bg="primary" variant="dark" expand="lg">
+    <Navbar bg="primary" variant="dark" expand="lg">
       <Container>
         <Navbar.Brand
           className="fs-3 fw-bold"
@@ -20,7 +20,7 @@ function Navigation() {
           <Image bg="primary" style={{ width: "5rem" }} src="./logosm.png" />
           globeART
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
       </Container>
 
       <Container>
@@ -29,7 +29,7 @@ function Navigation() {
             <Nav.Link className="fw-bold" as={Link} to="/nftglobegallery">
               Gallery
             </Nav.Link>
-            <Nav.Link href="#link"> About Us </Nav.Link>
+            <Nav.Link className="fw-bold" as={Link} to="/"> About Us </Nav.Link>
             
             <Nav.Link className="fw-bold" as={Link} to="/personalcollection">
               My Collection
@@ -40,17 +40,23 @@ function Navigation() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-
-      <Container>
-        <Button
-            variant="secondary"
-            onClick={connect}
-            disabled={isDisable}
-            size="sm"
-            className="m-2 p-2 fs-6 align-middle text-center">
-            Connect MetaMask
-          </Button>
-      </Container>
+      {account 
+        ?
+        <Container>
+          <p>Connected to {account}</p>
+        </Container>
+        :
+        <Container>
+          <Button
+              variant="secondary"
+              onClick={connect}
+              disabled={isDisable}
+              size="sm"
+              className="m-2 p-2 fs-6 align-middle text-center">
+              Connect MetaMask
+            </Button>
+        </Container>
+      }
     </Navbar>
   );
 }
