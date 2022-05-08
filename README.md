@@ -33,3 +33,10 @@ cd frontend
 npm install
 npm run start:frondend
 ```
+## Hardhat Testing
+Start console: `npx hardhat console --network localhost`
+Start Hardhat node: `npx hardhat node`
+Deploy contract: `npx hardhat run --network localhost scripts/deploy.js`
+
+Deployer: 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+User: 0x70997970c51812dc3a010c7d01b50e0d17dc79c8

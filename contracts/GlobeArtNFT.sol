@@ -1,25 +1,21 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 
 /// @custom:security-contact <emergency contact email here>
-contract GlobeArtNFT is ERC721, Ownable {
-    using Counters for Counters.Counter;
+contract GlobeArtNFT is ERC721URIStorage, Ownable {
 
-    Counters.Counter private _tokenIdCounter;
+    uint public tokenCount;
 
-    constructor() ERC721("globeArtNFT", "GAN") {}
+    constructor() ERC721("globeArtNFT", "GANFT") {}
 
-    function _baseURI() internal pure override returns (string memory) {
-        return "www.baseURIhere.com";
+    function createGlobeArtNFT(string memory tokenURI) external onlyOwner returns(uint) {
+        tokenCount ++;
+        _safeMint(msg.sender, tokenCount);
+        _setTokenURI(tokenCount, tokenURI);  
+        return(tokenCount);
     }
-
-    function safeMint(address to) public onlyOwner {
-        uint256 tokenId = _tokenIdCounter.current();
-        _tokenIdCounter.increment();
-        _safeMint(to, tokenId);
-    }
+   
 }
