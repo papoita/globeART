@@ -33,11 +33,12 @@ function NftGallery({ account, web3Handler, store, nft }) {
       const metadata = await response.data;
       // get item price
       const price = await store.getPrice(item.itemId);
+      console.log(ethers.utils.formatEther(item.price));
 
       // Add item to items array
 
       items.push({
-        price,
+        price: ethers.utils.formatEther(item.price),
         itemId: item.itemId._hex,
         seller: item.seller,
         collection: item.collection,
@@ -123,7 +124,7 @@ function NftGallery({ account, web3Handler, store, nft }) {
                 <Card.Title>{item.collection}</Card.Title>
                 <Card.Text>{item.name}</Card.Text>
                 <Card.Text>
-                  {/* <small bg="primary">Price: {item.price}</small> */}
+                  <small bg="primary">Price: {item.price}</small>
                 </Card.Text>
               </Card.Body>
             </Card>
