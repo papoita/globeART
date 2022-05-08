@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
+import axios from "axios";
 
 import { Carousel, Button, Card, CardGroup } from "react-bootstrap";
 import Navigation from "../components/Navigation";
@@ -16,26 +17,28 @@ function NftGallery({ account, web3Handler, store, nft }) {
   console.log("outside", store);
 
   const loadStoreItems = async () => {
-    //load all items
+    // load all items
     console.log("Store", store);
-    console.log("itemCount:", typeof store.itemCount);
-    const itemCount = await store.itemCount();
+    const itemCount = await store.callStatic.itemCount();
+    console.log(Number(itemCount.toString()));
     let items = [];
 
-    for (let i = 1; i <= itemCount; i++) {
-      const item = await store.items(i);
+    for (let i = 1; i <= Number(itemCount.toString()); i++) {
+      const item = await store.callStatic.items(i);
       // get uri url from nft contract
       const uri = await nft.tokenURI(item.tokenId);
       // use uri to fetch the nft metadata stored on ipfs
-      const response = await fetch(uri);
-      const metadata = await response.json();
+      const response = await axios.get(uri);
+      console.log(response.data);
+      const metadata = await response.data;
       // get item price
       const price = await store.getPrice(item.itemId);
 
       // Add item to items array
+
       items.push({
         price,
-        itemId: item.itemId,
+        itemId: item.itemId._hex,
         seller: item.seller,
         collection: item.collection,
         name: metadata.name,
@@ -107,13 +110,20 @@ function NftGallery({ account, web3Handler, store, nft }) {
         {items.length > 0 ? (
           items.map((item, idx) => (
             <Card key={idx} className="m-4">
-              <Card.Img variant="top" src={item.image} />
+              <Card.Img
+                variant="top"
+                src={item.image}
+                style={{ width: "200px" }}
+              />
               <Card.Body
-                style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}>
-                <Card.Title>Cairo 2022</Card.Title>
-                <Card.Text>Cairo 2022</Card.Text>
+                style={{
+                  background: "linear-gradient(#B2FBED, #9198e5)",
+                  width: "200px",
+                }}>
+                <Card.Title>{item.collection}</Card.Title>
+                <Card.Text>{item.name}</Card.Text>
                 <Card.Text>
-                  <small bg="primary">Price: {item.price}</small>
+                  {/* <small bg="primary">Price: {item.price}</small> */}
                 </Card.Text>
               </Card.Body>
             </Card>
