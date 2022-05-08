@@ -15,13 +15,8 @@ import SimpleGlobe from "../components/globe";
 function Homepage({ account, web3Handler }) {
   return (
     <div className="Homepage">
-<<<<<<< HEAD
       <Navigation account={ account } web3Handler={ web3Handler } />
       <Location/>
-=======
-      <Navigation />
-      <Location />
->>>>>>> fa696cdb0ea52e6929ec66b0bc87bc7656f90d6d
       <Row>
         <Col sm={9} style={{ paddingRight: "0px" }}>
           <SizeMe>

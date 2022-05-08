@@ -4,7 +4,6 @@ import { ethers } from "ethers";
 import { Carousel, Button, Card, CardGroup } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import { SizeMe } from "react-sizeme";
 
 function NftGallery({account, web3Handler, store, nft}) {
   
@@ -49,18 +48,8 @@ function NftGallery({account, web3Handler, store, nft}) {
   
   return (
     <>
-<<<<<<< HEAD
       <Navigation account={ account } web3Handler={ web3Handler } />
       {/* <Carousel  className="m-3 p-4">
-=======
-      <Navigation />
-      <SizeMe>
-            {({ size: { width } }) => (
-              <Carousel width={width} height={width / (4 / 3)} />
-            )}
-          </SizeMe>
-      <Carousel  className="m-3 p-4">
->>>>>>> fa696cdb0ea52e6929ec66b0bc87bc7656f90d6d
         <Carousel.Item  >
         <img className="d-block w-100" src="images/athens.png" alt="Third slide" />
 
