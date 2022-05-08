@@ -9,6 +9,7 @@ import { SizeMe } from "react-sizeme";
 
 function NftGallery({ account, web3Handler, store, nft }) {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     loadStoreItems();
@@ -47,9 +48,13 @@ function NftGallery({ account, web3Handler, store, nft }) {
         image: metadata.image,
       });
     }
+    setLoading(false)
     setItems(items);
   };
 
+  if (loading) return (
+      <h2>Loading...</h2>
+  )
   return (
     <>
       <Navigation account={account} web3Handler={web3Handler} />
@@ -134,6 +139,7 @@ function NftGallery({ account, web3Handler, store, nft }) {
             <h2>No listed assets</h2>
           </div>
         )}
+
       </CardGroup>
       <Footer />
     </>
