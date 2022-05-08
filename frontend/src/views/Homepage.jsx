@@ -18,7 +18,6 @@ function Homepage({ account, web3Handler, alert, setAlert }) {
   return (
     <div className="Homepage">
       <Navigation account={account} web3Handler={web3Handler} />
-      <Navigation />
       {alert && <Location setAlert={setAlert} />}
       <Row>
         <Col sm={9} style={{ paddingRight: "0px" }}>

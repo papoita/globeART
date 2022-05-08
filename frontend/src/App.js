@@ -3,7 +3,7 @@
 // <Route path="/products" element={ <Dashboard /> } />
 //example github https://github.com/pedroagont/ecommerce-frontend-g7/blob/dev/src/App.js
 //import logo from './logo.svg';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import esriConfig from "@arcgis/core/config.js";
