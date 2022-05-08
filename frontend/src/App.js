@@ -28,7 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage alert={alert} setAlert={setAlert}/>} />
         <Route path="/nftglobegallery" element={<NftGallery />} />
-        <Route path="/nftbuyitem" element={<NftBuyItem />} />
+        <Route path="/nftbuyitem" element={<NftBuyItem alert={alert} setAlert={setAlert}/>} />
         <Route path="/personalcollection" element={<PersonalCollection />} />
         <Route path="/globe" element={<SimpleGlobe />} />
         <Route path="/esri" element={<SceneView />} />

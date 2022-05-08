@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 // this unifies several components,
 import "../App.css";
 import { Row, Col } from "react-bootstrap";
@@ -12,8 +12,7 @@ import Footer from "../components/Footer";
 import Location from "../components/Location";
 import SimpleGlobe from "../components/globe";
 
-function Homepage() {
-  const [alert, setAlert] = useState(true);
+function Homepage( { alert, setAlert }) {
   
   useEffect(() => {
   }, [alert])
