@@ -7,48 +7,20 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { SizeMe } from "react-sizeme";
 
-function NftGallery({ account, web3Handler, store, nft }) {
-  const [items, setItems] = useState([]);
+function NftGallery({
+  account,
+  web3Handler,
+  store,
+  nft,
+  loadStoreItems,
+  items,
+}) {
+  console.log("outside", store);
+  console.log("Items", items);
 
   useEffect(() => {
     loadStoreItems();
   }, []);
-
-  console.log("outside", store);
-
-  const loadStoreItems = async () => {
-    // load all items
-    console.log("Store", store);
-    const itemCount = await store.callStatic.itemCount();
-    console.log(Number(itemCount.toString()));
-    let items = [];
-
-    for (let i = 1; i <= Number(itemCount.toString()); i++) {
-      const item = await store.callStatic.items(i);
-      // get uri url from nft contract
-      const uri = await nft.tokenURI(item.tokenId);
-      // use uri to fetch the nft metadata stored on ipfs
-      const response = await axios.get(uri);
-      console.log(response.data);
-      const metadata = await response.data;
-      // get item price
-      const price = await store.getPrice(item.itemId);
-      console.log(ethers.utils.formatEther(item.price));
-
-      // Add item to items array
-
-      items.push({
-        price: ethers.utils.formatEther(item.price),
-        itemId: item.itemId._hex,
-        seller: item.seller,
-        collection: item.collection,
-        name: metadata.name,
-        country: metadata.country,
-        image: metadata.image,
-      });
-    }
-    setItems(items);
-  };
 
   return (
     <>
