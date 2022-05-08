@@ -37,17 +37,6 @@ function App() {
           element={<Homepage alert={alert} setAlert={setAlert} />}
         />
         <Route
-          path="/store"
-          element={
-            <Store
-              account={account}
-              web3Handler={web3Handler}
-              nft={nft}
-              store={store}
-            />
-          }
-        />
-        <Route
           path="/nftglobegallery"
           element={
             <NftGallery
@@ -62,7 +51,13 @@ function App() {
           path="/nftbuyitem"
           element={<NftBuyItem alert={alert} setAlert={setAlert} />}
         />
-        <Route path="/personalcollection" element={<PersonalCollection />} />
+        <Route path="/personalcollection" 
+        element={<PersonalCollection 
+          account={account}
+          web3Handler={web3Handler}
+          nft={nft}
+          store={store}
+        />} />
         <Route path="/globe" element={<SimpleGlobe />} />
         <Route path="/esri" element={<SceneView />} />
       </Routes>
