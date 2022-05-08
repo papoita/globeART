@@ -89,5 +89,7 @@ contract Store is ReentrancyGuard, Ownable, GlobeArtNFT {
             msg.sender
         );
     }
-
+    function getPrice(uint _itemId) view public returns(uint){
+        return((items[_itemId].price));
+    }
 }

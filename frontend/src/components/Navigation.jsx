@@ -3,7 +3,7 @@ import { Navbar, Nav, Container, Button, Image } from "react-bootstrap";
 
 import useMetaMask from "../hooks/useMetamask";
 
-function Navigation() {
+function Navigation({ web3Handler }) {
   const { connect, account, isDisable } = useMetaMask();
 
   return (
@@ -14,8 +14,7 @@ function Navigation() {
           thumbnail="true"
           src="./logosm.png"
           as={Link}
-          to="/"
-        >
+          to="/">
           {" "}
           <Image bg="primary" style={{ width: "5rem" }} src="./logosm.png" />
           globeART
@@ -29,8 +28,7 @@ function Navigation() {
             <Nav.Link className="fw-bold" as={Link} to="/nftglobegallery">
               Gallery
             </Nav.Link>
-            <Nav.Link className="fw-bold" as={Link} to="/"> About Us </Nav.Link>
-            
+
             <Nav.Link className="fw-bold" as={Link} to="/personalcollection">
               My Collection
             </Nav.Link>
@@ -41,30 +39,29 @@ function Navigation() {
         </Navbar.Collapse>
       </Container>
       <Container>
-        {account 
-          ?
-          (<Nav.Link
+        {account ? (
+          <Nav.Link
             href={`https://etherscan.io/address/${account}`}
             target="_blank"
             rel="noopener noreferrer"
             className="button nav-button btn-sm mx-4">
             <Button variant="outline-light">
-                Connected to: {account.slice(0, 5) + '...' + account.slice(38, 42)}
+              Connected to:{" "}
+              {account.slice(0, 5) + "..." + account.slice(38, 42)}
             </Button>
-          </Nav.Link>)
-            :
-            (<Button
-                variant="secondary"
-                onClick={connect}
-                disabled={isDisable}
-                size="sm"
-                className="button nav-button btn-sm mx-4">
-                Connect MetaMask
-              </Button>)
-        }
+          </Nav.Link>
+        ) : (
+          <Button
+            variant="secondary"
+            onClick={connect}
+            disabled={isDisable}
+            size="sm"
+            className="button nav-button btn-sm mx-4">
+            Connect MetaMask
+          </Button>
+        )}
       </Container>
     </Navbar>
-    
   );
 }
 

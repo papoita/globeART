@@ -44,7 +44,6 @@ export default function useGeolocation() {
   };
 
   useEffect(() => {
-    console.log(location);
     if (!navigator.geolocation) {
       onError({
         code: 0,
@@ -53,8 +52,8 @@ export default function useGeolocation() {
     }
     if (allow) {
       navigator.geolocation.getCurrentPosition(onSuccess, onError);
-     }
+    }
   }, [allow]);
 
-  return {location, allow, setAllow};
+  return { location, allow, setAllow };
 }
