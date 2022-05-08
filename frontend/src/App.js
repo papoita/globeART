@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import esriConfig from "@arcgis/core/config.js";
 
 import Homepage from "./views/Homepage";
-import Store from "./components/Store";
 import NftGallery from "./views/NftGallery";
 import NftBuyItem from "./views/NftBuyItem";
 import PersonalCollection from "./views/PersonalCollection";
@@ -28,7 +27,7 @@ function App() {
   }, []);
 
   const { account, store, nft, web3Handler } = useWeb3();
-  console.log("App variable", store);
+
   return (
     <Router>
       <Routes>
