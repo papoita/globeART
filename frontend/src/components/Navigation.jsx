@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, Button, Image } from "react-bootstrap";
 import useMetaMask from "../hooks/useMetamask";
 
 function Navigation() {
-  const { connect, isActive, account, isDisable } = useMetaMask();
+  const { connect, account, isDisable } = useMetaMask();
 
   return (
     <Navbar bg="primary" variant="dark" expand="lg">
@@ -40,24 +40,31 @@ function Navigation() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      {account 
-        ?
-        <Container>
-          <p>Connected to {account}</p>
-        </Container>
-        :
-        <Container>
-          <Button
-              variant="secondary"
-              onClick={connect}
-              disabled={isDisable}
-              size="sm"
-              className="m-2 p-2 fs-6 align-middle text-center">
-              Connect MetaMask
+      <Container>
+        {account 
+          ?
+          (<Nav.Link
+            href={`https://etherscan.io/address/${account}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button nav-button btn-sm mx-4">
+            <Button variant="outline-light">
+                Connected to: {account.slice(0, 5) + '...' + account.slice(38, 42)}
             </Button>
-        </Container>
-      }
+          </Nav.Link>)
+            :
+            (<Button
+                variant="secondary"
+                onClick={connect}
+                disabled={isDisable}
+                size="sm"
+                className="button nav-button btn-sm mx-4">
+                Connect MetaMask
+              </Button>)
+        }
+      </Container>
     </Navbar>
+    
   );
 }
 
