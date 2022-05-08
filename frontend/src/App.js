@@ -18,7 +18,7 @@ function App() {
   const [alert, setAlert] = useState(true);
 
   useEffect(() => {
-    web3Handler();
+ //   web3Handler();
   }, []);
 
   const { account, store, nft, web3Handler } = useWeb3();

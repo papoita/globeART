@@ -19,6 +19,7 @@ function NftGallery({ account, web3Handler, store, nft }) {
   const loadStoreItems = async () => {
     // load all items
     console.log("Store", store);
+    return
     const itemCount = await store.callStatic.itemCount();
     console.log(Number(itemCount.toString()));
     let items = [];
