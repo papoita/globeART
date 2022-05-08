@@ -6,25 +6,19 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import esriConfig from "@arcgis/core/config.js";
 
 import Homepage from "./views/Homepage";
-import Store from "./components/Store";
 import NftGallery from "./views/NftGallery";
 import NftBuyItem from "./views/NftBuyItem";
 import PersonalCollection from "./views/PersonalCollection";
 import SimpleGlobe from "./components/globe";
-import SceneView from "./components/SceneView";
-
 import useWeb3 from "./hooks/useWeb3";
-
-esriConfig.assetsPath = "./assets";
 
 function App() {
   const [alert, setAlert] = useState(true);
 
   useEffect(() => {
-    web3Handler();
+ //   web3Handler();
   }, []);
 
   const { account, store, nft, web3Handler } = useWeb3();
@@ -36,17 +30,7 @@ function App() {
           path="/"
           element={<Homepage alert={alert} setAlert={setAlert} />}
         />
-        <Route
-          path="/store"
-          element={
-            <Store
-              account={account}
-              web3Handler={web3Handler}
-              nft={nft}
-              store={store}
-            />
-          }
-        />
+
         <Route
           path="/nftglobegallery"
           element={
@@ -64,7 +48,6 @@ function App() {
         />
         <Route path="/personalcollection" element={<PersonalCollection />} />
         <Route path="/globe" element={<SimpleGlobe />} />
-        <Route path="/esri" element={<SceneView />} />
       </Routes>
     </Router>
   );

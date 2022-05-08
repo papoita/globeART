@@ -1,11 +1,7 @@
 import { useEffect } from "react";
-// this unifies several components,
 import "../App.css";
 import { Row, Col } from "react-bootstrap";
-//import ReactGlobe from 'react-globe.gl';
 import { SizeMe } from "react-sizeme";
-
-//import SceneView from "../components/SceneView";
 import Navigation from "../components/Navigation";
 import Aside from "../components/Aside";
 import Footer from "../components/Footer";
