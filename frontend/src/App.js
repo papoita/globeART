@@ -23,7 +23,16 @@ function App() {
     web3Handler();
   }, []);
 
-  const { account, store, nft, web3Handler, loadStoreItems, items } = useWeb3();
+  const {
+    account,
+    store,
+    nft,
+    web3Handler,
+    loadStoreItems,
+    items,
+    loading,
+    buyStoreItem,
+  } = useWeb3();
   console.log("App variable", store);
   return (
     <Router>
@@ -42,6 +51,8 @@ function App() {
               store={store}
               loadStoreItems={loadStoreItems}
               items={items}
+              loading={loading}
+              buyStoreItem={buyStoreItem}
             />
           }
         />
