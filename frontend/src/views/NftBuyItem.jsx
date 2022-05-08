@@ -1,15 +1,21 @@
-import React from "react";
+import { useEffect } from "react";
 
 import { Container, Row, Col } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import NftItem from "../components/NftItem";
 import Buy from "../components/Buy";
 import Footer from "../components/Footer";
+import Location from "../components/Location";
 
-function NftBuyItem() {
+function NftBuyItem({ alert, setAlert }) {
+  
+  useEffect(() => {
+  }, [alert])
+
   return (
     <>
       <Navigation />
+      { alert && <Location setAlert={ setAlert } /> }
       <Container  md="auto" >
         <Row className="justify-content-center">
           <Col lg={9}>
