@@ -14,12 +14,6 @@ import NftBuyItem from "./views/NftBuyItem";
 import PersonalCollection from "./views/PersonalCollection";
 import SimpleGlobe from "./components/globe";
 import SceneView from "./components/SceneView";
-<<<<<<< HEAD
-import Header from './components/Header';
-import Buy from './components/Buy';
-import Navbar from './components/Navbar'
-=======
->>>>>>> fa696cdb0ea52e6929ec66b0bc87bc7656f90d6d
 
 import esriConfig from "@arcgis/core/config.js";
 
@@ -29,16 +23,6 @@ function App() {
  
 
   return (
-<<<<<<< HEAD
-    <div className="App">
-      <Navbar />
-      
-      <SceneView />
-      <Header className="" name="Julian" message="NFT art collection for wanderlusts" />
-      <Buy></Buy>
-      
-    </div>
-=======
     <Router>
       <Routes>
         <Route path="/" element={<Homepage />} />
@@ -50,7 +34,6 @@ function App() {
 
       </Routes>
     </Router>
->>>>>>> fa696cdb0ea52e6929ec66b0bc87bc7656f90d6d
   );
 }
 

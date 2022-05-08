@@ -37,14 +37,6 @@ function Navigation() {
               <NavDropdown.Item href="/personalcollection">
                 My Collection
               </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.3">
-                Sign In/Out
-              </NavDropdown.Item>
-              {/* 
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
