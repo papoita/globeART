@@ -3,7 +3,9 @@
 // <Route path="/products" element={ <Dashboard /> } />
 //example github https://github.com/pedroagont/ecommerce-frontend-g7/blob/dev/src/App.js
 //import logo from './logo.svg';
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { ethers } from "ethers";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -18,11 +20,20 @@ function App() {
   const [alert, setAlert] = useState(true);
 
   useEffect(() => {
-   web3Handler();
+    web3Handler();
   }, []);
 
-  const { account, store, nft, web3Handler } = useWeb3();
-
+  const {
+    account,
+    store,
+    nft,
+    web3Handler,
+    loadStoreItems,
+    items,
+    loading,
+    buyStoreItem,
+  } = useWeb3();
+  console.log("App variable", store);
   return (
     <Router>
       <Routes>
@@ -38,6 +49,10 @@ function App() {
               web3Handler={web3Handler}
               nft={nft}
               store={store}
+              loadStoreItems={loadStoreItems}
+              items={items}
+              loading={loading}
+              buyStoreItem={buyStoreItem}
             />
           }
         />
@@ -45,13 +60,17 @@ function App() {
           path="/nftbuyitem"
           element={<NftBuyItem alert={alert} setAlert={setAlert} />}
         />
-        <Route path="/personalcollection" 
-        element={<PersonalCollection 
-          account={account}
-          web3Handler={web3Handler}
-          nft={nft}
-          store={store}
-        />} />
+        <Route
+          path="/personalcollection"
+          element={
+            <PersonalCollection
+              account={account}
+              web3Handler={web3Handler}
+              nft={nft}
+              store={store}
+            />
+          }
+        />
         <Route path="/globe" element={<SimpleGlobe />} />
       </Routes>
     </Router>
