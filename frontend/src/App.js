@@ -3,7 +3,9 @@
 // <Route path="/products" element={ <Dashboard /> } />
 //example github https://github.com/pedroagont/ecommerce-frontend-g7/blob/dev/src/App.js
 //import logo from './logo.svg';
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { ethers } from "ethers";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import esriConfig from "@arcgis/core/config.js";
@@ -27,7 +29,7 @@ function App() {
     web3Handler();
   }, []);
 
-  const { account, store, nft, web3Handler } = useWeb3();
+  const { account, store, nft, web3Handler, loadStoreItems, items } = useWeb3();
   console.log("App variable", store);
   return (
     <Router>
@@ -55,6 +57,8 @@ function App() {
               web3Handler={web3Handler}
               nft={nft}
               store={store}
+              loadStoreItems={loadStoreItems}
+              items={items}
             />
           }
         />
