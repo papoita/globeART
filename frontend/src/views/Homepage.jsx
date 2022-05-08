@@ -1,5 +1,5 @@
+import { useEffect } from "react";
 // this unifies several components,
-import React from "react";
 import "../App.css";
 import { Row, Col } from "react-bootstrap";
 //import ReactGlobe from 'react-globe.gl';
@@ -12,11 +12,14 @@ import Footer from "../components/Footer";
 import Location from "../components/Location";
 import SimpleGlobe from "../components/globe";
 
-function Homepage({ account, web3Handler }) {
+function Homepage({ account, web3Handler, alert, setAlert }) {
+  useEffect(() => {}, [alert]);
+
   return (
     <div className="Homepage">
       <Navigation account={account} web3Handler={web3Handler} />
-      <Location />
+      <Navigation />
+      {alert && <Location setAlert={setAlert} />}
       <Row>
         <Col sm={9} style={{ paddingRight: "0px" }}>
           <SizeMe>
