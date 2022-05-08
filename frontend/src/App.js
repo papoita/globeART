@@ -8,19 +8,13 @@ import axios from "axios";
 import { ethers } from "ethers";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import esriConfig from "@arcgis/core/config.js";
 
 import Homepage from "./views/Homepage";
-import Store from "./components/Store";
 import NftGallery from "./views/NftGallery";
 import NftBuyItem from "./views/NftBuyItem";
 import PersonalCollection from "./views/PersonalCollection";
 import SimpleGlobe from "./components/globe";
-import SceneView from "./components/SceneView";
-
 import useWeb3 from "./hooks/useWeb3";
-
-esriConfig.assetsPath = "./assets";
 
 function App() {
   const [alert, setAlert] = useState(true);
@@ -39,17 +33,6 @@ function App() {
           element={<Homepage alert={alert} setAlert={setAlert} />}
         />
         <Route
-          path="/store"
-          element={
-            <Store
-              account={account}
-              web3Handler={web3Handler}
-              nft={nft}
-              store={store}
-            />
-          }
-        />
-        <Route
           path="/nftglobegallery"
           element={
             <NftGallery
@@ -66,9 +49,18 @@ function App() {
           path="/nftbuyitem"
           element={<NftBuyItem alert={alert} setAlert={setAlert} />}
         />
-        <Route path="/personalcollection" element={<PersonalCollection />} />
+        <Route
+          path="/personalcollection"
+          element={
+            <PersonalCollection
+              account={account}
+              web3Handler={web3Handler}
+              nft={nft}
+              store={store}
+            />
+          }
+        />
         <Route path="/globe" element={<SimpleGlobe />} />
-        <Route path="/esri" element={<SceneView />} />
       </Routes>
     </Router>
   );

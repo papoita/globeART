@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import axios from "axios";
 
-import { Carousel, Button, Card, CardGroup } from "react-bootstrap";
+import {
+  Carousel,
+  Button,
+  Card,
+  CardGroup,
+  Container,
+  Row,
+} from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { SizeMe } from "react-sizeme";
@@ -15,12 +22,20 @@ function NftGallery({
   loadStoreItems,
   items,
 }) {
+  const [loading, setLoading] = useState(true);
+
   console.log("outside", store);
   console.log("Items", items);
 
   useEffect(() => {
     loadStoreItems();
   }, []);
+
+  const buyStoreItem = async (item) => {
+    const price = ethers.utils.parseEther(item.price);
+    await (await store.purchaseItem(item.itemId, { value: price })).wait();
+    loadStoreItems();
+  };
 
   return (
     <>
@@ -77,35 +92,38 @@ function NftGallery({
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel> */}
-
       <CardGroup className="m-4">
-        <h2>GlobeART Collections</h2>
-        {items.length > 0 ? (
-          items.map((item, idx) => (
-            <Card key={idx} className="m-4">
-              <Card.Img
-                variant="top"
-                src={item.image}
-                style={{ width: "200px" }}
-              />
-              <Card.Body
-                style={{
-                  background: "linear-gradient(#B2FBED, #9198e5)",
-                  width: "200px",
-                }}>
-                <Card.Title>{item.collection}</Card.Title>
-                <Card.Text>{item.name}</Card.Text>
-                <Card.Text>
-                  <small bg="primary">Price: {item.price}</small>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          ))
-        ) : (
-          <div style={{ padding: "1rem 0" }}>
-            <h2>No listed assets</h2>
-          </div>
-        )}
+        <Container>
+          <Row>
+            <h2>GlobeART Collections</h2>
+            {items.length > 0 ? (
+              items.map((item, idx) => (
+                <Card key={idx} className="m-4">
+                  <Card.Img
+                    variant="top"
+                    src={item.image}
+                    style={{ width: "400px" }}
+                  />
+                  <Card.Body
+                    style={{
+                      background: "linear-gradient(#B2FBED, #9198e5)",
+                      width: "400px",
+                    }}>
+                    <Card.Title>{item.collection}</Card.Title>
+                    <Card.Text>
+                      <small bg="primary">Price: {item.price} ETH</small>
+                    </Card.Text>
+                    <Button onClick={() => buyStoreItem(item)}>Buy Now!</Button>
+                  </Card.Body>
+                </Card>
+              ))
+            ) : (
+              <div style={{ padding: "1rem 0" }}>
+                <h2>No listed assets</h2>
+              </div>
+            )}
+          </Row>
+        </Container>
       </CardGroup>
       <Footer />
     </>
