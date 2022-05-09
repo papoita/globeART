@@ -8,9 +8,9 @@ import Buy from "../components/Buy";
 import Footer from "../components/Footer";
 import Location from "../components/Location";
 
-function NftBuyItem({ alert, setAlert, store, buyStoreItem, items, loadStoreItems }) {
+function NftBuyItem({ store, buyStoreItem, items, loadStoreItems }) {
   
-  const { id } = useParams();
+  // const { id } = useParams();
   
   useEffect(() => {
     loadStoreItems();
@@ -19,7 +19,6 @@ function NftBuyItem({ alert, setAlert, store, buyStoreItem, items, loadStoreItem
   return (
     <>
       <Navigation />
-      { alert && <Location setAlert={ setAlert } /> }
       <Container  md="auto" >
         <Row className="justify-content-center">
           <Col lg={9}>
