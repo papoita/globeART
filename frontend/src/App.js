@@ -49,10 +49,14 @@ function App() {
           element={<NFT 
             account={state.account}
             web3Handler={web3Handler}
-            items={state.item}
+            nft={state.nft}
+            store={state.store}
+            loadStoreItems={loadStoreItems}
+            items={state.items}
             loading={state.loading}
-            loadStoreItem={loadStoreItem}
             buyStoreItem={buyStoreItem}
+            loadStoreItem={loadStoreItem}
+            item={state.item}
             />}
         />
         <Route
