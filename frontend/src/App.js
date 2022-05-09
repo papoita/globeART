@@ -4,8 +4,6 @@
 //example github https://github.com/pedroagont/ecommerce-frontend-g7/blob/dev/src/App.js
 //import logo from './logo.svg';
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { ethers } from "ethers";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
