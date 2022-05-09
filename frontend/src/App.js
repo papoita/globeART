@@ -16,7 +16,7 @@ import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
 
 function App() {
-  const { state, web3Handler, loadStoreItems, buyStoreItem } = useWeb3();
+  const { state, web3Handler, loadStoreItems, loadStoreItem, buyStoreItem } = useWeb3();
   const { location } = useGeolocation();
 
   useEffect(() => {
@@ -46,7 +46,14 @@ function App() {
         />
         <Route
           path="/nft/:id"
-          element={<NFT  buyStoreItem={buyStoreItem} loadStoreItems={loadStoreItems}/>}
+          element={<NFT 
+            account={state.account}
+            web3Handler={web3Handler}
+            items={state.item}
+            loading={state.loading}
+            loadStoreItem={loadStoreItem}
+            buyStoreItem={buyStoreItem}
+            />}
         />
         <Route
           path="/personalcollection"
