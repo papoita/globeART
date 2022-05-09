@@ -8,21 +8,21 @@ import Buy from "../components/Buy";
 import Footer from "../components/Footer";
 import Location from "../components/Location";
 
-function NftBuyItem({ store, buyStoreItem, items, loadStoreItems }) {
+function NFT({ account, web3Handler, buyStoreItem, item, loadStoreItem }) {
   
-  // const { id } = useParams();
+  const { id } = useParams();
   
   useEffect(() => {
-    loadStoreItems();
+    loadStoreItem(id);
   }, [])
 
   return (
     <>
-      <Navigation />
+      <Navigation account={account} web3Handler={web3Handler} />
       <Container  md="auto" >
         <Row className="justify-content-center">
           <Col lg={9}>
-            <NftItem />
+            <NftItem id={item}/>
           </Col>
           <Col lg={3}  className="align-items-center h-100 align-middle " >
             <Buy />
@@ -34,5 +34,5 @@ function NftBuyItem({ store, buyStoreItem, items, loadStoreItems }) {
   );
 }
 
-export default NftBuyItem;
+export default NFT;
 //align-middle align-items-center align-content-center justify-content-center
