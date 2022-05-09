@@ -3,7 +3,7 @@
 // <Route path="/products" element={ <Dashboard /> } />
 //example github https://github.com/pedroagont/ecommerce-frontend-g7/blob/dev/src/App.js
 //import logo from './logo.svg';
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -13,10 +13,11 @@ import NftBuyItem from "./views/NftBuyItem";
 import PersonalCollection from "./views/PersonalCollection";
 import SimpleGlobe from "./components/globe";
 import useWeb3 from "./hooks/useWeb3";
+import useGeolocation from "./hooks/useGeolocation";
 
 function App() {
-  const [alert, setAlert] = useState(true);
   const { state, web3Handler, loadStoreItems, buyStoreItem } = useWeb3();
+  const { location } = useGeolocation();
 
   useEffect(() => {
     web3Handler();
@@ -26,10 +27,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={<Homepage alert={alert} setAlert={setAlert} />}
-        />
+        <Route path="/" element={<Homepage location={location} />} />
         <Route
           path="/nftglobegallery"
           element={
@@ -45,10 +43,7 @@ function App() {
             />
           }
         />
-        <Route
-          path="/nftbuyitem"
-          element={<NftBuyItem alert={alert} setAlert={setAlert} />}
-        />
+        <Route path="/nftbuyitem" element={<NftBuyItem />} />
         <Route
           path="/personalcollection"
           element={
