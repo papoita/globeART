@@ -32,8 +32,10 @@ function App() {
     items,
     loading,
     buyStoreItem,
+    loadItem,
+    item
   } = useWeb3();
-  console.log("App variable", store);
+
   return (
     <Router>
       <Routes>
@@ -57,8 +59,8 @@ function App() {
           }
         />
         <Route
-          path="/nftbuyitem"
-          element={<NftBuyItem alert={alert} setAlert={setAlert} />}
+          path="/nftbuyitem/:id"
+          element={<NftBuyItem alert={alert} setAlert={setAlert} store={store} buyStoreItem={buyStoreItem} account={account} item={item} loadItems={loadItems}/>}
         />
         <Route
           path="/personalcollection"
