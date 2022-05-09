@@ -25,14 +25,14 @@ function Navigation({ web3Handler }) {
       <Container>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className="fw-bold" as={Link} to="/nftglobegallery">
+            <Nav.Link className="fw-bold" as={Link} to="/gallery">
               Gallery
             </Nav.Link>
 
             <Nav.Link className="fw-bold" as={Link} to="/personalcollection">
               My Collection
             </Nav.Link>
-            <Nav.Link className="fw-bold" as={Link} to="/nftbuyitem">
+            <Nav.Link className="fw-bold" as={Link} to="/nft">
               Available Now
             </Nav.Link>
           </Nav>

@@ -13,7 +13,7 @@ import Footer from "../components/Footer";
 import { SizeMe } from "react-sizeme";
 
 import useWeb3 from "../hooks/useWeb3";
-function NftGallery({
+function Gallery({
   account,
   web3Handler,
   loadStoreItems,
@@ -87,4 +87,4 @@ function NftGallery({
   );
 }
 
-export default NftGallery;
+export default Gallery;

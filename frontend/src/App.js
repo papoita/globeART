@@ -8,9 +8,9 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Homepage from "./views/Homepage";
-import NftGallery from "./views/NftGallery";
-import NftBuyItem from "./views/NftBuyItem";
-import PersonalCollection from "./views/PersonalCollection";
+import Gallery from "./views/Gallery";
+import NFT from "./views/NFT";
+import UserCollection from "./views/UserCollection";
 import SimpleGlobe from "./components/globe";
 import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
@@ -30,9 +30,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage location={location} />} />
         <Route
-          path="/nftglobegallery"
+          path="/gallery"
           element={
-            <NftGallery
+            <Gallery
               account={state.account}
               web3Handler={web3Handler}
               nft={state.nft}
@@ -45,13 +45,13 @@ function App() {
           }
         />
         <Route
-          path="/nftbuyitem/:id"
-          element={<NftBuyItem  buyStoreItem={buyStoreItem} loadStoreItems={loadStoreItems}/>}
+          path="/nft/:id"
+          element={<NFT  buyStoreItem={buyStoreItem} loadStoreItems={loadStoreItems}/>}
         />
         <Route
           path="/personalcollection"
           element={
-            <PersonalCollection
+            <UserCollection
               account={state.account}
               web3Handler={web3Handler}
               nft={state.nft}
