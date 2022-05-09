@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./views/Homepage";
 import Gallery from "./views/Gallery";
 import NFT from "./views/NFT";
-import UserCollection from "./views/UserCollection";
+import PersonalCollection from "./views/PersonalCollection";
 import SimpleGlobe from "./components/globe";
 import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
@@ -62,7 +62,7 @@ function App() {
         <Route
           path="/personalcollection"
           element={
-            <UserCollection
+            <PersonalCollection
               account={state.account}
               web3Handler={web3Handler}
               nft={state.nft}
