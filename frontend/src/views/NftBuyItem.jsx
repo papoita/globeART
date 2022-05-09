@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import { Container, Row, Col } from "react-bootstrap";
 import Navigation from "../components/Navigation";
@@ -7,10 +8,13 @@ import Buy from "../components/Buy";
 import Footer from "../components/Footer";
 import Location from "../components/Location";
 
-function NftBuyItem({ alert, setAlert }) {
+function NftBuyItem({ alert, setAlert, store, buyStoreItem, items, loadStoreItems }) {
+  
+  const { id } = useParams();
   
   useEffect(() => {
-  }, [alert])
+    loadStoreItems();
+  }, [])
 
   return (
     <>
