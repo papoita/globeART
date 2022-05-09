@@ -93,9 +93,18 @@ export default function useWeb3() {
   };
 
   const loadStoreItem = async(id) => {
-    const items = loadStoreItems();
-    const item = items.filter((i) => i.itemId === id);
-    return item[0];
+    //load item for given id
+    try {
+      await loadStoreItems();
+      console.log("ITEMS:", state.items);
+      const i = state.items.filter((i) => i.itemId === id);
+      const item = i[0];
+      setState((prev) => ({ ...prev, loading: false, item }));
+      console.log("ITEM:", state.item);
+    }
+    catch (error) {
+      console.log("Error", error);
+    }
   }
 
   return { state, web3Handler, loadStoreItems, loadStoreItem, buyStoreItem };
