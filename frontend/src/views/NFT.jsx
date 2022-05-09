@@ -8,13 +8,16 @@ import Buy from "../components/Buy";
 import Footer from "../components/Footer";
 import Location from "../components/Location";
 
-function NFT({ account, web3Handler, buyStoreItem, item, loadStoreItem }) {
+
+function NFT({ account, web3Handler, buyStoreItem, item, loadStoreItem, loading }) {
   
   const { id } = useParams();
-  
+
   useEffect(() => {
-    loadStoreItem(id);
+    loadStoreItem(id)
   }, [])
+
+  if (loading) return <h2>Loading...</h2>;
 
   return (
     <>
@@ -22,7 +25,7 @@ function NFT({ account, web3Handler, buyStoreItem, item, loadStoreItem }) {
       <Container  md="auto" >
         <Row className="justify-content-center">
           <Col lg={9}>
-            <NftItem id={item}/>
+            {/* <NftItem item={item}/> */}
           </Col>
           <Col lg={3}  className="align-items-center h-100 align-middle " >
             <Buy />
