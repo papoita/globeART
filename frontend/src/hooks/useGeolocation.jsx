@@ -3,13 +3,11 @@ import axios from "axios";
 
 export default function useGeolocation() {
   const [location, setLocation] = useState({
-    displayLocation: false,
+    allowLocation: false,
     coordinates: { lat: null, lon: null },
     city: "",
     country: "",
   });
-
-  const [allow, setAllow] = useState(false);
 
   const onSuccess = (location) => {
     let lat = location.coords.latitude;
@@ -22,7 +20,7 @@ export default function useGeolocation() {
         console.log(res.data);
         setLocation((prev) => ({
           ...prev,
-          displayLocation: true,
+          allowLocation: true,
           coordinates: { lat: lat, lon: lon },
           city: res.data[0].name,
           country: res.data[0].country,
@@ -35,7 +33,7 @@ export default function useGeolocation() {
 
   const onError = (error) => {
     setLocation({
-      displayLocation: true,
+      allowLocation: false,
       error: {
         code: error.code,
         message: error.message,
@@ -50,10 +48,9 @@ export default function useGeolocation() {
         message: "Geolocation is not supported by your browser",
       });
     }
-    if (allow) {
-      navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    }
-  }, [allow]);
 
-  return { location, allow, setAllow };
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+  }, []);
+
+  return { location };
 }

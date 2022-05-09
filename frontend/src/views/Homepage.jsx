@@ -1,20 +1,16 @@
-import { useEffect } from "react";
 import "../App.css";
 import { Row, Col } from "react-bootstrap";
 import { SizeMe } from "react-sizeme";
 import Navigation from "../components/Navigation";
 import Aside from "../components/Aside";
 import Footer from "../components/Footer";
-import Location from "../components/Location";
 import SimpleGlobe from "../components/globe";
 
-function Homepage({ account, web3Handler, alert, setAlert }) {
-  useEffect(() => {}, [alert]);
-
+function Homepage({ account, web3Handler, location }) {
+  console.log(location);
   return (
     <div className="Homepage">
       <Navigation account={account} web3Handler={web3Handler} />
-      {alert && <Location setAlert={setAlert} />}
       <Row>
         <Col sm={9} style={{ paddingRight: "0px" }}>
           <SizeMe>

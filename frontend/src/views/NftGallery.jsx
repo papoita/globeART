@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { ethers } from "ethers";
-import axios from "axios";
+import React, { useEffect } from "react";
 
 import {
   Carousel,
@@ -29,6 +27,7 @@ function NftGallery({
 
   useEffect(() => {
     loadStoreItems();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) return <h2>Loading...</h2>;
