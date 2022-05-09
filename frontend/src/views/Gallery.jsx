@@ -40,7 +40,7 @@ function Gallery({
               <img className="d-block w-100" src={item.image} alt={item.name} />
                 <Carousel.Caption>
                   <h3>{item.name}</h3>
-                  <Button className= "fw-bold" style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} href={`nft/${item.itemId}`} alt="Buy item">
+                  <Button className= "fw-bold" style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} href={`nft/${Number(item.itemId)}`} alt="Buy item">
                     + Details
                   </Button>
                 </Carousel.Caption>
