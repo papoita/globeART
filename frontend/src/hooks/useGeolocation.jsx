@@ -9,8 +9,6 @@ export default function useGeolocation() {
     country: "",
   });
 
-  // const [allow, setAllow] = useState(false);
-
   const onSuccess = (location) => {
     let lat = location.coords.latitude;
     let lon = location.coords.longitude;
