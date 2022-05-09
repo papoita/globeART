@@ -21,6 +21,7 @@ function App() {
 
   useEffect(() => {
     web3Handler();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log("App variable", state.store);
