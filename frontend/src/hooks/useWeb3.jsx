@@ -13,6 +13,7 @@ export default function useWeb3() {
     nft: {},
     store: {},
     items: [],
+    item: {},
     loading: true,
   });
 
@@ -91,5 +92,11 @@ export default function useWeb3() {
     loadStoreItems();
   };
 
-  return { state, web3Handler, loadStoreItems, buyStoreItem };
+  const loadStoreItem = async(id) => {
+    const items = loadStoreItems();
+    const item = items.filter((i) => i.itemId === id);
+    return item[0];
+  }
+
+  return { state, web3Handler, loadStoreItems, loadStoreItem, buyStoreItem };
 }
