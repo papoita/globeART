@@ -18,22 +18,13 @@ import useWeb3 from "./hooks/useWeb3";
 
 function App() {
   const [alert, setAlert] = useState(true);
+  const { state, web3Handler, loadStoreItems, buyStoreItem } = useWeb3();
 
   useEffect(() => {
     web3Handler();
   }, []);
 
-  const {
-    account,
-    store,
-    nft,
-    web3Handler,
-    loadStoreItems,
-    items,
-    loading,
-    buyStoreItem,
-  } = useWeb3();
-  console.log("App variable", store);
+  console.log("App variable", state.store);
   return (
     <Router>
       <Routes>
@@ -45,13 +36,13 @@ function App() {
           path="/nftglobegallery"
           element={
             <NftGallery
-              account={account}
+              account={state.account}
               web3Handler={web3Handler}
-              nft={nft}
-              store={store}
+              nft={state.nft}
+              store={state.store}
               loadStoreItems={loadStoreItems}
-              items={items}
-              loading={loading}
+              items={state.items}
+              loading={state.loading}
               buyStoreItem={buyStoreItem}
             />
           }
@@ -64,10 +55,10 @@ function App() {
           path="/personalcollection"
           element={
             <PersonalCollection
-              account={account}
+              account={state.account}
               web3Handler={web3Handler}
-              nft={nft}
-              store={store}
+              nft={state.nft}
+              store={state.store}
             />
           }
         />
