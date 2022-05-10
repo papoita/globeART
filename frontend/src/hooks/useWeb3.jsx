@@ -8,14 +8,11 @@ import NFTAddress from "../contractsData/GlobeArtNFT-address.json";
 import NFTAbi from "../contractsData/GlobeArtNFT.json";
 
 export default function useWeb3() {
-  const [state, setState] = useState({
-    account: null,
-    nft: {},
-    store: {},
-    items: [],
-    item: {},
-    loading: true,
-  });
+  const [store, setStore] = useState({});
+  const [nft, setNft] = useState({});
+  const [account, setAccount] = useState(null);
+  const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState({});
 
   const loadContracts = async (signer) => {
     // Get deployed copies of contracts
@@ -24,16 +21,16 @@ export default function useWeb3() {
       StoreAbi.abi,
       signer
     );
+    setStore(store);
     const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
-
-    setState((prev) => ({ ...prev, store, nft }));
+    setNft(nft);
   };
 
   const web3Handler = async () => {
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
-    setState((prev) => ({ ...prev, account: accounts[0] }));
+    setAccount(accounts[0]);
     // Get provider from Metamask
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     // Set signer
@@ -52,15 +49,14 @@ export default function useWeb3() {
   const loadStoreItems = async () => {
     // load all items
     try {
-      console.log("Store", state.store);
-      const itemCount = await state.store.callStatic.itemCount();
+      const itemCount = await store.callStatic.itemCount();
+      console.log("Store", store);
       console.log(Number(itemCount.toString()));
-      let items = [];
 
       for (let i = 1; i <= Number(itemCount.toString()); i++) {
-        const item = await state.store.callStatic.items(i);
+        const item = await store.callStatic.items(i);
         // get uri url from nft contract
-        const uri = await state.nft.tokenURI(item.tokenId);
+        const uri = await nft.tokenURI(item.tokenId);
         // use uri to fetch the nft metadata stored on ipfs
         const response = await axios.get(uri);
         console.log(response.data);
@@ -77,8 +73,9 @@ export default function useWeb3() {
           image: metadata.image,
         });
       }
-      setState((prev) => ({ ...prev, loading: false, items }));
-      console.log(state.items);
+      setIsLoading(false);
+      setItems(items);
+      console.log(items);
     } catch (error) {
       console.log("Error", error);
     }
@@ -86,26 +83,32 @@ export default function useWeb3() {
 
   const buyStoreItem = async (item) => {
     const price = ethers.utils.parseEther(item.price);
-    await (
-      await state.store.purchaseItem(item.itemId, { value: price })
-    ).wait();
+    await (await store.purchaseItem(item.itemId, { value: price })).wait();
     loadStoreItems();
   };
 
-  const loadStoreItem = async(id) => {
-    //load item for given id
-    try {
-      await loadStoreItems();
-      console.log("ITEMS:", state.items);
-      const i = state.items.filter((i) => i.itemId === id);
-      const item = i[0];
-      setState((prev) => ({ ...prev, loading: false, item }));
-      console.log("ITEM:", state.item);
-    }
-    catch (error) {
-      console.log("Error", error);
-    }
-  }
+  // const loadStoreItem = async (id) => {
+  //   //load item for given id
+  //   try {
+  //     await loadStoreItems();
+  //     console.log("ITEMS:", items);
+  //     const i = items.filter((i) => i.itemId === id);
+  //     const item = i[0];
+  //     setItem(item);
+  //     console.log("ITEM:", item);
+  //   } catch (error) {
+  //     console.log("Error", error);
+  //   }
+  // };
 
-  return { state, web3Handler, loadStoreItems, loadStoreItem, buyStoreItem };
+  return {
+    items,
+    store,
+    account,
+    isLoading,
+    web3Handler,
+    loadStoreItems,
+    buyStoreItem,
+    nft,
+  };
 }
