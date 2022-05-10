@@ -19,10 +19,12 @@ import useGeolocation from "./hooks/useGeolocation";
 function App() {
   const {
     items,
-    state,
+    store,
+    account,
+    isLoading,
+    nft,
     web3Handler,
     loadStoreItems,
-    loadStoreItem,
     buyStoreItem,
   } = useWeb3();
   const { location } = useGeolocation();
@@ -32,8 +34,8 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("App variable", state.store);
-  console.log("App ITEMS", items);
+  console.log("App variable", store);
+
   return (
     <Router>
       <Routes>
@@ -42,42 +44,42 @@ function App() {
           path="/gallery"
           element={
             <Gallery
-              account={state.account}
+              account={account}
               web3Handler={web3Handler}
-              nft={state.nft}
-              store={state.store}
+              nft={nft}
+              store={store}
               loadStoreItems={loadStoreItems}
               items={items}
-              loading={state.loading}
+              loading={isLoading}
               buyStoreItem={buyStoreItem}
             />
           }
         />
-        <Route
+        {/* <Route
           path="/nft/:id"
           element={
             <NFT
-              account={state.account}
+              account={account}
               web3Handler={web3Handler}
-              nft={state.nft}
-              store={state.store}
+              nft={nft}
+              store={store}
               loadStoreItems={loadStoreItems}
-              items={state.items}
-              loading={state.loading}
+              items={items}
+              loading={isLoading}
               buyStoreItem={buyStoreItem}
-              loadStoreItem={loadStoreItem}
-              item={state.item}
+              // loadStoreItem={loadStoreItem}
+              item={item}
             />
           }
-        />
+        /> */}
         <Route
           path="/personalcollection"
           element={
             <PersonalCollection
-              account={state.account}
+              account={account}
               web3Handler={web3Handler}
-              nft={state.nft}
-              store={state.store}
+              nft={nft}
+              store={store}
             />
           }
         />
@@ -87,7 +89,7 @@ function App() {
             <AvailableNFT
               location={location}
               items={items}
-              account={state.account}
+              account={account}
               web3Handler={web3Handler}
             />
           }
