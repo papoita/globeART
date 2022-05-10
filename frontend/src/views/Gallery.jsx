@@ -10,7 +10,6 @@ import {
 } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import NFT from "./NFT";
 import { SizeMe } from "react-sizeme";
 
 function Gallery({
