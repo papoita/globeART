@@ -17,7 +17,6 @@ export default function useGeolocation() {
     axios
       .get(apiURL)
       .then((res) => {
-        console.log(res.data);
         setLocation((prev) => ({
           ...prev,
           allowLocation: true,
