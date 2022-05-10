@@ -10,22 +10,26 @@ import {
 } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
+import NFT from "./NFT";
 import { SizeMe } from "react-sizeme";
 
-import useWeb3 from "../hooks/useWeb3";
 function Gallery({
   account,
   web3Handler,
   loadStoreItems,
   items,
+  item,
   buyStoreItem,
-  loading
+  loading,
+  nft,
+  store,
 }) {
-
   useEffect(() => {
     loadStoreItems();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  console.log("ITEMS", items);
 
   if (loading) return <h2>Loading...</h2>;
 
@@ -34,21 +38,29 @@ function Gallery({
       <Navigation account={account} web3Handler={web3Handler} />
       <Container>
         <Carousel className="m-3 p-4">
-          {items.length > 0 && (
-                  items.map((item, idx) => ( 
-              <Carousel.Item key={idx} >
-              <img className="d-block w-100" src={item.image} alt={item.name} />
+          {items.length > 0 &&
+            items.map((item, idx) => (
+              <Carousel.Item key={idx}>
+                <img
+                  className="d-block w-100"
+                  src={item.image}
+                  alt={item.name}
+                />
                 <Carousel.Caption>
                   <h3>{item.name}</h3>
-                  <Button className= "fw-bold" style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} href={`nft/${Number(item.itemId)}`} alt="Buy item">
+                  <Button
+                    className="fw-bold"
+                    style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}
+                    href={`nft/${Number(item.itemId)}`}
+                    alt="Buy item">
                     + Details
                   </Button>
                 </Carousel.Caption>
-              </Carousel.Item >
-            )))}
-          </Carousel>
-        </Container>
-      
+              </Carousel.Item>
+            ))}
+        </Carousel>
+      </Container>
+
       <CardGroup className="m-4">
         <Container>
           <Row>
