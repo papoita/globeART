@@ -44,8 +44,8 @@ const data = [
     collection: "Toronto",
   },
   {
-    URI: "ottawa.json",
-    collection: "Ottawa",
+    URI: "tokyo.json",
+    collection: "Tokyo",
   },
   {
     URI: "vancouver.json",
