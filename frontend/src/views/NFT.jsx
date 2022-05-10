@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import { Container, Row, Col } from "react-bootstrap";
 import Navigation from "../components/Navigation";
@@ -7,19 +8,24 @@ import Buy from "../components/Buy";
 import Footer from "../components/Footer";
 import Location from "../components/Location";
 
-function NftBuyItem({ alert, setAlert }) {
+
+function NFT({ account, web3Handler, buyStoreItem, item, loadStoreItem, loading }) {
   
+  const { id } = useParams();
+
   useEffect(() => {
-  }, [alert])
+    loadStoreItem(id)
+  }, [])
+
+  if (loading) return <h2>Loading...</h2>;
 
   return (
     <>
-      <Navigation />
-      { alert && <Location setAlert={ setAlert } /> }
+      <Navigation account={account} web3Handler={web3Handler} />
       <Container  md="auto" >
         <Row className="justify-content-center">
           <Col lg={9}>
-            <NftItem />
+            {/* <NftItem item={item}/> */}
           </Col>
           <Col lg={3}  className="align-items-center h-100 align-middle " >
             <Buy />
@@ -31,5 +37,5 @@ function NftBuyItem({ alert, setAlert }) {
   );
 }
 
-export default NftBuyItem;
+export default NFT;
 //align-middle align-items-center align-content-center justify-content-center

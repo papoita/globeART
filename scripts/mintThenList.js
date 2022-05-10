@@ -39,6 +39,18 @@ const data = [
     URI: "paris.json",
     collection: "Paris",
   },
+  {
+    URI: "toronto.json",
+    collection: "Toronto",
+  },
+  {
+    URI: "tokyo.json",
+    collection: "Tokyo",
+  },
+  {
+    URI: "vancouver.json",
+    collection: "Vancouver",
+  },
 ];
 
 async function mintThenList(URI, collection) {
