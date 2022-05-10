@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
-import useMetaMask from "../hooks/useMetamask";
+import useWeb3 from "../hooks/useWeb3";
 
 const Buy = () => {
-  const { connect, isActive, account, disconnect, isDisable } = useMetaMask();
+  const { buyStoreItem } = useWeb3();
 
   return (
     <Card
@@ -22,22 +22,10 @@ const Buy = () => {
         </Card.Text>
         <Button
           gb="primary"
-          onClick={connect}
-          disabled={isDisable}
+          onClick={buyStoreItem}
           size="md"
           className="d-grip m-2 p-3  fs-4 align-middle text-center">
-          Connect to MetaMask
-        </Button>
-        {/* TODO: For visibility only, to be removed later */}
-        <div className="mt-2 mb-2">
-          Connected Account: {isActive ? account : ""}
-        </div>
-        <Button
-          gb="primary"
-          onClick={disconnect}
-          size="md"
-          className="d-grip m-2 p-3  fs-4 align-middle text-center">
-          Disconnect MetaMask
+          Buy Now
         </Button>
       </Card.Body>
     </Card>
