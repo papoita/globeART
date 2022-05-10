@@ -7,7 +7,7 @@ function Navigation({ web3Handler }) {
   const { connect, account, isDisable } = useMetaMask();
 
   return (
-    <Navbar bg="primary" variant="dark" expand="lg">
+    <Navbar bg="primary" variant="dark" expand="lg" className="sticky-top">
       <Container>
         <Navbar.Brand
           className="fs-3 fw-bold"
@@ -19,7 +19,7 @@ function Navigation({ web3Handler }) {
           <Image bg="primary" style={{ width: "5rem" }} src="./logosm.png" />
           globeART
         </Navbar.Brand>
-        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
       </Container>
 
       <Container>
