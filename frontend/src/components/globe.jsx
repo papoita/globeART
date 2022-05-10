@@ -23,9 +23,9 @@ import places from './places';
       labelLat={d => d.lat}
       labelLng={d => d.lng}
       labelText={d => d.name}
-      labelSize={d => 0.5 + d.size }
-      labelDotRadius={d => 0.5 + d.size}
-      labelColor={() => 'rgba(238, 130, 238, 0.75)'}
+      labelSize={d => 0.8 + d.size }
+      labelDotRadius={d => 0.8 + d.size}
+      labelColor={() => 'rgba(237,0,248, 0.95)'}
       labelResolution={2}
       // labelLink={d => 'href=d.link'}
     />;
