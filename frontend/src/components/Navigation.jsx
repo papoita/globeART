@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Button, Image } from "react-bootstrap";
-
-import useMetaMask from "../hooks/useMetamask";
+import { Navbar, Nav, Container, Image } from "react-bootstrap";
 
 function Navigation({ web3Handler }) {
-  const { connect, account, isDisable } = useMetaMask();
-
   return (
     <Navbar bg="primary" variant="dark" expand="lg" className="sticky-top">
       <Container>
@@ -37,29 +33,6 @@ function Navigation({ web3Handler }) {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-      </Container>
-      <Container>
-        {account ? (
-          <Nav.Link
-            href={`https://etherscan.io/address/${account}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button nav-button btn-sm mx-4">
-            <Button variant="outline-light">
-              Connected to:{" "}
-              {account.slice(0, 5) + "..." + account.slice(38, 42)}
-            </Button>
-          </Nav.Link>
-        ) : (
-          <Button
-            variant="secondary"
-            onClick={connect}
-            disabled={isDisable}
-            size="sm"
-            className="button nav-button btn-sm mx-4">
-            Connect MetaMask
-          </Button>
-        )}
       </Container>
     </Navbar>
   );
