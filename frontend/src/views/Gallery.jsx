@@ -12,17 +12,18 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { SizeMe } from "react-sizeme";
 
-function Gallery({
-  account,
-  web3Handler,
-  loadStoreItems,
-  items,
-  item,
-  buyStoreItem,
-  loading,
-  nft,
-  store,
-}) {
+function Gallery(props) {
+  const {
+    account,
+    web3Handler,
+    loadStoreItems,
+    items,
+    buyStoreItem,
+    loading,
+    nft,
+    store
+  } = props;
+
   useEffect(() => {
     loadStoreItems();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -50,7 +51,7 @@ function Gallery({
                   <Button
                     className="fw-bold"
                     style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}
-                    href={`nft/${Number(item.itemId)}`}
+                    href={`/nft/${Number(item.itemId)}`}
                     alt="Buy item">
                     + Details
                   </Button>
