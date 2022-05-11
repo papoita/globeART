@@ -2,18 +2,16 @@ import {useEffect, useRef} from 'react';
 import ReactGlobe from 'react-globe.gl';
 import places from './places'; 
 
-
-
-  const SimpleGlobe = () => {
+  const Globe = () => {
    
     const globeEl = useRef()
-    useEffect(() => {
-      globeEl.current.controls().autoRotate = true;
-      globeEl.current.controls().autoRotateSpeed = 0.8;
+    // useEffect(() => {
+    //   globeEl.current.controls().autoRotate = true;
+    //   globeEl.current.controls().autoRotateSpeed = 0.8;
   
-      const MAP_CENTER = { lat: 45, lng: -75, altitude: 1.7 };
-      globeEl.current.pointOfView(MAP_CENTER, 0);
-    }, [globeEl]);
+    //   const MAP_CENTER = { lat: 45, lng: -75, altitude: 1.7 };
+    //   globeEl.current.pointOfView(MAP_CENTER, 0);
+    // }, [globeEl]);
    
    
     return <ReactGlobe 
@@ -39,9 +37,4 @@ import places from './places';
     />;
   };
 
-  export default SimpleGlobe;
-
-  //onGlobeClick?: (coords: { lat, lng }, event: MouseEvent) => void;
-
-  //onGlobeClick({ lat, lng }, event)
- // will take you to the availvable item:id
+  export default Globe;

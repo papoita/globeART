@@ -4,7 +4,7 @@ import { SizeMe } from "react-sizeme";
 import Navigation from "../components/Navigation";
 import Aside from "../components/Aside";
 import Footer from "../components/Footer";
-import SimpleGlobe from "../components/globe";
+import Globe from "../components/Globe";
 
 function Homepage({
   account,
@@ -22,7 +22,7 @@ function Homepage({
         <Col sm={9} style={{ paddingRight: "0px" }}>
           <SizeMe>
             {({ size: { width } }) => (
-              <SimpleGlobe width={width} height={width / (4 / 3)} />
+              <Globe width={width} height={width / (4 / 3)} />
             )}
           </SizeMe>
         </Col>

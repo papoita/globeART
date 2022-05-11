@@ -6,7 +6,7 @@ import Homepage from "./views/Homepage";
 import Gallery from "./views/Gallery";
 import PersonalCollection from "./views/PersonalCollection";
 import AvailableNFT from "./views/AvailableNFT";
-import SimpleGlobe from "./components/globe";
+import Globe from "./components/Globe";
 import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
 import useMetaMask from "./hooks/useMetamask";
@@ -71,7 +71,7 @@ function App() {
             />
           }
         />
-        <Route path="/globe" element={<SimpleGlobe />} />
+        <Route path="/globe" element={< Globe />} />
       </Routes>
     </Router>
   );
