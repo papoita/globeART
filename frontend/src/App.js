@@ -16,14 +16,8 @@ import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
 
 function App() {
-  const {
-    items,
-    isLoading,
-    web3Handler,
-    buyStoreItem,
-    purchases,
-    account
-  } = useWeb3();
+  const { items, isLoading, web3Handler, buyStoreItem, purchases, account } =
+    useWeb3();
   const { location } = useGeolocation();
 
   useEffect(() => {
@@ -81,6 +75,7 @@ function App() {
               items={items}
               account={account}
               web3Handler={web3Handler}
+              buyStoreItem={buyStoreItem}
             />
           }
         />
