@@ -6,7 +6,14 @@ import Aside from "../components/Aside";
 import Footer from "../components/Footer";
 import SimpleGlobe from "../components/globe";
 
-function Homepage({ account, web3Handler, location }) {
+function Homepage({
+  account,
+  web3Handler,
+  location,
+  connect,
+  disconnect,
+  isActive,
+}) {
   console.log(location);
   return (
     <div className="Homepage">
@@ -21,7 +28,12 @@ function Homepage({ account, web3Handler, location }) {
         </Col>
 
         <Col sm={3} style={{ paddingLeft: "0px" }}>
-          <Aside />
+          <Aside
+            account={account}
+            connect={connect}
+            disconnect={disconnect}
+            isActive={isActive}
+          />
         </Col>
       </Row>
       <Footer />
