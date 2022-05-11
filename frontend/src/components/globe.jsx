@@ -34,8 +34,8 @@ const SimpleGlobe = () => {
       labelDotRadius={(d) => 0.8 + d.size}
       labelColor={() => "rgba(237,0,248, 0.95)"}
       labelResolution={2}
-      onGlobeClick={()=> navigate("/gallery")}
-      // labelLink={d => 'href=d.link'}
+      onLabelClick={(d) => navigate(`/gallery/${d.name.toLowerCase()}`)}
+      
       
     />
   );
@@ -58,4 +58,7 @@ export default SimpleGlobe;
         }}
       >
         test
-      </button> */}
+      </button> 
+    onGlobeClick={()=> navigate("/gallery")}
+      labelLink={d => 'href=d.link'}
+    */}
