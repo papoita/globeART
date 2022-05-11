@@ -2,8 +2,8 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 import useWeb3 from "../hooks/useWeb3";
 
-const Buy = () => {
-  const { buyStoreItem } = useWeb3();
+const Buy = ({ buyStoreItem, item }) => {
+  // const { buyStoreItem } = useWeb3();
 
   return (
     <Card
@@ -22,7 +22,7 @@ const Buy = () => {
         </Card.Text>
         <Button
           gb="primary"
-          onClick={buyStoreItem}
+          onClick={() => buyStoreItem(item)}
           size="md"
           className="d-grip m-2 p-3  fs-4 align-middle text-center">
           Buy Now

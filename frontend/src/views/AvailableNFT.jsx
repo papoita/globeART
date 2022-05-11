@@ -1,12 +1,24 @@
+import { useEffect } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import Buy from "../components/Buy";
 import Footer from "../components/Footer";
 
-export default function Available({ location, items, account, web3Handler }) {
-  console.log(location);
+export default function AvailableNFT({
+  location,
+  items,
+  account,
+  loadStoreItems,
+  buyStoreItem,
+}) {
+  useEffect(() => {
+    loadStoreItems();
+  }, []);
+
   console.log(items);
+  console.log(account);
   let nft;
+  console.log(nft);
 
   for (const item of items) {
     if (item.name === location.city && item.country === location.country) {
@@ -16,7 +28,7 @@ export default function Available({ location, items, account, web3Handler }) {
 
   return (
     <>
-      <Navigation account={account} web3Handler={web3Handler} />
+      <Navigation account={account} />
       <Container md="auto">
         <Row className="justify-content-center">
           <Col lg={9}>
@@ -36,7 +48,6 @@ export default function Available({ location, items, account, web3Handler }) {
                   <Card.Text>
                     <small bg="primary">Price: {nft.price} ETH</small>
                   </Card.Text>
-                  {/* <Button onClick={() => buyStoreItem(item)}>Buy Now!</Button> */}
                 </Card.Body>
               </Card>
             ) : (
@@ -46,7 +57,7 @@ export default function Available({ location, items, account, web3Handler }) {
             )}
           </Col>
           <Col lg={3} className="align-items-center h-100 align-middle ">
-            <Buy />
+            <Buy buyStoreItem={buyStoreItem} item={nft} />
           </Col>
         </Row>
       </Container>
