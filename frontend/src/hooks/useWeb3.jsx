@@ -10,7 +10,6 @@ import NFTAbi from "../contractsData/GlobeArtNFT.json";
 export default function useWeb3() {
   const [store, setStore] = useState({});
   const [nft, setNft] = useState({});
-  const [account, setAccount] = useState(null);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState({});
 
@@ -27,26 +26,20 @@ export default function useWeb3() {
   };
 
   const web3Handler = async () => {
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-    setAccount(accounts[0]);
-    // Get provider from Metamask
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    // Set signer
     const signer = provider.getSigner();
 
     window.ethereum.on("chainChanged", (chainId) => {
       window.location.reload();
     });
-
-    window.ethereum.on("accountsChanged", async function (accounts) {
-      await web3Handler();
-    });
+    // window.ethereum.on("accountsChanged", async function (accounts) {
+    //   await web3Handler();
+    // });
     loadContracts(signer);
   };
 
-  const loadStoreItems = async () => {
+  const loadStoreItems = async (store, nft) => {
+    let items = [];
     // load all items
     try {
       const itemCount = await store.callStatic.itemCount();
@@ -87,24 +80,9 @@ export default function useWeb3() {
     loadStoreItems();
   };
 
-  // const loadStoreItem = async (id) => {
-  //   //load item for given id
-  //   try {
-  //     await loadStoreItems();
-  //     console.log("ITEMS:", items);
-  //     const i = items.filter((i) => i.itemId === id);
-  //     const item = i[0];
-  //     setItem(item);
-  //     console.log("ITEM:", item);
-  //   } catch (error) {
-  //     console.log("Error", error);
-  //   }
-  // };
-
   return {
     items,
     store,
-    account,
     isLoading,
     web3Handler,
     loadStoreItems,
