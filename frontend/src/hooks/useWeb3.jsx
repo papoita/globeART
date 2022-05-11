@@ -12,6 +12,7 @@ export default function useWeb3() {
   let nft;
   const [account, setAccount] = useState(null);
   const [items, setItems] = useState([]);
+  const [purchases, setPurchases] = useState([]);
   const [isLoading, setIsLoading] = useState({});
 
   const loadContracts = async (signer) => {
@@ -47,6 +48,7 @@ export default function useWeb3() {
     });
     await loadContracts(signer);
     await loadStoreItems();
+    await loadPurchasedItems();
   };
 
   const loadStoreItems = async () => {
@@ -86,9 +88,48 @@ export default function useWeb3() {
   };
 
   const buyStoreItem = async (item) => {
+    try {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
     const price = ethers.utils.parseEther(item.price);
+    
+    await loadContracts(signer);
     await (await store.purchaseItem(item.itemId, { value: price })).wait();
-    loadStoreItems();
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+
+  const loadPurchasedItems = async () => {
+    try{
+      // Fetch purchased items from store by quering Bought events with the buyer set as the user acct
+      const filter = store.filters.Bought(null, null, null, null, null, account);
+      const results = await store.queryFilter(filter);
+      //Fetch metadata of each nft and add that to listedItem object.
+      const purchasedItems = await Promise.all(
+        results.map(async (i) => {
+          // fetch arguments from each result
+          i = i.args;
+          // get uri url from nft contract
+          const uri = await nft.tokenURI(i.tokenId);
+          // use uri to fetch the nft metadata stored on ipfs
+          const response = await axios.get(uri);
+          const metadata = await response.data;
+
+          let purchasedItem = {
+            price: ethers.utils.formatEther(i.price),
+            itemId: i.itemId,
+            name: metadata.name,
+            description: metadata.description,
+            image: metadata.image,
+          };
+          return purchasedItem;
+        })
+      );
+      setPurchases(purchases);
+    } catch (error) {
+      console.log("Error", error);
+    }
   };
 
   // const loadStoreItem = async (id) => {
@@ -107,8 +148,10 @@ export default function useWeb3() {
 
   return {
     items,
+    purchases,
+    account,
     isLoading,
     web3Handler,
-    buyStoreItem,
+    buyStoreItem
   };
 }
