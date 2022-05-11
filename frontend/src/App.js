@@ -14,17 +14,13 @@ import AvailableNFT from "./views/AvailableNFT";
 import SimpleGlobe from "./components/globe";
 import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
+import useMetaMask from "./hooks/useMetamask";
 
 function App() {
-  const {
-    items,
-    isLoading,
-    web3Handler,
-    buyStoreItem,
-    purchases,
-    account
-  } = useWeb3();
+  const { items, isLoading, web3Handler, buyStoreItem, purchases, account } =
+    useWeb3();
   const { location } = useGeolocation();
+  const { connect, isActive, disconnect, isDisable } = useMetaMask();
 
   useEffect(() => {
     web3Handler();
@@ -33,7 +29,19 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Homepage location={location} />} />
+        <Route
+          path="/"
+          element={
+            <Homepage
+              location={location}
+              connect={connect}
+              disconnect={disconnect}
+              account={account}
+              isActive={isActive}
+              isDisable={isDisable}
+            />
+          }
+        />
         <Route
           path="/gallery"
           element={
@@ -46,23 +54,6 @@ function App() {
             />
           }
         />
-        {/* <Route
-          path="/nft/:id"
-          element={
-            <NFT
-              account={account}
-              web3Handler={web3Handler}
-              nft={nft}
-              store={store}
-              loadStoreItems={loadStoreItems}
-              items={items}
-              loading={isLoading}
-              buyStoreItem={buyStoreItem}
-              // loadStoreItem={loadStoreItem}
-              item={item}
-            />
-          }
-        /> */}
         <Route
           path="/personalcollection"
           element={
@@ -81,6 +72,7 @@ function App() {
               items={items}
               account={account}
               web3Handler={web3Handler}
+              buyStoreItem={buyStoreItem}
             />
           }
         />
