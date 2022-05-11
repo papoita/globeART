@@ -8,22 +8,24 @@ import NFTAddress from "../contractsData/GlobeArtNFT-address.json";
 import NFTAbi from "../contractsData/GlobeArtNFT.json";
 
 export default function useWeb3() {
-  const [store, setStore] = useState({});
-  const [nft, setNft] = useState({});
+  let store;
+  let nft;
   const [account, setAccount] = useState(null);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState({});
 
   const loadContracts = async (signer) => {
     // Get deployed copies of contracts
-    const store = new ethers.Contract(
+    const storeContract = new ethers.Contract(
       StoreAddress.address,
       StoreAbi.abi,
       signer
     );
-    setStore(store);
-    const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
-    setNft(nft);
+    console.log('loadContracts contract', storeContract);
+    store = storeContract;
+    console.log('loadContracts store', store);
+    const nftContract = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
+    nft = nftContract;
   };
 
   const web3Handler = async () => {
@@ -43,18 +45,20 @@ export default function useWeb3() {
     window.ethereum.on("accountsChanged", async function (accounts) {
       await web3Handler();
     });
-    loadContracts(signer);
+    await loadContracts(signer);
+    await loadStoreItems();
   };
 
   const loadStoreItems = async () => {
     // load all items
     try {
-      const itemCount = await store.callStatic.itemCount();
       console.log("Store", store);
-      console.log(Number(itemCount.toString()));
+      const itemCount = await store.callStatic.itemCount();
+      console.log('itemCount', Number(itemCount.toString()));
 
       for (let i = 1; i <= Number(itemCount.toString()); i++) {
         const item = await store.callStatic.items(i);
+        console.log('item', item);
         // get uri url from nft contract
         const uri = await nft.tokenURI(item.tokenId);
         // use uri to fetch the nft metadata stored on ipfs
@@ -103,12 +107,8 @@ export default function useWeb3() {
 
   return {
     items,
-    store,
-    account,
     isLoading,
     web3Handler,
-    loadStoreItems,
     buyStoreItem,
-    nft,
   };
 }
