@@ -126,7 +126,7 @@ export default function useWeb3() {
           return purchasedItem;
         })
       );
-      setPurchases(purchases);
+      setPurchases(purchasedItems);
     } catch (error) {
       console.log("Error", error);
     }
