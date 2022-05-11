@@ -54,23 +54,6 @@ function App() {
             />
           }
         />
-        {/* <Route
-          path="/nft/:id"
-          element={
-            <NFT
-              account={account}
-              web3Handler={web3Handler}
-              nft={nft}
-              store={store}
-              loadStoreItems={loadStoreItems}
-              items={items}
-              loading={isLoading}
-              buyStoreItem={buyStoreItem}
-              // loadStoreItem={loadStoreItem}
-              item={item}
-            />
-          }
-        /> */}
         <Route
           path="/personalcollection"
           element={
