@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const SimpleGlobe = () => {
   const globeEl = useRef();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     globeEl.current.controls().autoRotate = true;
     globeEl.current.controls().autoRotateSpeed = 0.8;
@@ -15,11 +15,8 @@ const SimpleGlobe = () => {
     globeEl.current.pointOfView(MAP_CENTER, 0);
   }, [globeEl]);
 
-  
-
   return (
     <ReactGlobe
-
       ref={globeEl}
       showAtmosphere={true}
       atmosphereAltitude={0.2}
@@ -35,30 +32,15 @@ const SimpleGlobe = () => {
       labelColor={() => "rgba(237,0,248, 0.95)"}
       labelResolution={2}
       onLabelClick={(d) => navigate(`/gallery/${d.name.toLowerCase()}`)}
-      
-      
     />
   );
 };
 
 export default SimpleGlobe;
 
-//onGlobeClick?: (coords: { lat, lng }, event: MouseEvent) => void;
-
-//onGlobeClick({ lat, lng }, event)
-// will take you to the availvable item:id
-{/* <button
-        onClick={() => {
-          // overlap
-          //globeEl.current.pointOfView({ lat: 30, lng: 7, altitude: 2 }, 5000)
-          globeEl.current.pointOfView(
-            { lat: 60, lng: 180, altitude: 1 },
-            15000
-          );
-        }}
-      >
-        test
-      </button> 
+{
+  /* 
     onGlobeClick={()=> navigate("/gallery")}
-      labelLink={d => 'href=d.link'}
-    */}
+      
+    */
+}
