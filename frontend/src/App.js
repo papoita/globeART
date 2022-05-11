@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Homepage from "./views/Homepage";
 import Gallery from "./views/Gallery";
-import NFT from "./views/NFT";
 import PersonalCollection from "./views/PersonalCollection";
 import AvailableNFT from "./views/AvailableNFT";
 import SimpleGlobe from "./components/globe";
@@ -30,15 +29,15 @@ function App() {
   const { location } = useGeolocation();
   const { connect, isActive, account, disconnect, isDisable } = useMetaMask();
 
-  // useEffect(() => {
-  //   web3Handler();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  useEffect(() => {
+    web3Handler();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   console.log("App rendering");
   console.log(account);
 
-  // console.log("App variable", store);
+  console.log("App variable", store);
 
   return (
     <Router>
@@ -61,25 +60,18 @@ function App() {
           element={
             <Gallery
               account={account}
-              web3Handler={web3Handler}
               nft={nft}
               store={store}
               loadStoreItems={loadStoreItems}
               items={items}
               loading={isLoading}
-              buyStoreItem={buyStoreItem}
             />
           }
         />
         <Route
           path="/personalcollection"
           element={
-            <PersonalCollection
-              account={account}
-              web3Handler={web3Handler}
-              nft={nft}
-              store={store}
-            />
+            <PersonalCollection account={account} nft={nft} store={store} />
           }
         />
         <Route
@@ -89,7 +81,7 @@ function App() {
               location={location}
               items={items}
               account={account}
-              web3Handler={web3Handler}
+              buyStoreItem={buyStoreItem}
             />
           }
         />
