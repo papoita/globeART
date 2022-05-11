@@ -1,5 +1,11 @@
 const places = [
-  { name: "Athens", lat: 37.983810, lng: 23.727539, size: 0.2, color: "white", link:"/images/athens.png" },
+  {
+    name: "Athens",
+    lat: 37.98381,
+    lng: 23.727539,
+    size: 0.2,
+    color: "white",
+  },
   {
     name: "Berlin",
     lat: 52.520008,
@@ -30,7 +36,7 @@ const places = [
   },
   {
     name: "New York",
-    lat: 40.730610,
+    lat: 40.73061,
     lng: -73.935242,
     size: 0.2,
     color: "white",
@@ -52,7 +58,7 @@ const places = [
   {
     name: "Rio de Janeiro",
     lat: -22.908333,
-    lng:  -43.196388,
+    lng: -43.196388,
     size: 0.2,
     color: "white",
   },
@@ -65,7 +71,7 @@ const places = [
   },
   {
     name: "Singapore",
-    lat: 1.290270,
+    lat: 1.29027,
     lng: 103.851959,
     size: 0.2,
     color: "white",
@@ -79,7 +85,7 @@ const places = [
   },
   {
     name: "Toronto",
-    lat: 43.651070,
+    lat: 43.65107,
     lng: -79.347015,
     size: 0.2,
     color: "white",
