@@ -6,19 +6,11 @@ import Aside from "../components/Aside";
 import Footer from "../components/Footer";
 import SimpleGlobe from "../components/globe";
 
-function Homepage({
-  account,
-  web3Handler,
-  location,
-  connect,
-  disconnect,
-  isActive,
-  isDisable,
-}) {
+function Homepage({ account, location, connect, disconnect, isActive }) {
   console.log(location);
   return (
     <div className="Homepage">
-      <Navigation account={account} web3Handler={web3Handler} />
+      <Navigation account={account} />
       <Row>
         <Col sm={9} style={{ paddingRight: "0px" }}>
           <SizeMe>
