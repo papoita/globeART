@@ -1,7 +1,6 @@
 // add all components scss here with import
 // to compile output.css use this line in cli: sass frontend/styles/input.scss frontend/styles/output.css --no-source-map --watch. We actually dont use it because brought in react bootstrap sass which already builds when npm run build
 @import '_variables';
-@import "~bootstrap/scss/bootstrap";
 
 
 
