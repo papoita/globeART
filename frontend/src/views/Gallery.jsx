@@ -3,8 +3,9 @@ import { useState } from "react";
 import {
   Carousel,
   Button,
-  Fade,
+  Collapse,
   Card,
+  Col,
   CardGroup,
   Container,
   Row,
@@ -57,29 +58,32 @@ function Gallery({
       </Container>
       <Button
         onClick={() => setOpen(!open)}
-        aria-controls="example-fade-text"
+        aria-controls="collapse-text"
         aria-expanded={open}
+        className="text-center"
       >
-        Toggle text
+        View All
       </Button>
-      <Fade in={open}>
-        <div id="example-fade-text">
+      <Collapse in={open}>
+        <div id="collapse-text">
+  
         <CardGroup className="m-4">
         <Container>
           <Row>
-            <h2>GlobeART Collections</h2>
+          
+            <Row xs={2} md={4} className="g-4">
             {items.length > 0 ? (
               items.map((item, idx) => (
                 <Card key={idx} className="m-4">
                   <Card.Img
                     variant="top"
                     src={item.image}
-                    style={{ width: "400px" }}
+                    
                   />
                   <Card.Body
                     style={{
                       background: "linear-gradient(#B2FBED, #9198e5)",
-                      width: "400px",
+                      
                     }}>
                     <Card.Title>{item.collection}</Card.Title>
                     <Card.Text>
@@ -95,10 +99,11 @@ function Gallery({
               </div>
             )}
           </Row>
+          </Row>
         </Container>
       </CardGroup>
         </div>
-      </Fade>
+      </Collapse>
      
       <Footer />
     </>
