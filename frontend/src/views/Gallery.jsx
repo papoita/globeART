@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import {
   Carousel,
@@ -12,22 +12,13 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { SizeMe } from "react-sizeme";
 
-function Gallery(props) {
-  const {
-    account,
-    web3Handler,
-    loadStoreItems,
-    items,
-    buyStoreItem,
-    loading,
-    nft,
-    store
-  } = props;
-
-  useEffect(() => {
-    loadStoreItems();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+function Gallery({
+  web3Handler,
+  items,
+  buyStoreItem,
+  account,
+  loading,
+}) {
 
   console.log("ITEMS", items);
 

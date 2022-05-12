@@ -3,7 +3,13 @@ import Navigation from "../components/Navigation";
 import Buy from "../components/Buy";
 import Footer from "../components/Footer";
 
-export default function Available({ location, items, account, web3Handler }) {
+export default function AvailableNFT({
+  location,
+  items,
+  account,
+  web3Handler,
+  buyStoreItem,
+}) {
   console.log(location);
   console.log(items);
   let nft;
@@ -36,7 +42,6 @@ export default function Available({ location, items, account, web3Handler }) {
                   <Card.Text>
                     <small bg="primary">Price: {nft.price} ETH</small>
                   </Card.Text>
-                  {/* <Button onClick={() => buyStoreItem(item)}>Buy Now!</Button> */}
                 </Card.Body>
               </Card>
             ) : (
@@ -46,7 +51,7 @@ export default function Available({ location, items, account, web3Handler }) {
             )}
           </Col>
           <Col lg={3} className="align-items-center h-100 align-middle ">
-            <Buy />
+            <Buy buyStoreItem={buyStoreItem} item={nft} />
           </Col>
         </Row>
       </Container>

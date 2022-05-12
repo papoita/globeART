@@ -9,77 +9,58 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Homepage from "./views/Homepage";
 import Gallery from "./views/Gallery";
-import NFT from "./views/NFT";
 import PersonalCollection from "./views/PersonalCollection";
 import AvailableNFT from "./views/AvailableNFT";
 import SimpleGlobe from "./components/globe";
 import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
+import useMetaMask from "./hooks/useMetamask";
 
 function App() {
-  const {
-    items,
-    store,
-    account,
-    isLoading,
-    nft,
-    web3Handler,
-    loadStoreItems,
-    buyStoreItem,
-  } = useWeb3();
+  const { items, isLoading, web3Handler, buyStoreItem, purchases, account } =
+    useWeb3();
   const { location } = useGeolocation();
+  const { connect, isActive, disconnect, isDisable } = useMetaMask();
 
   useEffect(() => {
     web3Handler();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log("App variable", store);
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Homepage location={location} />} />
+        <Route
+          path="/"
+          element={
+            <Homepage
+              location={location}
+              connect={connect}
+              disconnect={disconnect}
+              account={account}
+              isActive={isActive}
+              isDisable={isDisable}
+            />
+          }
+        />
         <Route
           path="/gallery"
           element={
             <Gallery
               account={account}
               web3Handler={web3Handler}
-              nft={nft}
-              store={store}
-              loadStoreItems={loadStoreItems}
               items={items}
               loading={isLoading}
               buyStoreItem={buyStoreItem}
             />
           }
         />
-        {/* <Route
-          path="/nft/:id"
-          element={
-            <NFT
-              account={account}
-              web3Handler={web3Handler}
-              nft={nft}
-              store={store}
-              loadStoreItems={loadStoreItems}
-              items={items}
-              loading={isLoading}
-              buyStoreItem={buyStoreItem}
-              // loadStoreItem={loadStoreItem}
-              item={item}
-            />
-          }
-        /> */}
         <Route
           path="/personalcollection"
           element={
             <PersonalCollection
-              account={account}
               web3Handler={web3Handler}
-              nft={nft}
-              store={store}
+              account={account}
+              purchases={purchases}
             />
           }
         />
@@ -91,6 +72,7 @@ function App() {
               items={items}
               account={account}
               web3Handler={web3Handler}
+              buyStoreItem={buyStoreItem}
             />
           }
         />
