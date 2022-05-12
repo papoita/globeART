@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import { SizeMe } from "react-sizeme";
+
 
 function Gallery({
   web3Handler,
@@ -33,7 +33,8 @@ function Gallery({
             items.map((item, idx) => (
               <Carousel.Item key={idx}>
                 <img
-                  className="d-block w-100"
+                style={{height:700}}
+                  className="rounded mx-auto d-block"
                   src={item.image}
                   alt={item.name}
                 />
@@ -42,9 +43,9 @@ function Gallery({
                   <Button
                     className="fw-bold"
                     style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}
-                    href={`/nft/${Number(item.itemId)}`}
+                    href={`/details/${item.name}`}
                     alt="Buy item">
-                    + Details
+                    Buy Now
                   </Button>
                 </Carousel.Caption>
               </Carousel.Item>
@@ -52,39 +53,7 @@ function Gallery({
         </Carousel>
       </Container>
 
-      <CardGroup className="m-4">
-        <Container>
-          <Row>
-            <h2>GlobeART Collections</h2>
-            {items.length > 0 ? (
-              items.map((item, idx) => (
-                <Card key={idx} className="m-4">
-                  <Card.Img
-                    variant="top"
-                    src={item.image}
-                    style={{ width: "400px" }}
-                  />
-                  <Card.Body
-                    style={{
-                      background: "linear-gradient(#B2FBED, #9198e5)",
-                      width: "400px",
-                    }}>
-                    <Card.Title>{item.collection}</Card.Title>
-                    <Card.Text>
-                      <small bg="primary">Price: {item.price} ETH</small>
-                    </Card.Text>
-                    <Button onClick={() => buyStoreItem(item)}>Buy Now!</Button>
-                  </Card.Body>
-                </Card>
-              ))
-            ) : (
-              <div style={{ padding: "1rem 0" }}>
-                <h2>No listed assets</h2>
-              </div>
-            )}
-          </Row>
-        </Container>
-      </CardGroup>
+     
       <Footer />
     </>
   );
