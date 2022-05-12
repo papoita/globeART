@@ -42,7 +42,7 @@ function Gallery({
                   <Button
                     className="fw-bold"
                     style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}
-                    href={`nft/${Number(item.itemId)}`}
+                    href={`/nft/${Number(item.itemId)}`}
                     alt="Buy item">
                     + Details
                   </Button>
