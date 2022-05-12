@@ -60,8 +60,9 @@ function Gallery({
         onClick={() => setOpen(!open)}
         aria-controls="collapse-text"
         aria-expanded={open}
-        className="text-center"
-      >
+        className="fw-bold m-3 d-grid gap-2 col-6 mx-auto"
+        style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} size="lg">
+      
         View All
       </Button>
       <Collapse in={open}>
