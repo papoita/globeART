@@ -62,11 +62,11 @@ function Gallery({
       <Collapse in={open}>
         <div id="collapse-text">
   
-        <CardGroup className="m-4">
+        <CardGroup className=" mx-auto " >
         <Container>
           <Row>
           
-            <Row xs={2} md={4} className="g-4">
+            <Row xs={5}  className="g-4">
             {items.length > 0 ? (
               items.map((item, idx) => (
                 <Card key={idx} className="m-4">
