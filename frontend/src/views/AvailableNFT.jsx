@@ -23,20 +23,20 @@ export default function AvailableNFT({
   return (
     <>
       <Navigation account={account} web3Handler={web3Handler} />
-      <Container md="auto">
-        <Row className="justify-content-center">
+      <Container md="auto" >
+        <Row >
           <Col lg={9}>
             {nft ? (
-              <Card className="m-4">
-                <Card.Img
+              <Card className="m-4 text-center">
+                <Card.Img style={{height:650}}
                   variant="top"
                   src={nft.image}
-                  style={{ width: "600px" }}
+                  
                 />
                 <Card.Body
                   style={{
-                    background: "linear-gradient(#B2FBED, #9198e5)",
-                    width: "600px",
+                    background: "linear-gradient(#B2FBED, #9198e5)"
+            
                   }}>
                   <Card.Title>{nft.collection}</Card.Title>
                   <Card.Text>
@@ -50,7 +50,7 @@ export default function AvailableNFT({
               </div>
             )}
           </Col>
-          <Col lg={3} className="align-items-center h-100 align-middle ">
+          <Col lg={3} className="fw-bold m-4 d-grid gap-2 col-3 mx-auto ">
             <Buy buyStoreItem={buyStoreItem} item={nft} />
           </Col>
         </Row>
