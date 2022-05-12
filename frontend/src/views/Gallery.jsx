@@ -32,7 +32,7 @@ function Gallery({
     <>
       <Navigation account={account} web3Handler={web3Handler} />
       <Container>
-        <Carousel className="m-1 p-1 ">
+        <Carousel className="m-2 p-1 ">
           {items.length > 0 &&
             items.map((item, idx) => (
               <Carousel.Item key={idx}>
@@ -54,8 +54,8 @@ function Gallery({
         onClick={() => setOpen(!open)}
         aria-controls="collapse-text"
         aria-expanded={open}
-        className="fw-bold m-1 d-grid gap-2 col-4 mx-auto"
-        style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} size="lg">
+        className="fw-bold m-1 d-grid gap-2 col-3 mx-auto"
+        style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} size="md">
       
         View All
       </Button>
