@@ -16,7 +16,7 @@ function PersonalCollection( { purchases } ) {
           purchases.map((item, idx) => (
            
             
-            <Card key={idx} className="m-4">
+            <Card key={idx} className="m-4 text-center">
               
               <Card.Img
                 variant="top"
