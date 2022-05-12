@@ -1,16 +1,18 @@
 import React from "react";
-
+import { useState } from "react";
 import {
   Carousel,
   Button,
+  Collapse,
   Card,
+  Col,
   CardGroup,
   Container,
   Row,
 } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import { SizeMe } from "react-sizeme";
+
 
 function Gallery({
   web3Handler,
@@ -20,6 +22,8 @@ function Gallery({
   loading,
 }) {
 
+  const [open, setOpen] = useState(false);
+
   console.log("ITEMS", items);
 
   if (loading) return <h2>Loading...</h2>;
@@ -28,46 +32,53 @@ function Gallery({
     <>
       <Navigation account={account} web3Handler={web3Handler} />
       <Container>
-        <Carousel className="m-3 p-4">
+        <Carousel className="m-2 p-1 ">
           {items.length > 0 &&
             items.map((item, idx) => (
               <Carousel.Item key={idx}>
                 <img
-                  className="d-block w-100"
+                style={{height:650}}
+                  className="rounded mx-auto d-block"
                   src={item.image}
                   alt={item.name}
                 />
                 <Carousel.Caption>
-                  <h3>{item.name}</h3>
-                  <Button
-                    className="fw-bold"
-                    style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}
-                    href={`/nft/${Number(item.itemId)}`}
-                    alt="Buy item">
-                    + Details
-                  </Button>
+                  <h3>{item.name} 2022</h3>
+                 
                 </Carousel.Caption>
               </Carousel.Item>
             ))}
         </Carousel>
       </Container>
-
-      <CardGroup className="m-4">
+      <Button
+        onClick={() => setOpen(!open)}
+        aria-controls="collapse-text"
+        aria-expanded={open}
+        className="fw-bold m-1 d-grid gap-2 col-3 mx-auto"
+        style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} size="md">
+      
+        View All
+      </Button>
+      <Collapse in={open}>
+        <div id="collapse-text">
+  
+        <CardGroup className=" mx-auto " >
         <Container>
           <Row>
-            <h2>GlobeART Collections</h2>
+          
+            <Row xs={5}  className="g-4">
             {items.length > 0 ? (
               items.map((item, idx) => (
-                <Card key={idx} className="m-4">
+                <Card key={idx} className="m-4 text-center">
                   <Card.Img
                     variant="top"
                     src={item.image}
-                    style={{ width: "400px" }}
+                    
                   />
                   <Card.Body
                     style={{
                       background: "linear-gradient(#B2FBED, #9198e5)",
-                      width: "400px",
+                      
                     }}>
                     <Card.Title>{item.collection}</Card.Title>
                     <Card.Text>
@@ -83,8 +94,12 @@ function Gallery({
               </div>
             )}
           </Row>
+          </Row>
         </Container>
       </CardGroup>
+        </div>
+      </Collapse>
+     
       <Footer />
     </>
   );

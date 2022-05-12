@@ -21,10 +21,10 @@ function Navigation() {
       <Container>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className="fw-bold" as={Link} to="/gallery">
+            <Nav.Link  as={Link} to="/gallery">
               Gallery
             </Nav.Link>
-            <Nav.Link className="fw-bold" as={Link} to="/personalcollection">
+            <Nav.Link  as={Link} to="/personalcollection">
               My Collection
             </Nav.Link>
             <Nav.Link className="fw-bold" as={Link} to="/nft">
