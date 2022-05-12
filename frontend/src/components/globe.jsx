@@ -31,7 +31,7 @@ const SimpleGlobe = () => {
       labelDotRadius={(d) => 0.8 + d.size}
       labelColor={() => "rgba(237,0,248, 0.95)"}
       labelResolution={2}
-      onLabelClick={(d) => navigate(`https://ipfs.io/ipfs/QmVRmLrxozaHYAUW9T85YtGQHgYdg4ensYmCayHw9Yud6K/${d.name.toLowerCase()}.png`)}
+      onGlobeClick={()=> navigate("/gallery")}
     />
   );
 };
@@ -42,7 +42,7 @@ export default SimpleGlobe;
   /* 
   link is preapended localhost... it breaks
   words with 2 names get a % in between -fix with functions method
-    onGlobeClick={()=> navigate("/gallery")}
-      
+    
+      onLabelClick={(d) => navigate(`https://ipfs.io/ipfs/QmVRmLrxozaHYAUW9T85YtGQHgYdg4ensYmCayHw9Yud6K/${d.name.toLowerCase()}.png`)}
     */
 }
