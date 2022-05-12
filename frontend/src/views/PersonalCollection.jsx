@@ -11,21 +11,24 @@ function PersonalCollection( { purchases } ) {
     <>
       <Navigation />
       <CardGroup className="m-4">
-        <h2>GlobeART Collections</h2>
+        
         {purchases.length > 0 ? (
           purchases.map((item, idx) => (
+           
+            
             <Card key={idx} className="m-4">
+              
               <Card.Img
                 variant="top"
                 src={item.image}
-                style={{ width: "200px" }}
+                
               />
               <Card.Body
                 style={{
                   background: "linear-gradient(#B2FBED, #9198e5)",
-                  width: "200px",
+                 
                 }}>
-                <Card.Title>{item.collection}</Card.Title>
+                <Card.Title>{item.name} {item.collections}</Card.Title>
                 <Card.Text>
                   <small bg="primary">Bought for: {item.price}</small>
                 </Card.Text>
