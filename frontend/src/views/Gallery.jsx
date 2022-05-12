@@ -43,7 +43,7 @@ function Gallery({
                   alt={item.name}
                 />
                 <Carousel.Caption>
-                  <h3>{item.name}</h3>
+                  <h3>{item.name} 2022</h3>
                  
                 </Carousel.Caption>
               </Carousel.Item>
@@ -69,7 +69,7 @@ function Gallery({
             <Row xs={5}  className="g-4">
             {items.length > 0 ? (
               items.map((item, idx) => (
-                <Card key={idx} className="m-4">
+                <Card key={idx} className="m-4 text-center">
                   <Card.Img
                     variant="top"
                     src={item.image}
