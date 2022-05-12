@@ -32,25 +32,19 @@ function Gallery({
     <>
       <Navigation account={account} web3Handler={web3Handler} />
       <Container>
-        <Carousel className="m-3 p-4">
+        <Carousel className="m-1 p-1 ">
           {items.length > 0 &&
             items.map((item, idx) => (
               <Carousel.Item key={idx}>
                 <img
-                style={{height:700}}
+                style={{height:650}}
                   className="rounded mx-auto d-block"
                   src={item.image}
                   alt={item.name}
                 />
                 <Carousel.Caption>
                   <h3>{item.name}</h3>
-                  <Button
-                    className="fw-bold"
-                    style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}
-                    href={`/details/${item.name}`}
-                    alt="Buy item">
-                    Buy Now
-                  </Button>
+                 
                 </Carousel.Caption>
               </Carousel.Item>
             ))}
@@ -60,7 +54,7 @@ function Gallery({
         onClick={() => setOpen(!open)}
         aria-controls="collapse-text"
         aria-expanded={open}
-        className="fw-bold m-3 d-grid gap-2 col-6 mx-auto"
+        className="fw-bold m-1 d-grid gap-2 col-4 mx-auto"
         style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} size="lg">
       
         View All
