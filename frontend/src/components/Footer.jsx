@@ -16,14 +16,15 @@ function Footer() {
 
       <Card.Footer
         
-        className="d-flex text-white text-muted justify-content-center "
+        className="d-flex text-white text-muted justify-content-center  align-items-center"
       >
         <a href={"https://github.com/papoita/globeART"}> <FaGithub style={{margin: '0 20px'}}/></a>
          
         Want to chat about awesome ideas? let's get some coffee
         <FontAwesomeIcon
+        style={{margin: '0 10px'}}
           icon={faCoffee}
-          className="fa-flip --fa-animation-duration:3s "
+          className="fa-flip --fa-animation-duration:2s "
         />
       </Card.Footer>
     </Card>
