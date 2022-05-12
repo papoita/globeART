@@ -3,7 +3,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 
 
-function NftItem({item}) {
+function NftItem(){
   return (
     <>
       <Card className="w-100" display="flex"  justify-content="center" align-items="center">
