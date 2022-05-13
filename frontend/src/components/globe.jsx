@@ -11,12 +11,13 @@ const SimpleGlobe = () => {
     globeEl.current.controls().autoRotate = true;
     globeEl.current.controls().autoRotateSpeed = 0.8;
 
-    const MAP_CENTER = { lat: 45, lng: -75, altitude: 1.7 };
+    const MAP_CENTER = { lat: 7, lng: -73, altitude: 1.7 };
     globeEl.current.pointOfView(MAP_CENTER, 0);
   }, [globeEl]);
 
   return (
     <ReactGlobe
+    style={{ height: 900 }}
       ref={globeEl}
       showAtmosphere={true}
       atmosphereAltitude={0.2}

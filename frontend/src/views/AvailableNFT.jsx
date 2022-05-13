@@ -28,7 +28,7 @@ export default function AvailableNFT({
           <Col lg={9}>
             {nft ? (
               <Card className="m-4 text-center">
-                <Card.Img style={{height:650}}
+                <Card.Img style={{height:580}}
                   variant="top"
                   src={nft.image}
                   

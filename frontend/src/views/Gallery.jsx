@@ -55,7 +55,7 @@ function Gallery({
         aria-controls="collapse-text"
         aria-expanded={open}
         className="fw-bold m-1 d-grid gap-2 col-3 mx-auto"
-        style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} size="md">
+        style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} size="md" variant="light">
       
         View All
       </Button>
