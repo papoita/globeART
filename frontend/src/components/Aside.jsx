@@ -7,7 +7,7 @@ const Aside = ({ account, connect, disconnect, isActive }) => {
   return (
     <Card className="rounded-0 " border="primary" style={{ height: 700 }}>
       <Card.Img className="rounded-0" variant="top" src="./samplenft.png" />
-      <Card.Body variant="dark"  >
+      <Card.Body variant="dark">
         <Card.Img src="./logonamesm.png"></Card.Img>
         <Card.Title className="fs-4 fw-bold">
           NFT art collection for wanderlusts
@@ -30,9 +30,15 @@ const Aside = ({ account, connect, disconnect, isActive }) => {
             <FaWallet />
           </IconContext.Provider>
         </Card.Text>
-        <Button variant="light" className="mt-2 d-grid gap-2 mb-2 text-center align-middle"  style={{ background: "linear-gradient(#B2FBED, #9198e5)" }} onClick={isActive ? disconnect : connect}>{isActive ? "Disconnect MetaMask" : "Connect to MetaMask"}</Button>
+        <Button
+          variant="light"
+          className="mt-2 d-grid gap-2 mb-2 text-center align-middle"
+          style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}
+          onClick={isActive ? disconnect : connect}
+        >
+          {isActive ? "Disconnect MetaMask" : "Connect to MetaMask"}
+        </Button>
 
-        
         {/* <div className="mt-2 mb-2">
           Connected Account: {isActive ? account : ""}
         </div> */}
