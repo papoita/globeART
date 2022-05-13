@@ -25,8 +25,8 @@ const Aside = ({ account, connect, disconnect, isActive }) => {
           The more you travel, the more you can collect.
         </Card.Text>
         <Card.Text className="p-1 fw-bold">
-          Browse the 2022 collection by connecting to your{" "}
-          <IconContext.Provider value={{ color: "blue", size: 20 }}>
+          Buy the 2022 collection by connecting to your{" "}
+          <IconContext.Provider value={{ color: "#31326f", size: 20 }}>
             <FaWallet />
           </IconContext.Provider>
         </Card.Text>
