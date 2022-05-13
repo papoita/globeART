@@ -37,7 +37,7 @@ function Gallery({
             items.map((item, idx) => (
               <Carousel.Item key={idx}>
                 <img
-                style={{height:720}}
+                style={{height:650}}
                   className="rounded mx-auto d-block"
                   src={item.image}
                   alt={item.name}
