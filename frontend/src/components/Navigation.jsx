@@ -18,9 +18,9 @@ function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
       </Container>
 
-      <Container d-flex>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="  fs-4 justify-content-end">
+      <Container >
+        <Navbar.Collapse id="basic-navbar-nav"  className="d-flex fs-5 text-white text-muted justify-content-center" >
+          <Nav  >
             <Nav.Link  as={Link} to="/gallery">
               Gallery
             </Nav.Link>
