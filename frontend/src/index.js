@@ -1,22 +1,9 @@
 //any global changes concerning visuals
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 import "./index.css";
 import App from "./App";
 
-// import Web3 from "web3";
-// import { Web3ReactProvider } from "@web3-react/core";
-// import { MetaMaskProvider } from "./hooks/useMetamask";
-
-// function getLibrary(provider, connector) {
-//   return new Web3(provider);
-// }
-
-ReactDOM.render(
-  // <Web3ReactProvider getLibrary={getLibrary}>
-  //   <MetaMaskProvider>
-      <App />,
-  //   </MetaMaskProvider>
-  // </Web3ReactProvider>,
-  document.getElementById("root")
-);
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App tab="home" />);
