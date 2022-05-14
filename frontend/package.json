@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fontsource/shrikhand": "^4.5.8",
     "axios": "^0.27.2",
     "daisyui": "^2.14.3",
     "dotenv": "^16.0.0",
