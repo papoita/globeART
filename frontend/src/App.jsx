@@ -3,9 +3,10 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./views/Home";
-import useWeb3 from "./hooks/useWeb3";
+// import Web3 from "web3";
+// import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
-import useMetaMask from "./hooks/useMetamask";
+// import useMetaMask from "./hooks/useMetamask";
 
 export default function App() {
   // const { items, isLoading, web3Handler, buyStoreItem, purchases, account } =
@@ -14,8 +15,10 @@ export default function App() {
   // const { connect, isActive, disconnect, isDisable } = useMetaMask();
 
   // useEffect(() => {
-  //   web3Handler();
+  //   // web3Handler();
   // }, []);
+
+  
 
   // return (
   //   <Router>
