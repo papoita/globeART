@@ -1,3 +1,4 @@
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -5,7 +6,11 @@ module.exports = {
     "./src/components/Navbar.jsx",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'shrikhand': ['shrikhand', 'cursive']
+      },
+    },
   },
   plugins: [require("daisyui")],
 }
