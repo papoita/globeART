@@ -2,7 +2,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import "./styles/input.css";
 import App from "./App";
 
 import Web3 from "web3";
