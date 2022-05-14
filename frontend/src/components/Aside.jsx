@@ -34,18 +34,12 @@ const Aside = ({ account, connect, disconnect, isActive }) => {
           variant="light"
           className="mt-2 d-grid gap-2 mb-2 text-center align-middle"
           style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}
-          onClick={isActive ? disconnect : connect}
-        >
+          onClick={isActive ? disconnect : connect}>
           {isActive ? "Disconnect MetaMask" : "Connect to MetaMask"}
         </Button>
-
-        {/* <div className="mt-2 mb-2">
-          Connected Account: {isActive ? account : ""}
-        </div> */}
       </Card.Body>
     </Card>
   );
 };
 
 export default Aside;
-//
