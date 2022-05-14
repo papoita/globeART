@@ -9,6 +9,7 @@ export default function AvailableNFT({
   account,
   web3Handler,
   buyStoreItem,
+  purchases,
 }) {
   let availableNft;
 
@@ -48,7 +49,11 @@ export default function AvailableNFT({
             )}
           </Col>
           <Col lg={3} className="fw-bold m-4 d-grid gap-2 col-3 mx-auto ">
-            <Buy buyStoreItem={buyStoreItem} item={availableNft} />
+            <Buy
+              buyStoreItem={buyStoreItem}
+              item={availableNft}
+              purchases={purchases}
+            />
           </Col>
         </Row>
       </Container>

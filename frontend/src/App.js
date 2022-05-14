@@ -73,6 +73,7 @@ function App() {
               account={account}
               web3Handler={web3Handler}
               buyStoreItem={buyStoreItem}
+              purchases={purchases}
             />
           }
         />
