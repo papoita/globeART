@@ -10,11 +10,11 @@ export default function AvailableNFT({
   web3Handler,
   buyStoreItem,
 }) {
-  let nft;
+  let availableNft;
 
   for (const item of items) {
     if (item.name === location.city && item.country === location.country) {
-      nft = item;
+      availableNft = item;
     }
   }
 
@@ -24,20 +24,20 @@ export default function AvailableNFT({
       <Container md="auto">
         <Row>
           <Col lg={9}>
-            {nft ? (
+            {availableNft ? (
               <Card className="m-4 text-center">
                 <Card.Img
                   style={{ height: 580 }}
                   variant="top"
-                  src={nft.image}
+                  src={availableNft.image}
                 />
                 <Card.Body
                   style={{
                     background: "linear-gradient(#B2FBED, #9198e5)",
                   }}>
-                  <Card.Title>{nft.collection}</Card.Title>
+                  <Card.Title>{availableNft.collection}</Card.Title>
                   <Card.Text>
-                    <small bg="primary">Price: {nft.price} ETH</small>
+                    <small bg="primary">Price: {availableNft.price} ETH</small>
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -48,7 +48,7 @@ export default function AvailableNFT({
             )}
           </Col>
           <Col lg={3} className="fw-bold m-4 d-grid gap-2 col-3 mx-auto ">
-            <Buy buyStoreItem={buyStoreItem} item={nft} />
+            <Buy buyStoreItem={buyStoreItem} item={availableNft} />
           </Col>
         </Row>
       </Container>
