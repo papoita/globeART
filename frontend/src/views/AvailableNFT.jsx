@@ -10,8 +10,6 @@ export default function AvailableNFT({
   web3Handler,
   buyStoreItem,
 }) {
-  console.log(location);
-  console.log(items);
   let nft;
 
   for (const item of items) {
@@ -23,20 +21,19 @@ export default function AvailableNFT({
   return (
     <>
       <Navigation account={account} web3Handler={web3Handler} />
-      <Container md="auto" >
-        <Row >
+      <Container md="auto">
+        <Row>
           <Col lg={9}>
             {nft ? (
               <Card className="m-4 text-center">
-                <Card.Img style={{height:580}}
+                <Card.Img
+                  style={{ height: 580 }}
                   variant="top"
                   src={nft.image}
-                  
                 />
                 <Card.Body
                   style={{
-                    background: "linear-gradient(#B2FBED, #9198e5)"
-            
+                    background: "linear-gradient(#B2FBED, #9198e5)",
                   }}>
                   <Card.Title>{nft.collection}</Card.Title>
                   <Card.Text>
