@@ -1,5 +1,6 @@
 import "../App.css";
 import Globe from "../components/Globe";
+import Navbar from "../components/Navbar";
 
 function Home({
   account,
@@ -9,12 +10,14 @@ function Home({
   disconnect,
   isActive,
 }) {
-  console.log(location);
+  // console.log(location);
   return (
-      // <Globe  />
-      <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <>
+    <div className="bg-black">
+      < Navbar />
+      < Globe  />
+    </div>
+    </>
 
   );
 }
