@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 
 import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
+import { getMarkers } from "./helpers/getMarkers";
 
 export default function App() {
   const {
@@ -18,13 +19,17 @@ export default function App() {
     buyStoreItem,
     purchases,
   } = useWeb3();
+
   const { location } = useGeolocation();
+
+  let markers;
 
   useEffect(() => {
     web3Handler();
+    if(items.length && location.city.length){
+      markers = getMarkers(items, location);
+    }
   }, []);
-
-  console.log("LOCATION:", location);
 
   // return (
   //   <Router>
@@ -43,7 +48,7 @@ export default function App() {
     <>
       <div className="bg-black">
         <Navbar />
-        <Globe className="" />
+        <Globe items={items} location={location}/>
         <Modal />
       </div>
     </>
