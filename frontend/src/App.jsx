@@ -17,8 +17,6 @@ export default function App() {
     web3Handler,
     buyStoreItem,
     purchases,
-    account,
-    connectWallet,
   } = useWeb3();
   const { location } = useGeolocation();
   // const { connect, isActive, disconnect, isDisable } = useMetaMask();
@@ -51,7 +49,7 @@ export default function App() {
   return (
     <>
       <div className="bg-black">
-        <Navbar account={account} connectWallet={connectWallet} />
+        <Navbar />
         <Globe className="" />
         <Modal />
       </div>
