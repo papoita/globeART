@@ -22,9 +22,7 @@ export default function useWeb3() {
       StoreAbi.abi,
       signer
     );
-    console.log("loadContracts contract", storeContract);
     store = storeContract;
-    console.log("loadContracts store", store);
     const nftContract = new ethers.Contract(
       NFTAddress.address,
       NFTAbi.abi,
@@ -34,10 +32,6 @@ export default function useWeb3() {
   };
 
   const web3Handler = async () => {
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-    setAccount(accounts[0]);
     // Get provider from Metamask
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     // Set signer
@@ -47,9 +41,6 @@ export default function useWeb3() {
       window.location.reload();
     });
 
-    window.ethereum.on("accountsChanged", async function (accounts) {
-      await web3Handler();
-    });
     await loadContracts(signer);
     await loadStoreItems();
     await loadPurchasedItems();
@@ -58,13 +49,10 @@ export default function useWeb3() {
   const loadStoreItems = async () => {
     // load all items
     try {
-      console.log("Store", store);
       const itemCount = await store.callStatic.itemCount();
-      console.log("itemCount", Number(itemCount.toString()));
 
       for (let i = 1; i <= Number(itemCount.toString()); i++) {
         const item = await store.callStatic.items(i);
-        console.log("item", item);
         // get uri url from nft contract
         const uri = await nft.tokenURI(item.tokenId);
         // use uri to fetch the nft metadata stored on ipfs
@@ -141,6 +129,21 @@ export default function useWeb3() {
     }
   };
 
+  const connectWallet = async () => {
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    setAccount(accounts[0]);
+    
+    window.ethereum.on("accountsChanged", async function (accounts) {
+      await connectWallet();
+    });
+  };
+
+  const disconnectWallet = () => {
+    setAccount(null);
+  };
+
   return {
     items,
     purchases,
@@ -148,5 +151,7 @@ export default function useWeb3() {
     isLoading,
     web3Handler,
     buyStoreItem,
+    connectWallet,
+    disconnectWallet,
   };
 }
