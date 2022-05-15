@@ -1,6 +1,11 @@
 // import { Link } from "react-router-dom";
 
-export default function Navbar({account, connectWallet}) {
+import useWeb3 from "../hooks/useWeb3";
+
+export default function Navbar() {
+
+  const { account, connectWallet, disconnectWallet } = useWeb3();
+
   return (
     <>
       <div className="navbar bg-transparent">
@@ -44,7 +49,7 @@ export default function Navbar({account, connectWallet}) {
                 <a className="justify-between">My Collection</a>
               </li>
               <li>
-                <a>Logout</a>
+                <button onClick={ () => disconnectWallet() }>Disconnect Wallet</button>
               </li>
             </ul>
           </div>
