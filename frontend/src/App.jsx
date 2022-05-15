@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./views/Home";
-import Globe from "./components/Globe";
+import Globe from "./components/globe";
 import Modal from "./components/Modal";
 import Navbar from "./components/Navbar";
 
