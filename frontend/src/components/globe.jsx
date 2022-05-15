@@ -13,8 +13,9 @@ const Globe = () => {
     <>
       <ReactGlobe
         {...props}
-        className="md:container md:mx-auto"
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+        globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+        // globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
         backgroundColor="rgba(0,0,0,0)"
         labelsData={places}
         labelLat={(d) => d.lat}
