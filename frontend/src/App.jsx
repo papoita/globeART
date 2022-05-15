@@ -3,20 +3,24 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./views/Home";
-// import useWeb3 from "./hooks/useWeb3";
+import Globe from "./components/Globe";
+import Modal from "./components/Modal";
+import Navbar from "./components/Navbar";
+
+import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
 
 export default function App() {
-  // const { items, isLoading, web3Handler, buyStoreItem, purchases, account } =
-  //   useWeb3();
-  // const { location } = useGeolocation();
+  const { items, isLoading, web3Handler, buyStoreItem, purchases, account, connectWallet } =
+    useWeb3();
+  const { location } = useGeolocation();
   // const { connect, isActive, disconnect, isDisable } = useMetaMask();
 
   useEffect(() => {
-    // web3Handler();
+    web3Handler();
   }, []);
 
-  
+  console.log("LOCATION:", location);
 
   // return (
   //   <Router>
@@ -38,7 +42,13 @@ export default function App() {
   //   </Router>
   // );
   return (
-    <Home/>
+    <>
+    <div className="bg-black">
+      < Navbar account={account} connectWallet={connectWallet}/>
+      < Globe className=""/>
+      < Modal />
+    </div>
+    </>
   );
 }
 
