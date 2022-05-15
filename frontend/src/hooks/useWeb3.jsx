@@ -43,9 +43,6 @@ export default function useWeb3() {
       window.location.reload();
     });
 
-    window.ethereum.on("accountsChanged", async function (accounts) {
-      await web3Handler();
-    });
     await loadContracts(signer);
     await loadStoreItems();
     await loadPurchasedItems();
@@ -142,6 +139,10 @@ export default function useWeb3() {
       method: "eth_requestAccounts",
     });
     setAccount(accounts[0]);
+    
+    window.ethereum.on("accountsChanged", async function (accounts) {
+      await connectWallet();
+    });
   };
 
   const disconnectWallet = () => {
