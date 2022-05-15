@@ -34,10 +34,7 @@ export default function useWeb3() {
   };
 
   const web3Handler = async () => {
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-    setAccount(accounts[0]);
+    
     // Get provider from Metamask
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     // Set signer
@@ -141,6 +138,13 @@ export default function useWeb3() {
     }
   };
 
+  const connectWallet = async () => {
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    setAccount(accounts[0]);
+  }
+
   return {
     items,
     purchases,
@@ -148,5 +152,6 @@ export default function useWeb3() {
     isLoading,
     web3Handler,
     buyStoreItem,
+    connectWallet,
   };
 }
