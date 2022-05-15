@@ -34,7 +34,6 @@ export default function useWeb3() {
   };
 
   const web3Handler = async () => {
-    
     // Get provider from Metamask
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     // Set signer
@@ -143,7 +142,11 @@ export default function useWeb3() {
       method: "eth_requestAccounts",
     });
     setAccount(accounts[0]);
-  }
+  };
+
+  const disconnectWallet = () => {
+    setAccount(null);
+  };
 
   return {
     items,
@@ -153,5 +156,6 @@ export default function useWeb3() {
     web3Handler,
     buyStoreItem,
     connectWallet,
+    disconnectWallet,
   };
 }
