@@ -22,9 +22,7 @@ export default function useWeb3() {
       StoreAbi.abi,
       signer
     );
-    console.log("loadContracts contract", storeContract);
     store = storeContract;
-    console.log("loadContracts store", store);
     const nftContract = new ethers.Contract(
       NFTAddress.address,
       NFTAbi.abi,
@@ -51,13 +49,10 @@ export default function useWeb3() {
   const loadStoreItems = async () => {
     // load all items
     try {
-      console.log("Store", store);
       const itemCount = await store.callStatic.itemCount();
-      console.log("itemCount", Number(itemCount.toString()));
 
       for (let i = 1; i <= Number(itemCount.toString()); i++) {
         const item = await store.callStatic.items(i);
-        console.log("item", item);
         // get uri url from nft contract
         const uri = await nft.tokenURI(item.tokenId);
         // use uri to fetch the nft metadata stored on ipfs
