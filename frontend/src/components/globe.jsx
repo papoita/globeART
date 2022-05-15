@@ -1,55 +1,52 @@
-import React from 'react';
+import { useState } from 'react';
 import ReactGlobe from 'react-globe.gl';
-import places from './places'; 
+import places from './places';
 
-  const Globe = () => {
+const Globe = () => {
+  const props = {
+    setFocus: {
+      "New York": [40.73061, -73.935242],
+    },
+  };
 
-    const props = {
-      setFocus: {
-        "New York": [40.73061, -73.935242]
-      },
-    };
-
-    return (
+  return (
     <>
-    <ReactGlobe {...props}
-      globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-      backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
-      
-      labelsData={places}
-        labelLat={d => d.lat}
-        labelLng={d => d.lng}
-        labelText={d => d.name}
-        labelSize={d => 0.5 + d.size }
-        labelDotRadius={d => 0.5 + d.size}
-        labelColor={d => d.color}
+      <ReactGlobe
+        {...props}
+        className="md:container md:mx-auto"
+        globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+        backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+        labelsData={places}
+        labelLat={(d) => d.lat}
+        labelLng={(d) => d.lng}
+        labelText={(d) => d.name}
+        labelSize={(d) => 0.5 + d.size}
+        labelDotRadius={(d) => 0.5 + d.size}
+        labelColor={(d) => d.color}
         labelResolution={2}
-        // onLabelClick={(d) => handleShow(d)}
-        // labelLink={d =>`href=${d.link}`}
-    />;
+        onLabelClick={() => {}}
+      />
     </>
-    )
-   
+  );
+
+
   //   const globeEl = useRef()
   //   // useEffect(() => {
   //   //   globeEl.current.controls().autoRotate = true;
   //   //   globeEl.current.controls().autoRotateSpeed = 0.8;
-  
+
   //   //   const MAP_CENTER = { lat: 45, lng: -75, altitude: 1.7 };
   //   //   globeEl.current.pointOfView(MAP_CENTER, 0);
   //   // }, [globeEl]);
-   
-   
-  //   return <ReactGlobe 
-    
+
+  //   return <ReactGlobe
+
   //   ref={globeEl}
   //   showAtmosphere={true}
   //     atmosphereAltitude={0.2}
   //     atmosphereColor= "purple"
   //     globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
   //     backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
-    
-      
 
   //     labelsData={places}
   //     labelLat={d => d.lat}
@@ -61,6 +58,6 @@ import places from './places';
   //     labelResolution={2}
   //     // labelLink={d => 'href=d.link'}
   //   />;
-  };
+};
 
-  export default Globe;
+export default Globe;
