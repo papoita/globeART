@@ -1,13 +1,22 @@
-import { useState } from 'react';
-import ReactGlobe from 'react-globe.gl';
-import places from './places';
+import ReactGlobe from "react-globe.gl";
+import places from "./places";
+import { getMarkers } from "../helpers/getMarkers";
+import { useEffect } from "react";
 
-const Globe = () => {
+const Globe = ({location, items}) => {
+
   const props = {
     setFocus: {
       "New York": [40.73061, -73.935242],
     },
   };
+
+  let markers; 
+  useEffect(() => {
+    if(!!items.length && !!location.city.length){
+      markers = getMarkers(items, location);
+    }
+  }, [items, location])
 
   return (
     <>
@@ -28,7 +37,6 @@ const Globe = () => {
       />
     </>
   );
-
 
   //   const globeEl = useRef()
   //   // useEffect(() => {
