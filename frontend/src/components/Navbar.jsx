@@ -17,12 +17,15 @@ export default function Navbar({account, connectWallet}) {
           </label>
         </div>
 
+        {!account &&
         <div className="flex-none m-4 ">
           <button className="btn" onClick={() => connectWallet()}>
             Connect Wallet
           </button>
         </div>
+        }
 
+        { account &&
         <div className="flex-none">
           <div className="dropdown dropdown-end">
             <label
@@ -46,7 +49,9 @@ export default function Navbar({account, connectWallet}) {
             </ul>
           </div>
         </div>
+        }
       </div>
+
     </>
   );
 }
