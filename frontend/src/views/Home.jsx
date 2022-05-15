@@ -1,6 +1,9 @@
+import React from 'react';
+
 import "../App.css";
 import Globe from "../components/Globe";
 import Navbar from "../components/Navbar";
+import Modal from "../components/Modal";
 
 function Home({
   account,
@@ -10,12 +13,24 @@ function Home({
   disconnect,
   isActive,
 }) {
+
   // console.log(location);
+
+  // const [showModal, setShowModal] = useState(false);
+  // const [nft, setNft] = useState({});
+
+  // const handleShowModal = (d) => {
+  //   setShowModal(true);
+  //   setNft(d)
+  // };
+
+    
   return (
     <>
     <div className="bg-black">
       < Navbar />
-      < Globe  />
+      < Globe className=""/>
+      < Modal />
     </div>
     </>
 
