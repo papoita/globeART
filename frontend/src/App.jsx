@@ -19,7 +19,6 @@ export default function App() {
     purchases,
   } = useWeb3();
   const { location } = useGeolocation();
-  // const { connect, isActive, disconnect, isDisable } = useMetaMask();
 
   useEffect(() => {
     web3Handler();
@@ -34,12 +33,6 @@ export default function App() {
   //         path="/"
   //         element={
   //           <Home
-  //             location={location}
-  //             connect={connect}
-  //             disconnect={disconnect}
-  //             account={account}
-  //             isActive={isActive}
-  //             isDisable={isDisable}
   //           />
   //         }
   //       />
