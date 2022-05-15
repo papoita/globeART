@@ -1,6 +1,6 @@
 // import { Link } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({account, connectWallet}) {
   return (
     <>
       <div className="navbar bg-transparent">
@@ -15,6 +15,12 @@ export default function Navbar() {
           <label htmlFor="my-modal-4" className="btn modal-button">
             Open Modal
           </label>
+        </div>
+
+        <div className="flex-none m-4 ">
+          <button className="btn" onClick={() => connectWallet()}>
+            Connect Wallet
+          </button>
         </div>
 
         <div className="flex-none">
