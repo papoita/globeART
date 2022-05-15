@@ -15,7 +15,7 @@ const Globe = () => {
         {...props}
         className="md:container md:mx-auto"
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-        backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+        backgroundColor="rgba(0,0,0,0)"
         labelsData={places}
         labelLat={(d) => d.lat}
         labelLng={(d) => d.lng}
