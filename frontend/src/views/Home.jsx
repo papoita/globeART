@@ -31,7 +31,7 @@ function Home({
     <>
     <div className="bg-black w-full">
       < Navbar handleShowModal={ handleShowModal } />
-      < Globe className=""/>
+      < Globe handleShowModal={ handleShowModal }/>
       {showModal && < Modal handleHideModal={ handleHideModal }/>}
     </div>
     </>

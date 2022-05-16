@@ -2,7 +2,7 @@
 
 import useWeb3 from "../hooks/useWeb3";
 
-export default function Navbar({handleShowModal}) {
+export default function Navbar() {
   const { account, connectWallet, disconnectWallet } = useWeb3();
 
   return (
@@ -13,12 +13,6 @@ export default function Navbar({handleShowModal}) {
             <img className="m-2" src="pig-logo.png"></img>
             <p className="font-shrikhand text-3xl text-slate-100">Trotter</p>
           </a>
-        </div>
-
-        <div className="flex-none m-4 ">
-          <button onClick={() => handleShowModal() } className="btn modal-button">
-            Open Modal
-          </button>
         </div>
 
         {!account && (
