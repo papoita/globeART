@@ -7,7 +7,6 @@ import UserCollection from "./views/UserCollection"
 
 import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
-import { getMarkers } from "./helpers/getMarkers";
 
 export default function App() {
   const {
@@ -18,18 +17,11 @@ export default function App() {
     purchases,
   } = useWeb3();
 
-  const { location } = useGeolocation();
-
-  let markers;
+  const { location } = useGeolocation()
 
   useEffect(() => {
     web3Handler();
-    if(items.length && location.city.length){
-      markers = getMarkers(items, location);
-    }
   }, []);
-
-  console.log("LOCATION:", location);
 
   return (
     <Router>
@@ -37,7 +29,7 @@ export default function App() {
         <Route
           path="/"
           element={
-            <Home items={ items }/>
+            <Home items={ items } location={ location }/>
           }
         />
         <Route
