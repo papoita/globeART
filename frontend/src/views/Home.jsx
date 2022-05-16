@@ -1,7 +1,7 @@
 import React from 'react';
 
 import "../App.css";
-import Globe from "../components/Globe";
+import Globe from "../components/globe";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 
