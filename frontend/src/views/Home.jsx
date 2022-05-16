@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 import "../App.css";
 import Globe from "../components/globe";
@@ -16,21 +16,23 @@ function Home({
 
   // console.log(location);
 
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   // const [nft, setNft] = useState({});
 
-  // const handleShowModal = (d) => {
-  //   setShowModal(true);
+  const handleShowModal = (d) => {
+    setShowModal(true);
   //   setNft(d)
-  // };
-
+  };
+  const handleHideModal = () => {
+    setShowModal(false);
+  };
     
   return (
     <>
-    <div className="bg-black">
-      < Navbar />
+    <div className="bg-black w-full">
+      < Navbar handleShowModal={ handleShowModal } />
       < Globe className=""/>
-      < Modal />
+      {showModal && < Modal handleHideModal={ handleHideModal }/>}
     </div>
     </>
 
