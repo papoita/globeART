@@ -4,18 +4,20 @@ import { getMarkers } from "../helpers/getMarkers";
 import { useEffect } from "react";
 
 const Globe = ({ handleShowModal, location, items}) => {
+  
+  let markers;
+  useEffect(() => {
+    if(!!items.length && !!location.city.length){
+      markers = getMarkers(items, location);   
+    }
+  }, []);
+  
   const props = {
     setFocus: {
       "New York": [40.73061, -73.935242],
     },
   };
-
-  let markers; 
-  useEffect(() => {
-    if(!!items.length && !!location.city.length){
-      markers = getMarkers(items, location);
-    }
-  }, [items, location])
+  
 
   return (
     <>
@@ -33,7 +35,7 @@ const Globe = ({ handleShowModal, location, items}) => {
         labelDotRadius={(d) => 0.5 + d.size}
         labelColor={(d) => d.color}
         labelResolution={2}
-        onLabelClick={() => handleShowModal()}
+        onLabelClick={(d) => handleShowModal(d)}
       />
     </>
   );
