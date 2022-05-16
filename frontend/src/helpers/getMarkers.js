@@ -22,16 +22,13 @@ export async function getMarkers(items, location) {
 
   for await (const item of items) {
     const coords = await getCoords(item);
-    console.log("COORDS:", coords)
-    console.log("LAT:", coords.lat)
-
     markers.push({
+      id: item.itemId,
       name: item.name,
-      lat: coords.lat,
-      lon: coords.lon,
-      color: item.name === location.city ? "purple" : "white",
+      image: item.image,
+      coords: coords,
+      color: (item.name === location.city ? "purple" : "white"),
     });
   }
-  console.log("MARKERS", markers);
-  return markers;
+  return { markers };
 }
