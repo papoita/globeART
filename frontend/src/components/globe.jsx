@@ -25,7 +25,7 @@ const Globe = ({ handleShowModal }) => {
         labelDotRadius={(d) => 0.5 + d.size}
         labelColor={(d) => d.color}
         labelResolution={2}
-        onLabelClick={() => handleShowModal()}
+        onLabelClick={(d) => handleShowModal(d)}
       />
     </>
   );
