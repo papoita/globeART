@@ -17,11 +17,11 @@ function Home({
   // console.log(location);
 
   const [showModal, setShowModal] = useState(false);
-  // const [nft, setNft] = useState({});
+  const [nft, setNft] = useState({});
 
   const handleShowModal = (d) => {
     setShowModal(true);
-  //   setNft(d)
+    setNft(d)
   };
   const handleHideModal = () => {
     setShowModal(false);
@@ -30,9 +30,9 @@ function Home({
   return (
     <>
     <div className="bg-black w-full">
-      < Navbar handleShowModal={ handleShowModal } />
-      < Globe handleShowModal={ handleShowModal }/>
-      {showModal && < Modal handleHideModal={ handleHideModal }/>}
+      < Navbar />
+      < Globe handleShowModal={ handleShowModal } />
+      {showModal && < Modal handleHideModal={ handleHideModal } nft={ nft }/>}
     </div>
     </>
 
