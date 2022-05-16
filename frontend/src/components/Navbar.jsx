@@ -15,12 +15,6 @@ export default function Navbar() {
           </a>
         </div>
 
-        <div className="flex-none m-4 ">
-          <label htmlFor="my-modal-4" className="btn modal-button">
-            Open Modal
-          </label>
-        </div>
-
         {!account && (
           <div className="flex-none m-4 ">
             <button className="btn" onClick={() => connectWallet()}>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ReactGlobe from 'react-globe.gl';
 import places from './places';
 
-const Globe = () => {
+const Globe = ({ handleShowModal }) => {
   const props = {
     setFocus: {
       "New York": [40.73061, -73.935242],
@@ -25,7 +25,7 @@ const Globe = () => {
         labelDotRadius={(d) => 0.5 + d.size}
         labelColor={(d) => d.color}
         labelResolution={2}
-        onLabelClick={() => {}}
+        onLabelClick={() => handleShowModal()}
       />
     </>
   );
