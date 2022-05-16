@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Modal() {
+export default function Modal({ showModal }) {
+  
+  if(showModal) 
   return (
     <>
-      <input type="checkbox" id="my-modal-4" className="modal-toggle" />
-      <label htmlFor="my-modal-4" className="modal cursor-pointer">
         <div className="card w-96 bg-base-100 shadow-xl image-full z-50">
           <figure>
             <img
@@ -19,7 +19,6 @@ export default function Modal() {
             </div>
           </div>
         </div>
-      </label>
     </>
-  );
+  )
 }
