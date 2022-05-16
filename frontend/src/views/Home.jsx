@@ -10,8 +10,6 @@ function Home({
   items,
 }) {
 
-  // console.log(location);
-
   const [showModal, setShowModal] = useState(false);
   // const [nft, setNft] = useState({});
 
