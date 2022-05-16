@@ -2,7 +2,7 @@
 
 import useWeb3 from "../hooks/useWeb3";
 
-export default function Navbar() {
+export default function Navbar({handleShowModal}) {
   const { account, connectWallet, disconnectWallet } = useWeb3();
 
   return (
@@ -16,9 +16,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex-none m-4 ">
-          <label htmlFor="my-modal-4" className="btn modal-button">
+          <button onClick={() => handleShowModal() } className="btn modal-button">
             Open Modal
-          </label>
+          </button>
         </div>
 
         {!account && (
