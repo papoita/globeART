@@ -3,9 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./views/Home";
-import Globe from "./components/Globe";
-import Modal from "./components/Modal";
-import Navbar from "./components/Navbar";
+import UserCollection from "./views/UserCollection"
 
 import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
@@ -31,26 +29,25 @@ export default function App() {
     }
   }, []);
 
-  // return (
-  //   <Router>
-  //     <Routes>
-  //       <Route
-  //         path="/"
-  //         element={
-  //           <Home
-  //           />
-  //         }
-  //       />
-  //     </Routes>
-  //   </Router>
-  // );
+  console.log("LOCATION:", location);
+
   return (
-    <>
-      <div className="bg-black">
-        <Navbar />
-        <Globe items={items} location={location}/>
-        <Modal />
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home items={ items }/>
+          }
+        />
+        <Route
+          path="/mycollection"
+          element={
+            <UserCollection purchases={ purchases }/>
+          }
+        />
+      </Routes>
+    </Router>
   );
+  
 }

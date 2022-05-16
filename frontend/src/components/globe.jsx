@@ -3,8 +3,7 @@ import places from "./places";
 import { getMarkers } from "../helpers/getMarkers";
 import { useEffect } from "react";
 
-const Globe = ({location, items}) => {
-
+const Globe = ({ handleShowModal, location, items}) => {
   const props = {
     setFocus: {
       "New York": [40.73061, -73.935242],
@@ -22,9 +21,10 @@ const Globe = ({location, items}) => {
     <>
       <ReactGlobe
         {...props}
-        className="md:container md:mx-auto"
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-        backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+        globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+        // globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+        backgroundColor="rgba(0,0,0,0)"
         labelsData={places}
         labelLat={(d) => d.lat}
         labelLng={(d) => d.lng}
@@ -33,7 +33,7 @@ const Globe = ({location, items}) => {
         labelDotRadius={(d) => 0.5 + d.size}
         labelColor={(d) => d.color}
         labelResolution={2}
-        onLabelClick={() => {}}
+        onLabelClick={() => handleShowModal()}
       />
     </>
   );

@@ -9,16 +9,10 @@ export default function Navbar() {
     <>
       <div className="navbar bg-transparent">
         <div className="flex-1">
-          <a className="btn btn-ghost normal-case text-xl">
+          <a href="/" className="btn btn-ghost normal-case text-xl">
             <img className="m-2" src="pig-logo.png"></img>
             <p className="font-shrikhand text-3xl text-slate-100">Trotter</p>
           </a>
-        </div>
-
-        <div className="flex-none m-4 ">
-          <label htmlFor="my-modal-4" className="btn modal-button">
-            Open Modal
-          </label>
         </div>
 
         {!account && (
@@ -56,7 +50,7 @@ export default function Navbar() {
                   </a>
                 </li>
                 <li>
-                  <a className="justify-between">My Collection</a>
+                  <a href="/mycollection" className="justify-between">My Collection</a>
                 </li>
                 <li>
                   <button onClick={() => disconnectWallet()}>
