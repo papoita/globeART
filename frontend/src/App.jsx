@@ -3,43 +3,22 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./views/Home";
-import UserCollection from "./views/UserCollection"
+import UserCollection from "./views/UserCollection";
 
-import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
 
 export default function App() {
-  const {
-    items,
-    isLoading,
-    web3Handler,
-    buyStoreItem,
-    purchases,
-  } = useWeb3();
-
-  const { location } = useGeolocation()
-
-  useEffect(() => {
-    web3Handler();
-  }, []);
+  // const { location } = useGeolocation()
 
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home items={ items } location={ location }/>
-          }
-        />
+        <Route path="/" element={<Home />} />
         <Route
           path="/mycollection"
-          element={
-            <UserCollection purchases={ purchases }/>
-          }
+          element={<UserCollection />}
         />
       </Routes>
     </Router>
   );
-  
 }
