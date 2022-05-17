@@ -1,34 +1,36 @@
-const axios = require("axios");
+import axios from "axios";
+import { loadStoreItems } from "./loadStoreItems";
 
-export async function getMarkers(items, location) {
-  let markers = [];
+export async function getMarkers() {
+  let result = [];
+
+  const items = await loadStoreItems();
 
   const getCoords = async (item) => {
     let apiURL = `http://api.openweathermap.org/geo/1.0/direct?q=${item.name},${item.country}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
 
     let coordinates = {};
 
-    axios
-      .get(apiURL)
-      .then((res) => {
-        coordinates.lat = res.data[0].lat;
-        coordinates.lon = res.data[0].lon;
-      })
-      .catch((error) => {
+    try{
+      const res = await(axios.get(apiURL))
+      coordinates.lat = res.data[0].lat;
+      coordinates.lon = res.data[0].lon;
+      return coordinates;
+    } catch (error) {
         console.log(error);
-      });
-    return coordinates;
-  };
+      };
+    };
 
   for await (const item of items) {
     const coords = await getCoords(item);
-    markers.push({
+    result.push({
       id: item.itemId,
       name: item.name,
       image: item.image,
-      coords: coords,
-      color: (item.name === location.city ? "purple" : "white"),
+      lat: coords.lat,
+      lng: coords.lon,
+      color: "white"
     });
   }
-  return { markers };
+  return result;
 }
