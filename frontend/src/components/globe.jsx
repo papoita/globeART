@@ -1,17 +1,9 @@
-import { useEffect } from "react";
 import ReactGlobe from "react-globe.gl";
-import { getMarkers } from "../helpers/getMarkers";
 
-const Globe = ({ handleShowModal }) => {
-  let markers;
+const Globe = ({ handleShowModal, markers }) => {
 
-  useEffect(() => {
-    (async function asyncHandler() {
-      markers = await getMarkers();
-      console.log(markers);
-    })();
-  }, [markers]);
-
+  console.log("GLOBE- Markers", markers);
+  
   const props = {
     setFocus: {
       "New York": [40.73061, -73.935242],
@@ -19,7 +11,6 @@ const Globe = ({ handleShowModal }) => {
   };
   return (
     <>
-     
         <ReactGlobe
           {...props}
           globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
@@ -35,8 +26,7 @@ const Globe = ({ handleShowModal }) => {
           labelColor={(d) => d.color}
           labelResolution={2}
           onLabelClick={(d) => handleShowModal(d)}
-        />
-      
+        />     
     </>
   );
 

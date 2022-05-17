@@ -7,20 +7,26 @@ import Modal from "../components/Modal";
 
 import { getMarkers } from '../helpers/getMarkers';
 
-function Home({
-}) {
+function Home() {
 
+  const [showModal, setShowModal] = useState(false);
+  // const [nft, setNft] = useState({});
+  const [isLoaded, setIsLoaded ] = useState(false)
+  
   let markers;
 
   useEffect(() => {
     (async function asyncHandler() {
-      markers = await getMarkers();
-      console.log(markers);
+      try {
+        markers = await getMarkers();
+        console.log("HOME- MARKERS", markers)
+        if(markers)setIsLoaded(true)
+      } catch(error) {
+        console.log(error);
+        setIsLoaded(false);
+      }
     })();
   }, []);
-
-  const [showModal, setShowModal] = useState(false);
-  // const [nft, setNft] = useState({});
 
   const handleShowModal = (d) => {
     setShowModal(true);
@@ -29,12 +35,12 @@ function Home({
   const handleHideModal = () => {
     setShowModal(false);
   };
-    
+  
   return (
     <>
     <div className="bg-black w-full">
       <Navbar handleShowModal={ handleShowModal } />
-      {markers && <Globe handleShowModal={ handleShowModal }/>}
+      {<Globe handleShowModal={ handleShowModal } markers={ markers }/>}
       {showModal && < Modal handleHideModal={ handleHideModal }/>}
     </div>
     </>
