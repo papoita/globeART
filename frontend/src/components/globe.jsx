@@ -1,60 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ReactGlobe from "react-globe.gl";
-import axios from "axios";
-import places from "./places";
-// import { getMarkers } from "../helpers/getMarkers";
+import { getMarkers } from "../helpers/getMarkers";
 
-const Globe = ({ handleShowModal, items }) => {
-  const [markers, setMarkers] = useState();
+const Globe = ({ handleShowModal }) => {
+  let markers;
 
   useEffect(() => {
-    //Fetch coordinates from city name and country
-    const getCoords = async (item) => {
-      let apiURL = `http://api.openweathermap.org/geo/1.0/direct?q=${item.name},${item.country}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
-
-      let coordinates = {};
-
-      try {
-        const res = await axios.get(apiURL);
-        coordinates.lat = res.data[0].lat;
-        coordinates.lon = res.data[0].lon;
-        return coordinates;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    //Generate array of markers objects to be passed into Globe -> generate label for each item in marketplace
-    const getMarkers = async (items) => {
-      const result = [];
-      for await (const item of items) {
-        const coords = await getCoords(item);
-        result.push({
-          id: item.itemId,
-          name: item.name,
-          image: item.image,
-          lat: coords.lat,
-          lng: coords.lon,
-          color: "white",
-          // color: (item.name === location.city ? "purple" : "white"),
-        });
-      }
-      // markers = result;
-      setMarkers(result)
-      console.log("MARKERS: ", markers);
-    };
-    console.log('items', items)
-    if (!!items.length) {
-      getMarkers(items);
-    }
-  }, []);
+    (async function asyncHandler() {
+      markers = await getMarkers();
+      console.log(markers);
+    })();
+  }, [markers]);
 
   const props = {
     setFocus: {
       "New York": [40.73061, -73.935242],
     },
   };
-  console.log('markers', markers);
   return (
     <>
      

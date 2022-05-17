@@ -1,14 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import "../App.css";
-import Globe from "../components/globe";
+import Globe from "../components/Globe";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 
+import { getMarkers } from '../helpers/getMarkers';
+
 function Home({
-  location,
-  items,
 }) {
+
+  let markers;
+
+  useEffect(() => {
+    (async function asyncHandler() {
+      markers = await getMarkers();
+      console.log(markers);
+    })();
+  }, []);
 
   const [showModal, setShowModal] = useState(false);
   // const [nft, setNft] = useState({});
@@ -24,8 +33,8 @@ function Home({
   return (
     <>
     <div className="bg-black w-full">
-      < Navbar handleShowModal={ handleShowModal } />
-      < Globe handleShowModal={ handleShowModal } items={items} location={location}/>
+      <Navbar handleShowModal={ handleShowModal } />
+      {markers && <Globe handleShowModal={ handleShowModal }/>}
       {showModal && < Modal handleHideModal={ handleHideModal }/>}
     </div>
     </>
