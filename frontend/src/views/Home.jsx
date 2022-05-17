@@ -10,7 +10,7 @@ import { getMarkers } from '../helpers/getMarkers';
 function Home() {
 
   const [showModal, setShowModal] = useState(false);
-  // const [nft, setNft] = useState({});
+  const [nft, setNft] = useState({});
   const [isLoaded, setIsLoaded ] = useState(false)
   
   let markers;
@@ -30,7 +30,7 @@ function Home() {
 
   const handleShowModal = (d) => {
     setShowModal(true);
-  //   setNft(d)
+    setNft(d)
   };
   const handleHideModal = () => {
     setShowModal(false);
@@ -41,7 +41,7 @@ function Home() {
     <div className="bg-black w-full">
       <Navbar handleShowModal={ handleShowModal } />
       {<Globe handleShowModal={ handleShowModal } markers={ markers }/>}
-      {showModal && < Modal handleHideModal={ handleHideModal }/>}
+      {showModal && < Modal handleHideModal={ handleHideModal } nft={ nft }/>}
     </div>
     </>
 
