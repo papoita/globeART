@@ -1,9 +1,24 @@
 // import { Link } from "react-router-dom";
-
-import useWeb3 from "../hooks/useWeb3";
+import { useEffect, useState } from "react";
+// import { connectWallet, disconnectWallet } from "../helpers/walletHandler";
 
 export default function Navbar() {
-  const { account, connectWallet, disconnectWallet } = useWeb3();
+   const [account, setAccount ] = useState(null);
+
+  async function connectWallet() {
+    const results = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    setAccount(results[0]);
+    
+    window.ethereum.on("accountsChanged", async function (accounts) {
+      await connectWallet();
+    });
+  };
+
+  function disconnectWallet() {
+    setAccount(null);
+  };
 
   return (
     <>
