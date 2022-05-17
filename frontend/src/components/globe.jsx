@@ -1,42 +1,80 @@
+import { useEffect, useState } from "react";
 import ReactGlobe from "react-globe.gl";
+import axios from "axios";
 import places from "./places";
-import { getMarkers } from "../helpers/getMarkers";
-import { useEffect } from "react";
+// import { getMarkers } from "../helpers/getMarkers";
 
-const Globe = ({ handleShowModal, location, items}) => {
-  
-  let markers;
+const Globe = ({ handleShowModal, items }) => {
+  const [markers, setMarkers] = useState();
+
   useEffect(() => {
-    if(!!items.length && !!location.city.length){
-      markers = getMarkers(items, location);   
+    //Fetch coordinates from city name and country
+    const getCoords = async (item) => {
+      let apiURL = `http://api.openweathermap.org/geo/1.0/direct?q=${item.name},${item.country}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
+
+      let coordinates = {};
+
+      try {
+        const res = await axios.get(apiURL);
+        coordinates.lat = res.data[0].lat;
+        coordinates.lon = res.data[0].lon;
+        return coordinates;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    //Generate array of markers objects to be passed into Globe -> generate label for each item in marketplace
+    const getMarkers = async (items) => {
+      const result = [];
+      for await (const item of items) {
+        const coords = await getCoords(item);
+        result.push({
+          id: item.itemId,
+          name: item.name,
+          image: item.image,
+          lat: coords.lat,
+          lng: coords.lon,
+          color: "white",
+          // color: (item.name === location.city ? "purple" : "white"),
+        });
+      }
+      // markers = result;
+      setMarkers(result)
+      console.log("MARKERS: ", markers);
+    };
+    console.log('items', items)
+    if (!!items.length) {
+      getMarkers(items);
     }
   }, []);
-  
+
   const props = {
     setFocus: {
       "New York": [40.73061, -73.935242],
     },
   };
-  
-
+  console.log('markers', markers);
   return (
     <>
-      <ReactGlobe
-        {...props}
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-        // globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-        backgroundColor="rgba(0,0,0,0)"
-        labelsData={places}
-        labelLat={(d) => d.lat}
-        labelLng={(d) => d.lng}
-        labelText={(d) => d.name}
-        labelSize={(d) => 0.5 + d.size}
-        labelDotRadius={(d) => 0.5 + d.size}
-        labelColor={(d) => d.color}
-        labelResolution={2}
-        onLabelClick={(d) => handleShowModal(d)}
-      />
+     
+        <ReactGlobe
+          {...props}
+          globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+          bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+          // globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+          backgroundColor="rgba(0,0,0,0)"
+          labelsData={markers}
+          labelLat={(d) => d.lat}
+          labelLng={(d) => d.lng}
+          labelText={(d) => d.name}
+          labelSize={0.7}
+          labelDotRadius={0.7}
+          labelColor={(d) => d.color}
+          labelResolution={2}
+          onLabelClick={(d) => handleShowModal(d)}
+        />
+      
     </>
   );
 
