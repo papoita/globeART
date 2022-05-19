@@ -26,7 +26,7 @@ export default function App() {
 
   return (
     <Router>
-      <div className="bg-black w-full">
+      <div className="bg-black w-full min-h-screen">
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
