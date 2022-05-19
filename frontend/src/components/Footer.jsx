@@ -8,21 +8,19 @@ import { FaGithub } from "react-icons/fa";
 function Footer() {
   return (
     <Card
-      className="text-white text-center text-muted"
+      className="text-white text-center text-muted fixed-bottom"
       bg="primary"
-      variant="light"
-    >
+      variant="light">
       <Card.Header>Contact Us </Card.Header>
 
-      <Card.Footer
-        
-        className="d-flex text-white text-muted justify-content-center  align-items-center"
-      >
-        <a href={"https://github.com/papoita/globeART"}> <FaGithub style={{margin: '0 20px'}}/></a>
-         
+      <Card.Footer className="d-flex text-white text-muted justify-content-center  align-items-center">
+        <a href={"https://github.com/papoita/globeART"}>
+          {" "}
+          <FaGithub style={{ margin: "0 20px" }} />
+        </a>
         Want to chat about awesome ideas? let's get some coffee
         <FontAwesomeIcon
-        style={{margin: '0 10px'}}
+          style={{ margin: "0 10px" }}
           icon={faCoffee}
           className="fa-flip --fa-animation-duration:2s "
         />
