@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+@[papoita](https://github.com/papoita) | version 1.0.1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# globeART project 
 
-## Available Scripts
+This project was completed by [Paola Perez Leiva](https://www.linkedin.com/in/perezleivapaola/), Yen Nguyen and Martha Staus as final project of LighHose Labs Web Development Bootcamp. It provided an opportunity to demnonstrate our abilities as a software developers plus the experimentation of new technology. 
 
-In the project directory, you can run:
+## globeART 
+Is a web application that allows users to purchase NFT's when they are visiting a new city. A 3D globea allows users to visually identify locations for which there are available NFTs. By clicking the globe the user is taken to a gallery of all the NFTs. NFTs are created using snowpixel AI (link) and they can be purchased using Metamask (link). Users can store them in their personal collection gallery in the App.
 
-### `npm start`
+## Features:
 
+* A 3D clickable globe shows the location of NFTs.
+
+* Users can visit the gallery to view all available NFTs, know their price and the location as well as the collection they belong to.
+
+* Users have a personal gallery with their purchased NFTs.
+
+* USer can log into their MEtamask account to facilitate authorization and purchase.
+
+
+## Techstack
+  
+ 💡 This frontend project is built with React, React-Bootstrap, Bootstrap, Sass, React-icons library.
+
+ 💡 3D globe was imported using react-globe-gl to represent the NFT location in a spherical projection.
+ 
+ 💡 NFTs are minted using IPFS and the transaction in bitcoin.
+ 
+ 💡 Hardhat was used for the contract creation and deplyment
+
+## Screenshots
+
+## Gif
+
+
+
+
+# Setup
+
+## Running funai
+
+Install dependencies 
+```sh
+npm install
+```
+
+Run funai repo at port 3000
+
+```sh
+npm start
+```
+
+
+### Dependencies
+
+* react
+* react-bootstrap
+* bootstrap
+* sass
+* react-icons
+
+
+# Hardhat Setup
+
+## Basic Sample Hardhat Project
+
+This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+
+Try running some of the following tasks:
+
+```shell
+npx hardhat accounts
+npx hardhat compile
+npx hardhat clean
+npx hardhat test
+npx hardhat node
+node scripts/sample-script.js
+npx hardhat help
+```
+# globeART Project SetUp
+
+## To start a local network:
+
+```shell
+npx hardhat node
+```
+
+## To deploy smart contract on a local network:
+
+```shell
+npx hardhat --network localhost run scripts/deploy.js
+```
+
+## To start react web app:
+
+```shell
+cd frontend
+npm install
+npm run start:frondend
+```
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
