@@ -29,11 +29,8 @@ function Home({
     
   return (
     <>
-    <div className="bg-black w-full">
-      < Navbar />
       < Globe handleShowModal={ handleShowModal } />
       {showModal && < Modal handleHideModal={ handleHideModal } nft={ nft }/>}
-    </div>
     </>
 
   );
