@@ -7,15 +7,13 @@
     "axios": "^0.27.2",
     "daisyui": "^2.14.3",
     "dotenv": "^16.0.0",
-    "jdenticon": "^3.1.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-globe.gl": "^2.22.0",
+    "react-jdenticon": "^1.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "react-sizeme": "^3.0.2",
-    "three.js": "^0.77.1",
-    "topojson-client": "^3.1.0"
+    "react-sizeme": "^3.0.2"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"
