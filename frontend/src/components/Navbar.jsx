@@ -26,14 +26,10 @@ export default function Navbar() {
         {account && (
           <div className="flex-none m-4">
             <div className="dropdown dropdown-end">
-              <label
-                tabIndex="0"
-                className="btn btn-ghost btn-circle"
-              >
-                <div className="rounded-full flex justify-center mr-3">
-                  <Jdenticon size="40" value={account}/> 
-                </div>
-              </label>
+              
+              <button className="btn btn-ghost btn-circle flex justify-center mr-3">
+                <Jdenticon size="50" value={account} /> 
+              </button>        
               <ul
                 tabIndex="0"
                 className="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded-box w-52"
@@ -45,8 +41,7 @@ export default function Navbar() {
                     rel="noopener noreferrer"
                     className="justify-between inline-block"
                   >
-                    Connected as:
-                    <div>{account.slice(0, 5) + "..." + account.slice(38, 42)}</div>
+                    Connected: <strong>{account.slice(0, 5) + "..." + account.slice(38, 42)}</strong>
                   </a>
                 </li>
                 <li>
