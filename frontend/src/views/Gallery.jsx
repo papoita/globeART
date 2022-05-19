@@ -16,8 +16,6 @@ import Footer from "../components/Footer";
 function Gallery({ web3Handler, items, account, loading }) {
   const [open, setOpen] = useState(false);
 
-  console.log("ITEMS", items);
-
   if (loading) return <h2>Loading...</h2>;
 
   return (
@@ -31,7 +29,7 @@ function Gallery({ web3Handler, items, account, loading }) {
                 <img
                   style={{ height: 650 }}
                   className="rounded mx-auto d-block"
-                  src={item.image}
+                  src={`../images/${item.name.split(" ").join("")}.png`}
                   alt={item.name}
                 />
                 <Carousel.Caption>
@@ -60,7 +58,10 @@ function Gallery({ web3Handler, items, account, loading }) {
                   {items.length > 0 ? (
                     items.map((item, idx) => (
                       <Card key={idx} className="m-4 text-center">
-                        <Card.Img variant="top" src={item.image} />
+                        <Card.Img
+                          variant="top"
+                          src={`../images/${item.name.split(" ").join("")}.png`}
+                        />
                         <Card.Body
                           style={{
                             background: "linear-gradient(#B2FBED, #9198e5)",
