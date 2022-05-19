@@ -31,7 +31,9 @@ export default function AvailableNFT({
                   <Card.Img
                     style={{ height: 580 }}
                     variant="top"
-                    src={availableNft.image}
+                    src={`../images/${availableNft.name
+                      .split(" ")
+                      .join("")}.png`}
                   />
                   <Card.Body
                     style={{
