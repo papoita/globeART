@@ -1,5 +1,5 @@
 // import { Link } from "react-router-dom";
-
+import Jdenticon from "react-jdenticon";
 import useWeb3 from "../hooks/useWeb3";
 
 export default function Navbar() {
@@ -24,19 +24,15 @@ export default function Navbar() {
         )}
 
         {account && (
-          <div className="flex-none">
+          <div className="flex-none m-4">
             <div className="dropdown dropdown-end">
-              <label
-                tabIndex="0"
-                className="btn btn-ghost btn-circle avatar mr-3"
-              >
-                <div className="w-20 rounded-full">
-                  <img src="https://doodleipsum.com/500/avatar-2" />
-                </div>
-              </label>
+              
+              <button className="btn btn-ghost btn-circle flex justify-center mr-3">
+                <Jdenticon size="50" value={account} /> 
+              </button>        
               <ul
                 tabIndex="0"
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
                   <a
@@ -45,8 +41,7 @@ export default function Navbar() {
                     rel="noopener noreferrer"
                     className="justify-between inline-block"
                   >
-                    Connected as:
-                    <div>{account.slice(0, 5) + "..." + account.slice(38, 42)}</div>
+                    Connected: <strong>{account.slice(0, 5) + "..." + account.slice(38, 42)}</strong>
                   </a>
                 </li>
                 <li>
