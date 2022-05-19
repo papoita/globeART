@@ -58,6 +58,7 @@ function App() {
           path="/personalcollection"
           element={
             <PersonalCollection
+              items={items}
               web3Handler={web3Handler}
               account={account}
               purchases={purchases}

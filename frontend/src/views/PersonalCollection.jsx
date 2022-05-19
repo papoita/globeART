@@ -5,30 +5,35 @@ import { Card, CardGroup } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 
-function PersonalCollection( { purchases } ) {
+function PersonalCollection({ purchases, items }) {
+  const myCollection = [];
+
+  for (let item of items) {
+    if (
+      ["Vancouver", "Honolulu", "Tokyo", "Ottawa", "Toronto", "Paris"].includes(
+        item.name
+      )
+    ) {
+      myCollection.push(item);
+    }
+  }
+  console.log(myCollection);
 
   return (
     <>
       <Navigation />
       <CardGroup className="m-4">
-        
-        {purchases.length > 0 ? (
-          purchases.map((item, idx) => (
-           
-            
+        {myCollection.length > 0 ? (
+          myCollection.map((item, idx) => (
             <Card key={idx} className="m-4 text-center">
-              
-              <Card.Img
-                variant="top"
-                src={item.image}
-                
-              />
+              <Card.Img variant="top" src={item.image} />
               <Card.Body
                 style={{
                   background: "linear-gradient(#B2FBED, #9198e5)",
-                 
                 }}>
-                <Card.Title>{item.name} {item.collections}</Card.Title>
+                <Card.Title>
+                  {item.name} {item.collections}
+                </Card.Title>
                 <Card.Text>
                   <small bg="primary">Bought for: {item.price}</small>
                 </Card.Text>
