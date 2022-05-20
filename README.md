@@ -37,7 +37,7 @@ Is a web application that allows users to purchase NFT's when they are visiting 
 
 # Setup
 
-## Running funai
+## Running globeART
 
 Install dependencies 
 ```sh
