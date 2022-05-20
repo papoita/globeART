@@ -11,7 +11,7 @@ function Footer() {
       className="text-white text-center text-muted fixed-bottom"
       bg="primary"
       variant="light">
-      <Card.Header>Contact Us </Card.Header>
+      
 
       <Card.Footer className="d-flex text-white text-muted justify-content-center  align-items-center">
         <a href={"https://github.com/papoita/globeART"}>

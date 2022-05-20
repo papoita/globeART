@@ -11,7 +11,7 @@ const SimpleGlobe = () => {
     globeEl.current.controls().autoRotate = true;
     globeEl.current.controls().autoRotateSpeed = 0.8;
 
-    const MAP_CENTER = { lat: 7, lng: -73, altitude: 1.7 };
+    const MAP_CENTER = { lat: 7, lng: -73, altitude: 1.5 };
     globeEl.current.pointOfView(MAP_CENTER, 0);
   }, [globeEl]);
 
