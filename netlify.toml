@@ -1,0 +1,7 @@
+[build]
+  base = "frontend/"
+  command = "echo 'hello world'"
+
+[context."feature/demo-branch"]
+  command = "echo 'special branch'"
+  base = "branch"
