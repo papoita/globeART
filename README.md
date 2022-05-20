@@ -2,7 +2,7 @@
 
 # globeART project 
 
-This project was completed by [Paola Perez Leiva](https://www.linkedin.com/in/perezleivapaola/), [Yen Nguyen] and [Martha Staus] as final project of LightHouse Labs Web Development Bootcamp. It provided an opportunity to demonstrate our abilities as a software developers plus allowed for the experimentation of new technology. 
+This project was completed by [Paola Perez Leiva](https://www.linkedin.com/in/perezleivapaola/), [Yen Nguyen] and [Martha Staus] as final project of LightHouse Labs Web Development Bootcamp. It provided an opportunity to demonstrate our abilities as software developers plus allowed for the experimentation of new technology. 
 
 ## globeART 
 Is a web application that allows users to purchase NFT's when they are visiting a new city. A 3D globea allows users to visually identify locations for which there are available NFTs. By clicking the globe the user is taken to a gallery of all the NFTs. NFTs are created using snowpixel AI (link) and they can be purchased using Metamask (link). Users can store them in their personal collection gallery in the App.
@@ -33,24 +33,6 @@ Is a web application that allows users to purchase NFT's when they are visiting 
 ## Gif
 
 
-
-
-# Setup
-
-## Running globeART
-
-Install dependencies 
-```sh
-npm install
-```
-
-Run funai repo at port 3000
-
-```sh
-npm start
-```
-
-
 ### Dependencies
 
 * react
@@ -60,7 +42,6 @@ npm start
 * react-icons
 
 
-# Hardhat Setup
 
 ## Basic Sample Hardhat Project
 
@@ -79,6 +60,7 @@ npx hardhat help
 ```
 # globeART Project SetUp
 
+
 ## To start a local network:
 
 ```shell
@@ -91,13 +73,14 @@ npx hardhat node
 npx hardhat --network localhost run scripts/deploy.js
 ```
 
-## To start react web app:
+## Running globeART
 
 ```shell
 cd frontend
 npm install
 npm run start:frondend
 ```
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
