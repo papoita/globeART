@@ -5,7 +5,7 @@ import { IconContext } from "react-icons";
 
 const Aside = ({ account, connect, disconnect, isActive }) => {
   return (
-    <Card className="rounded-0 " border="primary" style={{ height: 800 }}>
+    <Card className="rounded-0 vh-100" border="primary" >
       <Card.Img className="rounded-0" variant="top" src="./samplenft.png" />
       <Card.Body variant="dark">
         <Card.Img src="./logonamesm.png"></Card.Img>
