@@ -1,8 +1,7 @@
 [build]
-  base = "frontend/"
   command = "echo 'hello world'"
 
 [context."feature/demo-branch"]
-
-  command = "npm start:frontend"
+  base = "frontend/"
+  command = "npm run start:frontend"
   
