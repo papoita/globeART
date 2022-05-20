@@ -11,7 +11,7 @@ const SimpleGlobe = () => {
     globeEl.current.controls().autoRotate = true;
     globeEl.current.controls().autoRotateSpeed = 0.8;
 
-    const MAP_CENTER = { lat: 7, lng: -73, altitude: 1.5 };
+    const MAP_CENTER = { lat: 7, lng: -73, altitude: 2.5 };
     globeEl.current.pointOfView(MAP_CENTER, 0);
   }, [globeEl]);
 
@@ -38,12 +38,3 @@ const SimpleGlobe = () => {
 };
 
 export default SimpleGlobe;
-
-{
-  /* 
-  link is preapended localhost... it breaks
-  words with 2 names get a % in between -fix with functions method
-    
-      onLabelClick={(d) => navigate(`https://ipfs.io/ipfs/QmVRmLrxozaHYAUW9T85YtGQHgYdg4ensYmCayHw9Yud6K/${d.name.toLowerCase()}.png`)}
-    */
-}
