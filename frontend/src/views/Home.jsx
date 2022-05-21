@@ -29,7 +29,9 @@ function Home({
     
   return (
     <>
+      <div className="flex justify-center">
       < Globe handleShowModal={ handleShowModal } />
+      </div>
       {showModal && < Modal handleHideModal={ handleHideModal } nft={ nft }/>}
     </>
 
