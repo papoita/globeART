@@ -1,18 +1,19 @@
-import Navbar from "../components/Navbar";
+import places from "../components/places";
 
 export default function UserCollection({ purchases }) {
   return (
     <>
-        <div className="flex flex-col justify-center items-center">
-          <div>
-            <h2 className="text-4xl my-5">Trotter Collection</h2>
-          </div>
+      <div className="flex flex-col justify-center items-center pt-24">
+        <div>
+          <h2 className="text-4xl my-5">My Collection</h2>
+        </div>
 
-          {purchases.length > 0 ? (
-            purchases.map((item) => (
-              <div className="card card-compact w-96 bg-base-100 shadow-xl">
+        <div className="container container max-w-l m-auto flex flex-wrap flex-col md:flex-row justify-center">
+          {places.length > 0 ? (
+            places.map((item) => (
+              <div className="card card-compact bg-base-100 shadow-xl m-5 w-72">
                 <figure>
-                  <img src={item.image} alt={item.collection} />
+                  <img src={`./images/${item.name}.png`} alt={item.name} />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{item.name}</h2>
@@ -22,13 +23,17 @@ export default function UserCollection({ purchases }) {
             ))
           ) : (
             <div className="flex flex-col my-3">
-              <p className="text-2xl"> You don't have any items in your collection 😱 </p>
+              <p className="text-2xl">
+                {" "}
+                You don't have any items in your collection 😱{" "}
+              </p>
               <a href="/" className="btn btn-primary mt-5 self-center">
-                Back
+                GoBack
               </a>
             </div>
           )}
         </div>
+      </div>
     </>
   );
 }
