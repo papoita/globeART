@@ -1,5 +1,3 @@
-import places from "../components/places";
-
 export default function UserCollection({ purchases }) {
   return (
     <>
@@ -9,8 +7,8 @@ export default function UserCollection({ purchases }) {
         </div>
 
         <div className="container container max-w-l m-auto flex flex-wrap flex-col md:flex-row justify-center">
-          {places.length > 0 ? (
-            places.map((item) => (
+          {purchases.length > 0 ? (
+            purchases.map((item) => (
               <div className="card card-compact bg-base-100 shadow-xl m-5 w-72">
                 <figure>
                   <img src={`./images/${item.name}.png`} alt={item.name} />
@@ -18,6 +16,7 @@ export default function UserCollection({ purchases }) {
                 <div className="card-body">
                   <h2 className="card-title">{item.name}</h2>
                   <p>Purchased for: 1 ETH </p>
+                  <p>Date purchased:  </p>
                 </div>
               </div>
             ))
@@ -28,7 +27,7 @@ export default function UserCollection({ purchases }) {
                 You don't have any items in your collection 😱{" "}
               </p>
               <a href="/" className="btn btn-primary mt-5 self-center">
-                GoBack
+                Go Back
               </a>
             </div>
           )}
