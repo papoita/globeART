@@ -51,7 +51,7 @@ function Gallery({ web3Handler, items, account, loading }) {
       </Button>
       <Collapse in={open}>
         <div id="collapse-text">
-          <CardGroup className=" mx-auto ">
+          <CardGroup className=" mx-auto mb-5">
             <Container>
               <Row>
                 <Row xs={5} className="g-4">
