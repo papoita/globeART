@@ -27,9 +27,11 @@ function Homepage({
           </SizeMe>
         </Col>
 
-        <Col sm={2} className="d-flex align-items-center justify-content-center " style={{ paddingLeft: "0px" }}>
+        <Col
+          sm={2}
+          className="d-flex justify-content-center "
+          style={{ paddingLeft: "0px" }}>
           <Aside
-          
             account={account}
             connect={connect}
             disconnect={disconnect}
