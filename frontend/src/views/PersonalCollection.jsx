@@ -9,11 +9,7 @@ function PersonalCollection({ purchases, items }) {
   const myCollection = [];
 
   for (let item of items) {
-    if (
-      ["Vancouver", "Honolulu", "Tokyo", "Ottawa", "Toronto", "Paris"].includes(
-        item.name
-      )
-    ) {
+    if (["Vancouver", "Tokyo", "Ottawa", "Toronto"].includes(item.name)) {
       myCollection.push(item);
     }
   }
