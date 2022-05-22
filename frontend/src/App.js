@@ -17,8 +17,15 @@ import useGeolocation from "./hooks/useGeolocation";
 import useMetaMask from "./hooks/useMetamask";
 
 function App() {
-  const { items, isLoading, web3Handler, buyStoreItem, purchases, account } =
-    useWeb3();
+  const {
+    items,
+    isLoading,
+    web3Handler,
+    buyStoreItem,
+    purchases,
+    account,
+    success,
+  } = useWeb3();
   const { location } = useGeolocation();
   const { connect, isActive, disconnect, isDisable } = useMetaMask();
 
@@ -75,6 +82,7 @@ function App() {
               web3Handler={web3Handler}
               buyStoreItem={buyStoreItem}
               purchases={purchases}
+              success={success}
             />
           }
         />

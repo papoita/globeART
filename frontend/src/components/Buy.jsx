@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 
-const Buy = ({ buyStoreItem, item, purchases }) => {
+const Buy = ({ buyStoreItem, item, purchases, success }) => {
   let purchased = false;
 
   for (const purchase of purchases) {
@@ -9,6 +9,7 @@ const Buy = ({ buyStoreItem, item, purchases }) => {
       purchased = true;
     }
   }
+  console.log("Success?", success);
 
   return (
     <Card
@@ -23,7 +24,7 @@ const Buy = ({ buyStoreItem, item, purchases }) => {
           created, expect amazing graphics and contrasting colors to match that
           adrenaline rush of traveling the world again!
         </Card.Text>
-        {purchased ? (
+        {purchased || success ? (
           <div>Already purchased</div>
         ) : (
           <Button

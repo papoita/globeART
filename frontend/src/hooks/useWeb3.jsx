@@ -14,6 +14,7 @@ export default function useWeb3() {
   const [items, setItems] = useState([]);
   const [purchases, setPurchases] = useState([]);
   const [isLoading, setIsLoading] = useState({});
+  const [success, setSuccess] = useState(false);
 
   const loadContracts = async (signer) => {
     // Get deployed copies of contracts
@@ -96,9 +97,13 @@ export default function useWeb3() {
       const price = ethers.utils.parseEther(item.price);
 
       await loadContracts(signer);
-      await (await store.purchaseItem(item.itemId, { value: price })).wait();
+      await (await store.purchaseItem(item.itemId, { value: price }))
+        .wait()
+        .then(alert("Sucessfully Bought the NFT"))
+        .then(setSuccess(true));
     } catch (error) {
       console.log("Error", error);
+      alert("Unable to complete the transaction at the moment");
     }
   };
 
@@ -148,5 +153,6 @@ export default function useWeb3() {
     isLoading,
     web3Handler,
     buyStoreItem,
+    success,
   };
 }

@@ -10,6 +10,7 @@ export default function AvailableNFT({
   web3Handler,
   buyStoreItem,
   purchases,
+  success,
 }) {
   let availableNft;
 
@@ -58,6 +59,7 @@ export default function AvailableNFT({
                 buyStoreItem={buyStoreItem}
                 item={availableNft}
                 purchases={purchases}
+                success={success}
               />
             </Col>
           </Row>
