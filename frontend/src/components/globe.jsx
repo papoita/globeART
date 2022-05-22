@@ -17,7 +17,8 @@ const SimpleGlobe = () => {
 
   return (
     <ReactGlobe
-    style={{ height: 900 }}
+    className="vh-100"
+    
       ref={globeEl}
       showAtmosphere={true}
       atmosphereAltitude={0.2}
