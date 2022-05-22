@@ -7,7 +7,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="navbar bg-transparent">
+      <div className="navbar bg-transparent fixed">
         <div className="flex-1">
           <a href="/" className="btn btn-ghost normal-case text-xl">
             <img className="m-2" src="pig-logo.png"></img>

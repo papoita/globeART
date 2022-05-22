@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Switch,
+} from "react-router-dom";
 
+import Navbar from "./components/Navbar";
 import Home from "./views/Home";
-import UserCollection from "./views/UserCollection"
+import UserCollection from "./views/UserCollection";
 
 import useWeb3 from "./hooks/useWeb3";
 import useGeolocation from "./hooks/useGeolocation";
 
 export default function App() {
-  const {
-    items,
-    isLoading,
-    web3Handler,
-    buyStoreItem,
-    purchases,
-  } = useWeb3();
+  const { items, isLoading, web3Handler, buyStoreItem, purchases } = useWeb3();
   const { location } = useGeolocation();
 
   useEffect(() => {
@@ -26,21 +26,16 @@ export default function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home/>
-          }
-        />
-        <Route
-          path="/mycollection"
-          element={
-            <UserCollection purchases={ purchases }/>
-          }
-        />
-      </Routes>
+      <div className="bg-black w-full min-h-screen">
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route
+            path="/mycollection"
+            element={<UserCollection purchases={purchases} />}
+          />
+        </Routes>
+      </div>
     </Router>
   );
-  
 }

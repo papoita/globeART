@@ -17,6 +17,7 @@ const Globe = ({ handleShowModal }) => {
         bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
         // globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
         backgroundColor="rgba(0,0,0,0)"
+        width={660}
         labelsData={places}
         labelLat={(d) => d.lat}
         labelLng={(d) => d.lng}
