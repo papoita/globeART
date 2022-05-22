@@ -15,7 +15,7 @@ function Navigation() {
           as={Link}
           to="/">
           {" "}
-          <Image bg="primary" style={{ width: "5rem" }} src="./logosm.png" />
+          <Image bg="primary" style={{ width: "4rem" }} src="./logosm.png" />
           globeART
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
