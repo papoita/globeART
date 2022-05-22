@@ -1,11 +1,11 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Row } from "react-bootstrap";
 import { FaWallet } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
 const Aside = ({ account, connect, disconnect, isActive }) => {
   return (
-    <Card className="rounded-0 " border="primary" style={{ height: 800 }}>
+    <Card className="rounded-0 " border="primary">
       <Card.Img className="rounded-0" variant="top" src="./samplenft.png" />
       <Card.Body variant="dark">
         <Card.Img src="./logonamesm.png"></Card.Img>
@@ -30,13 +30,15 @@ const Aside = ({ account, connect, disconnect, isActive }) => {
             <FaWallet />
           </IconContext.Provider>
         </Card.Text>
-        <Button
-          variant="light"
-          className="mt-2 d-grid gap-2 mb-2 text-center align-middle"
-          style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}
-          onClick={isActive ? disconnect : connect}>
-          {isActive ? "Disconnect MetaMask" : "Connect to MetaMask"}
-        </Button>
+        <Row className="m-2 justify-content-center">
+          <Button
+            variant="light"
+            className="mt-2 d-grid gap-2 mb-2 align-middle"
+            style={{ background: "linear-gradient(#B2FBED, #9198e5)" }}
+            onClick={isActive ? disconnect : connect}>
+            {isActive ? "Disconnect MetaMask" : "Connect to MetaMask"}
+          </Button>
+        </Row>
       </Card.Body>
     </Card>
   );
