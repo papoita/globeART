@@ -62,7 +62,7 @@ async function mintThenList(URI, collection) {
   const nft = new ethers.Contract(nftAddress.address, NFT.abi, deployer);
   const store = new ethers.Contract(storeAddress.address, Store.abi, deployer);
 
-  const price = 1;
+  const price = 0.005;
   // mint nft
   await (await nft.connect(deployer).createGlobeArtNFT(uri)).wait();
   // get tokenId of new nft
