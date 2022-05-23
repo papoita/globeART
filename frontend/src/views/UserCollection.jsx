@@ -6,7 +6,7 @@ export default function UserCollection({ purchases }) {
           <h2 className="text-4xl my-5">My Collection</h2>
         </div>
 
-        <div className="container container max-w-l m-auto flex flex-wrap flex-col md:flex-row justify-center">
+        <div className="container max-w-l m-auto flex flex-wrap flex-col md:flex-row justify-center">
           {purchases.length > 0 ? (
             purchases.map((item) => (
               <div className="card card-compact bg-base-100 shadow-xl m-5 w-72">
