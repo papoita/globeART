@@ -1,20 +1,20 @@
 export default function Footer() {
   return (
-    <footer class="footer items-center p-4 bg-white text-neutral-content">
+    <footer class="footer items-center p-4 bg-white m-3 w-auto rounded-lg text-neutral-content">
       <div class="grid-flow-col gap-4">
         <a
           href="https://github.com/mjstaus/Trotter"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src="GitHub-Mark-32px.png"></img>
+          <img className="transition hover:-translate-y-1 hover:scale-110 ease-in-out duration-200" src="GitHub-Mark-32px.png"></img>
         </a>
       </div>
       <div class="items-center grid-flow-col justify-self-end">
         <a href="/">
-          <img className="m-2" src="pig-dark.png"></img>
+          <img className="transition ease-in-out duration-200 hover:scale-110" src="pig-dark.png"></img>
         </a>
-        <p>Trotter 2022 - Made in Vancouver, Canada</p>
+        <p>Trotter 2022</p>
       </div>
     </footer>
   );
