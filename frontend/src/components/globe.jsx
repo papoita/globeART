@@ -3,7 +3,7 @@ import ReactGlobe from "react-globe.gl";
 import places from "./places";
 import { useNavigate } from "react-router-dom";
 
-const SimpleGlobe = () => {
+const SimpleGlobe = (width) => {
   const globeEl = useRef();
   const navigate = useNavigate();
 
@@ -17,8 +17,7 @@ const SimpleGlobe = () => {
 
   return (
     <ReactGlobe
-    className="vh-100"
-    
+      className="vh-100"
       ref={globeEl}
       showAtmosphere={true}
       atmosphereAltitude={0.2}
@@ -33,7 +32,8 @@ const SimpleGlobe = () => {
       labelDotRadius={(d) => 0.8 + d.size}
       labelColor={() => "rgba(237,0,248, 0.95)"}
       labelResolution={2}
-      onGlobeClick={()=> navigate("/gallery")}
+      onGlobeClick={() => navigate("/gallery")}
+      width={width.width}
     />
   );
 };

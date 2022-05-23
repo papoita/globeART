@@ -20,11 +20,10 @@ function Homepage({
       <Navigation account={account} web3Handler={web3Handler} />
       <Row>
         <Col sm={10} style={{ paddingRight: "0px" }}>
-          <SizeMe>
-            {({ size: { width } }) => (
-              <SimpleGlobe width={width} height={width / (4 / 3)} />
-            )}
-          </SizeMe>
+          <SizeMe
+            monitorHeight
+            render={({ size: { width } }) => <SimpleGlobe width={width} />}
+          />
         </Col>
 
         <Col
