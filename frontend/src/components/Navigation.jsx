@@ -6,7 +6,12 @@ function Navigation() {
   const { account } = useMetaMask();
 
   return (
-    <Navbar bg="primary" variant="dark" expand="lg" className="sticky-top">
+    <Navbar
+      bg="primary"
+      variant="dark"
+      expand="lg"
+      className="sticky-top"
+      style={{ height: "5rem" }}>
       <Container>
         <Navbar.Brand
           className="fs-3 fw-bold"
