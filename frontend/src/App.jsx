@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Home from "./views/Home";
 import UserCollection from "./views/UserCollection";
 
@@ -26,7 +27,7 @@ export default function App() {
 
   return (
     <Router>
-      <div className="bg-black w-full min-h-screen">
+      <div className="bg-black w-full min-h-screen overflow-hidden">
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -35,6 +36,7 @@ export default function App() {
             element={<UserCollection purchases={purchases} />}
           />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
