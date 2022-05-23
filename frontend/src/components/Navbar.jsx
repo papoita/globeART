@@ -9,8 +9,11 @@ export default function Navbar() {
     <>
       <div className="navbar bg-transparent flex justify-between">
         <div className="ml-3">
-          <a href="/" className="transition ease-in-out duration-300 hover:scale-105 normal-case text-xl
-          flex justify-start items-center">
+          <a
+            href="/"
+            className="transition ease-in-out duration-300 hover:scale-105 normal-case text-xl
+          flex justify-start items-center"
+          >
             <img className="m-2" src="pig-logo.png"></img>
             <p className="font-shrikhand text-3xl text-slate-100">Trotter</p>
           </a>
@@ -27,13 +30,14 @@ export default function Navbar() {
         {account && (
           <div className="flex-none m-4">
             <div className="dropdown dropdown-end">
-              
-              <button className="flex justify-center mr-3 transition ease-in-out duration-300 hover:scale-110">
-                <Jdenticon size="56" value={account} /> 
-              </button>        
+              <button className="btn btn-circle btn-lg bg-transparent outline-none flex justify-center mr-3">
+                <div className="brightness-200 saturate-50">
+                  <Jdenticon size="50" value={account} />
+                </div>
+              </button>
               <ul
                 tabIndex="0"
-                className="menu mt-3 dropdown-content p-2 rounded-box w-52 menu-normal bg-gradient-to-r from-white  to-blue-500"
+                className="menu mt-3 dropdown-content p-2 rounded-box w-52 menu-normal bg-gradient-to-r from-green-300  to-blue-500 saturation-50"
               >
                 <li>
                   <a
@@ -42,14 +46,25 @@ export default function Navbar() {
                     rel="noopener noreferrer"
                     className="justify-between inline-block text-black"
                   >
-                    Connected: <strong>{account.slice(0, 5) + "..." + account.slice(38, 42)}</strong>
+                    Connected:{" "}
+                    <strong>
+                      {account.slice(0, 5) + "..." + account.slice(38, 42)}
+                    </strong>
                   </a>
                 </li>
                 <li>
-                  <a href="/mycollection" className="justify-between text-black">My Collection</a>
+                  <a
+                    href="/mycollection"
+                    className="justify-between text-black"
+                  >
+                    My Collection
+                  </a>
                 </li>
                 <li>
-                  <button className="text-black" onClick={() => disconnectWallet()}>
+                  <button
+                    className="text-black"
+                    onClick={() => disconnectWallet()}
+                  >
                     Disconnect Wallet
                   </button>
                 </li>
