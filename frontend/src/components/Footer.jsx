@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer class="footer items-center p-4 bg-white m-3 w-auto rounded-lg text-neutral-content">
+    <footer class="footer items-center p-4 m-3 w-auto rounded-lg text-neutral-content bg-gradient-to-r from-white  to-purple-400">
       <div class="grid-flow-col gap-4">
         <a
           href="https://github.com/mjstaus/Trotter"
@@ -14,7 +14,7 @@ export default function Footer() {
         <a href="/">
           <img className="transition ease-in-out duration-200 hover:scale-110" src="pig-dark.png"></img>
         </a>
-        <p>Trotter 2022</p>
+        <p className="text-black">Trotter 2022</p>
       </div>
     </footer>
   );
