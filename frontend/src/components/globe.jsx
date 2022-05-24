@@ -1,18 +1,36 @@
+import { useState, useEffect } from "react";
 import ReactGlobe from "react-globe.gl";
+import { getMarkers } from "../helpers/getMarkers";
 
-const Globe = ({ handleShowModal, markers }) => {
+const Globe = ({ handleShowModal }) => {
 
-  console.log("GLOBE- Markers", markers);
+  let markers;
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    (async function asyncHandler() {
+      try {
+        markers = await getMarkers();
+        console.log("Globe - MARKERS", markers);
+        if (markers) setIsLoaded(true);
+      } catch (error) {
+        console.log(error);
+        setIsLoaded(false);
+      }
+    })();
+  }, [isLoaded]);
   
-  const props = {
-    setFocus: {
-      "New York": [40.73061, -73.935242],
-    },
-  };
+  
   return (
     <>
+    {!isLoaded &&
+      // <progress class="progress progress-primary w-56"></progress>
+      <img src="pig-spinner.png" className="animate-spin-slow"></img>
+      }
+    {isLoaded && markers && <h1>Marker 1 Name: {markers[0].name}</h1>}
+    {/* {isLoaded &&
         <ReactGlobe
-          {...props}
           globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
           bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
           // globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
@@ -26,7 +44,8 @@ const Globe = ({ handleShowModal, markers }) => {
           labelColor={(d) => d.color}
           labelResolution={2}
           onLabelClick={(d) => handleShowModal(d)}
-        />     
+        /> 
+    }     */}
     </>
   );
 
