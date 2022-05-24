@@ -10,7 +10,7 @@ export default function Globe({ handleShowModal, markers }) {
   useEffect(() => {
     globeEl.current.controls().enableZoom = false;
     globeEl.current.controls().autoRotate = true;
-    globeEl.current.controls().autoRotateSpeed = 0.4;
+    globeEl.current.controls().autoRotateSpeed = 0.2;
   }, []);
 
   return (
