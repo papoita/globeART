@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="navbar bg-transparent flex justify-between">
+      <div className="navbar bg-transparent flex justify-between absolute">
         <div className="ml-3">
           <a
             href="/"
