@@ -1,9 +1,6 @@
-// import { Link } from "react-router-dom";
-import { useState } from "react";
 import Jdenticon from "react-jdenticon";
 
-export default function Navbar() {
-   const [account, setAccount ] = useState(null);
+export default function Navbar({account, setAccount}) {
 
   async function connectWallet() {
     const results = await window.ethereum.request({
