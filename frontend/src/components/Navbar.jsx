@@ -37,14 +37,14 @@ export default function Navbar() {
               </button>
               <ul
                 tabIndex="0"
-                className="menu mt-3 dropdown-content p-2 rounded-box w-52 menu-normal bg-gradient-to-r from-green-300  to-blue-500 saturation-50"
+                className="menu mt-3 dropdown-content p-2 rounded-box w-52 menu-normal bg-gradient-to-r from-cyan-500 to-blue-200"
               >
                 <li>
                   <a
                     href={`https://etherscan.io/address/${account}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="justify-between inline-block text-black"
+                    className="justify-between inline-block text-black hover:bg-white hover:bg-opacity-20"
                   >
                     Connected:{" "}
                     <strong>
@@ -55,14 +55,14 @@ export default function Navbar() {
                 <li>
                   <a
                     href="/mycollection"
-                    className="justify-between text-black"
+                    className="justify-between text-black hover:bg-white hover:bg-opacity-20"
                   >
                     My Collection
                   </a>
                 </li>
                 <li>
                   <button
-                    className="text-black"
+                    className="text-black hover:bg-white hover:bg-opacity-20"
                     onClick={() => disconnectWallet()}
                   >
                     Disconnect Wallet
