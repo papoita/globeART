@@ -10,7 +10,7 @@ export default function Footer() {
           <img className="transition hover:-translate-y-1 hover:scale-110 ease-in-out duration-200" src="GitHub-Mark-32px.png"></img>
         </a>
       </div>
-      <div class="items-center grid-flow-col justify-self-end">
+      <div className="items-center grid-flow-col justify-self-end">
         <a href="/">
           <img className="transition ease-in-out duration-200 hover:scale-110" src="pig-dark.png"></img>
         </a>
