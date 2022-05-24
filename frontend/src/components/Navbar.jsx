@@ -1,6 +1,6 @@
 // import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-// import { connectWallet, disconnectWallet } from "../helpers/walletHandler";
+import { useState } from "react";
+import Jdenticon from "react-jdenticon";
 
 export default function Navbar() {
    const [account, setAccount ] = useState(null);
@@ -22,9 +22,13 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="navbar bg-transparent">
-        <div className="flex-1">
-          <a href="/" className="btn btn-ghost normal-case text-xl">
+      <div className="navbar bg-transparent flex justify-between">
+        <div className="ml-3">
+          <a
+            href="/"
+            className="transition ease-in-out duration-300 hover:scale-105 normal-case text-xl
+          flex justify-start items-center"
+          >
             <img className="m-2" src="pig-logo.png"></img>
             <p className="font-shrikhand text-3xl text-slate-100">Trotter</p>
           </a>
@@ -39,36 +43,43 @@ export default function Navbar() {
         )}
 
         {account && (
-          <div className="flex-none">
+          <div className="flex-none m-4">
             <div className="dropdown dropdown-end">
-              <label
-                tabIndex="0"
-                className="btn btn-ghost btn-circle avatar mr-3"
-              >
-                <div className="w-20 rounded-full">
-                  <img src="https://doodleipsum.com/500/avatar-2" />
+              <button className="btn btn-circle btn-lg bg-transparent outline-none flex justify-center mr-3">
+                <div className="brightness-200 saturate-50">
+                  <Jdenticon size="50" value={account} />
                 </div>
-              </label>
+              </button>
               <ul
                 tabIndex="0"
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu mt-3 dropdown-content p-2 rounded-box w-52 menu-normal bg-gradient-to-r from-cyan-500 to-blue-200"
               >
                 <li>
                   <a
                     href={`https://etherscan.io/address/${account}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="justify-between inline-block"
+                    className="justify-between inline-block text-black hover:bg-white hover:bg-opacity-20"
                   >
-                    Connected as:
-                    <div>{account.slice(0, 5) + "..." + account.slice(38, 42)}</div>
+                    Connected:{" "}
+                    <strong>
+                      {account.slice(0, 5) + "..." + account.slice(38, 42)}
+                    </strong>
                   </a>
                 </li>
                 <li>
-                  <a href="/mycollection" className="justify-between">My Collection</a>
+                  <a
+                    href="/mycollection"
+                    className="justify-between text-black hover:bg-white hover:bg-opacity-20"
+                  >
+                    My Collection
+                  </a>
                 </li>
                 <li>
-                  <button onClick={() => disconnectWallet()}>
+                  <button
+                    className="text-black hover:bg-white hover:bg-opacity-20"
+                    onClick={() => disconnectWallet()}
+                  >
                     Disconnect Wallet
                   </button>
                 </li>
