@@ -1,14 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ReactGlobe from "react-globe.gl";
 import { getMarkers } from "../helpers/getMarkers";
 
 const Globe = ({ handleShowModal }) => {
-
   let markers;
+  const globeEl = useRef();
 
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    globeEl.current.controls().enableZoom = false;
+    globeEl.current.controls().autoRotate = true;
+    globeEl.current.controls().autoRotateSpeed = 0.4;
+    
     (async function asyncHandler() {
       try {
         markers = await getMarkers();
@@ -19,18 +23,19 @@ const Globe = ({ handleShowModal }) => {
         setIsLoaded(false);
       }
     })();
-  }, [isLoaded]);
-  
-  
+  }, [isLoaded, globeEl]);
+
   return (
     <>
-    {!isLoaded &&
-      // <progress class="progress progress-primary w-56"></progress>
-      <img src="pig-spinner.png" className="animate-spin-slow"></img>
-      }
-    {isLoaded && markers && <h1>Marker 1 Name: {markers[0].name}</h1>}
-    {/* {isLoaded &&
+      {/* {!isLoaded && (
+        <div className="flex justify-center items-center h-screen">
+          <img src="pig-spinner.png" className="animate-spin-slow"></img>
+        </div>
+      )} */}
+      {/* {isLoaded && markers && <h1>Marker 1 Name: {markers[0].name}</h1>} */}
+      <div className="flex justify-center h-screen">
         <ReactGlobe
+          ref={globeEl}
           globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
           bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
           // globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
@@ -44,8 +49,9 @@ const Globe = ({ handleShowModal }) => {
           labelColor={(d) => d.color}
           labelResolution={2}
           onLabelClick={(d) => handleShowModal(d)}
-        /> 
-    }     */}
+          width={660}
+        />
+      </div>
     </>
   );
 
