@@ -2,14 +2,14 @@ import React from "react";
 
 export default function Modal({ handleHideModal, nft}) {
 
-  console.log(nft)
+  console.log("MODAL NFT:", nft)
 
   return (
     <>
       <div className="fixed inset-0 h-full z-40 flex justify-center items-center">
         <div className="card w-96 bg-base-100 shadow-xl image-full">
           <figure>
-            <img src={`./images/${nft.name}.png`} alt={nft.name} />
+            <img src={nft.image} alt={nft.name} />
           </figure>
           <div className="card-body flex flex-col justify-between">
             <h2 className="card-title">{nft.name}</h2>
