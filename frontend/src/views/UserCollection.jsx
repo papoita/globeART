@@ -17,7 +17,7 @@ export default function UserCollection({ account}) {
         setIsLoaded(false);
       }
     })();
-  }, []);
+  }, [account, setIsLoaded]);
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function UserCollection({ account}) {
 
         {!isLoaded && (
           <div className="mt-48">
-            <img src="pig-spinner.png" className="animate-spin-slow"></img>
+            <img src="pig-spinner.png" className="animate-spin-slow" alt="Trotter-logo-spinner"></img>
           </div>
         )}
 

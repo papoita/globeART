@@ -7,12 +7,12 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img className="transition hover:-translate-y-1 hover:scale-110 ease-in-out duration-200" src="GitHub-Mark-32px.png"></img>
+          <img className="transition hover:-translate-y-1 hover:scale-110 ease-in-out duration-200" src="GitHub-Mark-32px.png" alt="Github-icon"></img>
         </a>
       </div>
       <div className="items-center grid-flow-col justify-self-end">
         <a href="/">
-          <img className="transition ease-in-out duration-200 hover:scale-110" src="pig-dark.png"></img>
+          <img className="transition ease-in-out duration-200 hover:scale-110" src="pig-dark.png" alt="Trotter-logo"></img>
         </a>
         <p className="text-black">Trotter 2022</p>
       </div>
