@@ -1,40 +1,55 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from "react";
 
 import "../App.css";
 import Globe from "../components/globe";
-import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 
-function Home({
-  account,
-  web3Handler,
-  location,
-  connect,
-  disconnect,
-  isActive,
-}) {
+import { getMarkers } from "../helpers/getMarkers";
 
-  // console.log(location);
 
+function Home() {
+  
   const [showModal, setShowModal] = useState(false);
   const [nft, setNft] = useState({});
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const markers = useRef(null);
+
+  useEffect(() => {
+    (async function asyncHandler() {
+      try {
+        markers.current = await getMarkers();
+        console.log("HOME - MARKERS", markers);
+        if (markers) setIsLoaded(true);
+      } catch (error) {
+        console.log(error);
+        setIsLoaded(false);
+      }
+    })();
+  }, []);
+
 
   const handleShowModal = (d) => {
     setShowModal(true);
-    setNft(d)
+    setNft(d);
   };
   const handleHideModal = () => {
     setShowModal(false);
   };
-    
+
   return (
     <>
-      <div className="flex justify-center">
-      < Globe handleShowModal={ handleShowModal } />
-      </div>
-      {showModal && < Modal handleHideModal={ handleHideModal } nft={ nft }/>}
+      {!isLoaded && (
+        <div className="flex justify-center items-center h-screen">
+          <img src="pig-spinner.png" className="animate-spin-slow"></img>
+        </div>
+      )}
+  
+      {isLoaded &&
+        <Globe handleShowModal={handleShowModal} markers={markers.current}/>
+      }
+      {showModal && <Modal handleHideModal={handleHideModal} nft={nft} />}
     </>
-
   );
 }
 

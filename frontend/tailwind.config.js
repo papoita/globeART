@@ -10,6 +10,9 @@ module.exports = {
       fontFamily: {
         'shrikhand': ['shrikhand', 'cursive']
       },
+      animation: {
+        'spin-slow': 'spin 2.3s linear infinite',
+      }
     },
   },
   plugins: [require("daisyui")],

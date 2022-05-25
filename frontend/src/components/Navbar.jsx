@@ -1,13 +1,25 @@
-// import { Link } from "react-router-dom";
 import Jdenticon from "react-jdenticon";
-import useWeb3 from "../hooks/useWeb3";
 
-export default function Navbar() {
-  const { account, connectWallet, disconnectWallet } = useWeb3();
+export default function Navbar({account, setAccount}) {
+
+  async function connectWallet() {
+    const results = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    setAccount(results[0]);
+    
+    window.ethereum.on("accountsChanged", async function (accounts) {
+      await connectWallet();
+    });
+  };
+
+  function disconnectWallet() {
+    setAccount(null);
+  };
 
   return (
     <>
-      <div className="navbar bg-transparent flex justify-between">
+      <div className="navbar bg-transparent flex justify-between absolute">
         <div className="ml-3">
           <a
             href="/"
