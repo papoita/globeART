@@ -7,7 +7,8 @@ export default async function buyStoreItem(item) {
     const signer = provider.getSigner();
     const price = ethers.utils.parseEther(item.price);
 
-    const store = await loadContracts(signer);
+    const contracts = await loadContracts(signer);
+    const store = contracts.store
     await (await store.purchaseItem(item.itemId, { value: price })).wait();
   } catch (error) {
     console.log("Error", error);
