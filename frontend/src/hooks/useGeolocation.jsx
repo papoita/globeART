@@ -12,7 +12,7 @@ export default function useGeolocation() {
   const onSuccess = (location) => {
     let lat = location.coords.latitude;
     let lon = location.coords.longitude;
-    let apiURL = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
+    let apiURL = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
 
     axios
       .get(apiURL)
