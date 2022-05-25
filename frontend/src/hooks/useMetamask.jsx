@@ -10,15 +10,6 @@ export const MetaMaskProvider = ({ children }) => {
     useWeb3React();
 
   const [isActive, setIsActive] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Initial Loading
-  // useEffect(() => {
-  //   connect().then((val) => {
-  //     setIsLoading(false);
-  //   });
-  //   // eslint-disable-next-line
-  // }, []);
 
   const handleIsActive = useCallback(() => {
     console.log("App is connected with Metamask", active);
@@ -50,9 +41,9 @@ export const MetaMaskProvider = ({ children }) => {
   };
 
   const values = useMemo(
-    () => ({ isActive, isLoading, account, connect, disconnect }),
+    () => ({ isActive, account, connect, disconnect }),
     // eslint-disable-next-line
-    [isActive, isLoading, account]
+    [isActive, account]
   );
 
   return (
