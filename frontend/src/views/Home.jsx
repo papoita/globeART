@@ -4,6 +4,7 @@ import "../App.css";
 import Globe from "../components/globe";
 import Modal from "../components/Modal";
 
+import useLoading from "../hooks/useLoading"
 import { getMarkers } from "../helpers/getMarkers";
 
 
@@ -11,7 +12,8 @@ function Home() {
   
   const [showModal, setShowModal] = useState(false);
   const [nft, setNft] = useState({});
-  const [isLoaded, setIsLoaded] = useState(false);
+
+  const { isLoaded, setIsLoaded } = useLoading();
 
   const markers = useRef(null);
 
@@ -19,7 +21,6 @@ function Home() {
     (async function asyncHandler() {
       try {
         markers.current = await getMarkers();
-        console.log("HOME - MARKERS", markers);
         if (markers) setIsLoaded(true);
       } catch (error) {
         console.log(error);
