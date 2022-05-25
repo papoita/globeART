@@ -21,19 +21,19 @@ export default function UserCollection({ account}) {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center pt-24">
+      <div className="flex flex-col items-center pt-24 h-screen justify-start">
         <div>
-          <h2 className="text-4xl my-5">My Collection</h2>
+          <h2 className="text-4xl text-white my-5">My Collection</h2>
         </div>
 
         {!isLoaded && (
-          <div className="flex justify-center items-center h-screen">
+          <div className="mt-48">
             <img src="pig-spinner.png" className="animate-spin-slow"></img>
           </div>
         )}
 
         {isLoaded && (
-          <div className="container max-w-l m-auto flex flex-wrap flex-col md:flex-row justify-center">
+          <div className="container max-w-l m-auto flex flex-wrap flex-col md:flex-row justify-center items-center">
             {purchases.current.length > 0 ? (
               purchases.current.map((item, idx) => (
                 <div key={idx} className="card card-compact bg-base-100 shadow-xl m-5 w-72">
