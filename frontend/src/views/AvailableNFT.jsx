@@ -1,7 +1,10 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
+
 import Navigation from "../components/Navigation";
 import Buy from "../components/Buy";
 import Footer from "../components/Footer";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function AvailableNFT({
   location,
@@ -12,13 +15,18 @@ export default function AvailableNFT({
   purchases,
   success,
 }) {
-  let availableNft;
-
-  for (const item of items) {
-    if (item.name === location.city && item.country === location.country) {
-      availableNft = item;
+  
+  const [availableNFT, setAvailableNFT]= useState(null)
+  
+  useEffect(()=>{
+    for (const item of items) {
+      if (item.name === location.city && item.country === location.country) {
+        setAvailableNFT(item);
+      }
     }
-  }
+  }, [items, location.city, location.country])
+
+  
 
   return (
     <>
@@ -27,12 +35,12 @@ export default function AvailableNFT({
         {location.allowLocation ? (
           <Row>
             <Col lg={9}>
-              {availableNft ? (
+              {availableNFT ? (
                 <Card className="m-4 text-center">
                   <Card.Img
                     style={{ height: 580 }}
                     variant="top"
-                    src={`../images/${availableNft.name
+                    src={`../images/${availableNFT.name
                       .split(" ")
                       .join("")}.png`}
                   />
@@ -40,10 +48,10 @@ export default function AvailableNFT({
                     style={{
                       background: "linear-gradient(#B2FBED, #9198e5)",
                     }}>
-                    <Card.Title>{availableNft.collection}</Card.Title>
+                    <Card.Title>{availableNFT.collection}</Card.Title>
                     <Card.Text>
                       <small bg="primary">
-                        Price: {availableNft.price} ETH
+                        Price: {availableNFT.price} ETH
                       </small>
                     </Card.Text>
                   </Card.Body>
@@ -57,7 +65,7 @@ export default function AvailableNFT({
             <Col lg={3} className="fw-bold m-4 d-grid gap-2 col-3 mx-auto ">
               <Buy
                 buyStoreItem={buyStoreItem}
-                item={availableNft}
+                item={availableNFT}
                 purchases={purchases}
                 success={success}
               />
