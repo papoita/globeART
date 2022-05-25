@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
-import { loadContracts } from './loadContracts';
+import loadContracts from './loadContracts';
 
-export const buyStoreItem = async (item) => {
+export default async function buyStoreItem(item) {
   try {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();

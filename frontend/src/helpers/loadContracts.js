@@ -1,12 +1,12 @@
 import { ethers } from "ethers";
-import { web3Handler } from "./web3Handler";
+import web3Handler from "./web3Handler";
 
 import StoreAddress from "../contractsData/Store-address.json";
 import StoreAbi from "../contractsData/Store.json";
 import NFTAddress from "../contractsData/GlobeArtNFT-address.json";
 import NFTAbi from "../contractsData/GlobeArtNFT.json";
 
-export const loadContracts = async () => {
+export default async function loadContracts() {
   let store;
   let nft;
 

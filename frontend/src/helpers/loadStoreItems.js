@@ -1,8 +1,8 @@
 import { ethers } from "ethers";
 import  axios  from "axios";
-import { loadContracts } from "./loadContracts";
+import loadContracts from "./loadContracts";
 
-export const loadStoreItems = async () => {
+export default async function loadStoreItems() {
   const { nft, store } = await loadContracts();
   // load all items
   const items = [];

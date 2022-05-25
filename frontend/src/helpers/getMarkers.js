@@ -1,5 +1,5 @@
 import axios from "axios";
-import { loadStoreItems } from "./loadStoreItems";
+import loadStoreItems from "./loadStoreItems";
 
 export async function getMarkers() {
   let result = [];
