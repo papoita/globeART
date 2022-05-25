@@ -24,7 +24,10 @@ Is a web application that allows users to purchase NFT's when they are visiting 
 
  💡 3D globe was imported using react-globe-gl to represent the NFT location in a spherical projection.
  
- 💡 NFTs are minted using IPFS and the transaction in bitcoin.
+ 💡 NFTs are minted with smart contracts written in solidity and stored using IPFS.
+
+💡 Ethers.js library was chosen because are used to connect to web3
+
  
  💡 Hardhat was used for the contract creation and deplyment
 
