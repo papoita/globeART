@@ -19,7 +19,7 @@ export default function Navbar({account, setAccount}) {
 
   return (
     <>
-      <div className="navbar bg-transparent flex justify-between absolute">
+      <div className="navbar bg-transparent flex justify-between absolute h-20">
         <div className="ml-3">
           <a
             href="/"
