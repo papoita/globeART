@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import axios  from "axios";
 import { loadContracts } from "./loadContracts";
 
-export const loadPurchasedItems = async (account) => {
+export default async function loadPurchasedItems(account) {
 
   const { store, nft } = await loadContracts();
 
