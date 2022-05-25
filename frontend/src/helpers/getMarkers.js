@@ -24,7 +24,7 @@ export async function getMarkers() {
   for await (const item of items) {
     const coords = await getCoords(item);
     result.push({
-      id: item.itemId,
+      itemId: item.itemId,
       name: item.name,
       image: item.image,
       lat: coords.lat,
