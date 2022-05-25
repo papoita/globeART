@@ -34,8 +34,8 @@ export default function UserCollection({ account}) {
 
         {isLoaded && (
           <div className="container max-w-l m-auto flex flex-wrap flex-col md:flex-row justify-center">
-            {purchases.length > 0 ? (
-              purchases.map((item) => (
+            {purchases.current.length > 0 ? (
+              purchases.current.map((item) => (
                 <div className="card card-compact bg-base-100 shadow-xl m-5 w-72">
                   <figure>
                     <img src={`./images/${item.name}.png`} alt={item.name} />
