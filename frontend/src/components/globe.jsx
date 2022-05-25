@@ -20,8 +20,8 @@ const SimpleGlobe = (width) => {
       className="vh-100"
       ref={globeEl}
       showAtmosphere={true}
-      atmosphereAltitude={0.2}
-      atmosphereColor="purple"
+      atmosphereAltitude={0.4}
+      atmosphereColor="golden"
       globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
       backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
       labelsData={places}
