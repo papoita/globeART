@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import axios  from "axios";
-import { loadContracts } from "./loadContracts";
+import loadContracts from "./loadContracts";
 
 export default async function loadPurchasedItems(account) {
 

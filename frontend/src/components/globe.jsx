@@ -4,8 +4,6 @@ import ReactGlobe from "react-globe.gl";
 export default function Globe({ handleShowModal, markers }) {
 
   const globeEl = useRef();
-  console.log("GLOBE - Markers:", markers)
-
 
   useEffect(() => {
     globeEl.current.controls().enableZoom = false;

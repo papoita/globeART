@@ -1,5 +1,5 @@
 import axios from "axios";
-import { loadStoreItems } from "./loadStoreItems";
+import loadStoreItems from "./loadStoreItems";
 
 export async function getMarkers() {
   let result = [];
@@ -24,9 +24,7 @@ export async function getMarkers() {
   for await (const item of items) {
     const coords = await getCoords(item);
     result.push({
-      id: item.itemId,
-      name: item.name,
-      image: item.image,
+      ...item,
       lat: coords.lat,
       lng: coords.lon,
       color: "white"

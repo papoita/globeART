@@ -27,7 +27,7 @@ function Home() {
         setIsLoaded(false);
       }
     })();
-  }, []);
+  }, [setIsLoaded]);
 
 
   const handleShowModal = (d) => {
@@ -42,7 +42,7 @@ function Home() {
     <>
       {!isLoaded && (
         <div className="flex justify-center items-center h-screen">
-          <img src="pig-spinner.png" className="animate-spin-slow"></img>
+          <img src="pig-spinner.png" className="animate-spin-slow" alt="Trotter-logo-spinner"></img>
         </div>
       )}
   

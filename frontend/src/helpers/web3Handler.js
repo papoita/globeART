@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 
-export const web3Handler = async () => {
+export default async function web3Handler() {
   // Get provider from Metamask
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   // Set signer
