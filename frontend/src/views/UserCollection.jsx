@@ -38,7 +38,7 @@ export default function UserCollection({ account}) {
               purchases.current.map((item) => (
                 <div className="card card-compact bg-base-100 shadow-xl m-5 w-72">
                   <figure>
-                    <img src={`./images/${item.name}.png`} alt={item.name} />
+                    <img src={item.image} alt={item.name} />
                   </figure>
                   <div className="card-body">
                     <h2 className="card-title">{item.name}</h2>
