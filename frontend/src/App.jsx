@@ -3,7 +3,11 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import {
+  darkTheme,
+  getDefaultWallets,
+  RainbowKitProvider,
+} from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
@@ -38,7 +42,13 @@ export default function App() {
 
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider
+        theme={darkTheme({
+          accentColor: "#7b3fe4",
+          accentColorForeground: "white",
+        })}
+        chains={chains}
+      >
         <Router>
           <div className="bg-black w-full min-h-screen overflow-hidden">
             <Navbar account={account} setAccount={setAccount} />
