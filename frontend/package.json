@@ -16,6 +16,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-sizeme": "^3.0.2",
+    "util": "^0.12.4",
     "wagmi": "^0.4.3"
   },
   "resolutions": {
