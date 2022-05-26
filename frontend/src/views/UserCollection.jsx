@@ -1,23 +1,25 @@
 import { useRef, useEffect } from "react";
+import { useAccount } from "wagmi";
 import useLoading from "../hooks/useLoading";
 import loadPurchasedItems from "../helpers/loadPurchasedItems";
 
-export default function UserCollection({ account}) {
+export default function UserCollection() {
   const { isLoaded, setIsLoaded } = useLoading();
+  const { data } = useAccount();
 
   const purchases = useRef(null);
 
   useEffect(() => {
     (async function asyncHandler() {
       try {
-        purchases.current = await loadPurchasedItems(account);
+        purchases.current = await loadPurchasedItems(data?.address);
         setIsLoaded(true);
       } catch (error) {
         console.log(error);
         setIsLoaded(false);
       }
     })();
-  }, [account, setIsLoaded]);
+  }, [data, setIsLoaded]);
 
   return (
     <>
