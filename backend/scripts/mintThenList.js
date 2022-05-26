@@ -1,10 +1,10 @@
 const hre = require("hardhat");
 const ethers = hre.ethers;
 
-const nftAddress = require("../frontend/src/contractsData/GlobeArtNFT-address.json");
-const NFT = require("../frontend/src/contractsData/GlobeArtNFT.json");
-const storeAddress = require("../frontend/src/contractsData/Store-address.json");
-const Store = require("../frontend/src/contractsData/Store.json");
+const nftAddress = require("../../frontend/src/contractsData/GlobeArtNFT-address.json");
+const NFT = require("../../frontend/src/contractsData/GlobeArtNFT.json");
+const storeAddress = require("../../frontend/src/contractsData/Store-address.json");
+const Store = require("../../frontend/src/contractsData/Store.json");
 
 const data = [
   {
