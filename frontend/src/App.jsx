@@ -15,7 +15,7 @@ import { publicProvider } from "wagmi/providers/public";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./views/Home";
-import UserCollection from "./views/UserCollection";
+import MyCollection from "./views/MyCollection";
 
 // import useGeolocation from "./hooks/useGeolocation";
 
@@ -56,7 +56,7 @@ export default function App() {
               <Route exact path="/" element={<Home />} />
               <Route
                 path="/mycollection"
-                element={<UserCollection account={account} />}
+                element={<MyCollection account={account} />}
               />
             </Routes>
             <Footer />
