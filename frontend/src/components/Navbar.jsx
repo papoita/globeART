@@ -14,7 +14,7 @@ export default function Navbar() {
           flex justify-start items-center"
           >
             <img className="m-2" src="pig-logo.png" alt="Trotter-logo"></img>
-            <p className="font-shrikhand text-3xl text-slate-100">Trotter</p>
+            <p className="font-shrikhand text-4xl text-slate-100">Trotter</p>
           </a>
         </div>
 
