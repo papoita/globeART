@@ -10,7 +10,7 @@ export default function Navbar() {
         <div className="ml-3">
           <a
             href="/"
-            className="transition ease-in-out duration-300 hover:scale-105 normal-case text-xl
+            className="transition ease-in-out duration-300 hover:scale-102 normal-case text-xl
           flex justify-start items-center"
           >
             <img className="m-2" src="pig-logo.png" alt="Trotter-logo"></img>
