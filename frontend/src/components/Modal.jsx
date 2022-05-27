@@ -1,5 +1,5 @@
 import React from "react";
-import buyStoreItem from "../helpers/buyStoreItem";
+import buyMarketplaceItem from "../helpers/buyMarketplaceItem";
 
 export default function Modal({ handleHideModal, nft}) {
 
@@ -23,7 +23,7 @@ export default function Modal({ handleHideModal, nft}) {
             <div className="card-actions align-self-end justify-end">
               <button
                 className="btn btn-primary"
-                onClick={()=> buyStoreItem(nft)}
+                onClick={()=> buyMarketplaceItem(nft)}
               >
                 Buy Now
               </button>

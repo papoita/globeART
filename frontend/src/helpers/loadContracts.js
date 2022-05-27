@@ -1,23 +1,23 @@
 import { ethers } from "ethers";
 import web3Handler from "./web3Handler";
 
-import StoreAddress from "../contractsData/Store-address.json";
-import StoreAbi from "../contractsData/Store.json";
+import MarketplaceAddress from "../contractsData/Marketplace-address.json";
+import MarketplaceAbi from "../contractsData/Marketplace.json";
 import NFTAddress from "../contractsData/GlobeArtNFT-address.json";
 import NFTAbi from "../contractsData/GlobeArtNFT.json";
 
 export default async function loadContracts() {
-  let store;
+  let marketplace;
   let nft;
 
   const signer = await web3Handler();
   // Get deployed copies of contracts
-  const storeContract = new ethers.Contract(
-    StoreAddress.address,
-    StoreAbi.abi,
+  const marketplaceContract = new ethers.Contract(
+    MarketplaceAddress.address,
+    MarketplaceAbi.abi,
     signer
   );
-  store = storeContract;
+  marketplace = marketplaceContract;
   const nftContract = new ethers.Contract(
     NFTAddress.address,
     NFTAbi.abi,
@@ -25,5 +25,5 @@ export default async function loadContracts() {
   );
   nft = nftContract;
 
-  return { nft, store };
+  return { nft, marketplace };
 };
