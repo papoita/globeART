@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'shrikhand': ['shrikhand', 'cursive']
+        'shrikhand': ['shrikhand', 'cursive'],
+        'urbanist': ['urbanist', 'sans-serif']
       },
       animation: {
         'spin-slow': 'spin 2.3s linear infinite',
