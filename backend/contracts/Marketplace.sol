@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./GlobeArtNFT.sol";
 
 /// @custom:security-contact <emergency contact email here>
-contract Store is ReentrancyGuard, Ownable, GlobeArtNFT {
+contract Marketplace is ReentrancyGuard, Ownable, GlobeArtNFT {
     // Variables
     uint public itemCount; 
 
