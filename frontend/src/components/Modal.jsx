@@ -11,7 +11,7 @@ export default function Modal({ handleHideModal, nft}) {
             <img src={`./images/thumbnails/${nft.name}.jpg`} alt={nft.name} />
           </figure>
           <div className="card-body flex flex-col justify-between">
-            <h2 className="card-title">{nft.name}</h2>
+            <h2 className="card-title font-urbanist text-white text-2xl">{nft.name}</h2>
           <button
             className="btn btn-sm btn-circle absolute right-2 top-2"
             onClick={() => handleHideModal()}
