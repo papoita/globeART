@@ -54,13 +54,13 @@ export default function UserCollection() {
                   {" "}
                   You don't have any items in your collection 😱{" "}
                 </p>
-                <a href="/" className="btn btn-primary mt-10 self-center">
-                  Go Back
-                </a>
               </div>
             )}
           </div>
         )}
+        <a role="button" href="/" className="btn btn-primary mt-10 self-center">
+          Home
+        </a>
       </div>
     </>
   );
