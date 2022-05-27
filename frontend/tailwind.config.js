@@ -12,6 +12,10 @@ module.exports = {
       },
       animation: {
         'spin-slow': 'spin 2.3s linear infinite',
+      },
+      scale: {
+        '101': '1.01',
+        '102': '1.02',
       }
     },
   },
