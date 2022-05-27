@@ -6,19 +6,19 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="navbar bg-transparent flex justify-between absolute h-20">
+      <div className="navbar bg-transparent flex justify-between absolute h-28 items-start p-5">
         <div className="ml-3">
           <a
             href="/"
             className="transition ease-in-out duration-300 hover:scale-102 normal-case text-xl
           flex justify-start items-center"
           >
-            <img className="m-2" src="pig-logo.png" alt="Trotter-logo"></img>
+            <img className="mr-2" src="pig-logo.png" alt="Trotter-logo"></img>
             <p className="font-shrikhand text-4xl text-slate-100">Trotter</p>
           </a>
         </div>
 
-        <div className="mr-3">
+        <div className="flex flex-col justify-between items-end">
           <ConnectButton
             accountStatus={{
               smallScreen: "avatar",
@@ -27,6 +27,17 @@ export default function Navbar() {
             chainStatus="icon"
             showBalance={false}
           />
+          {data && (
+            <div>
+              <a
+                role="button"
+                href="/mycollection"
+                className="btn btn-ghost mt-3"
+              >
+                My Collection
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </>
