@@ -40,7 +40,7 @@ export default function UserCollection() {
               purchases.current.map((item, idx) => (
                 <div key={idx} className="card card-compact bg-base-100 shadow-xl m-5 w-72">
                   <figure>
-                    <img src={item.image} alt={item.name} />
+                    <img src={`./images/thumbnails/${item.name}.jpg`} alt={item.name} />
                   </figure>
                   <div className="card-body">
                     <h2 className="card-title">{item.name}</h2>
