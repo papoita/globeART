@@ -3,7 +3,7 @@ import { useAccount } from "wagmi";
 import useLoading from "../hooks/useLoading";
 import loadPurchasedItems from "../helpers/loadPurchasedItems";
 
-export default function UserCollection() {
+export default function MyCollection() {
   const { isLoaded, setIsLoaded } = useLoading();
   const { data } = useAccount();
 
