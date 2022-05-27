@@ -24,7 +24,4 @@ module.exports = {
       chainId: 1337,
     },
   },
-  paths: {
-    artifacts: './frontend/src/artifacts',
-  },
 };
