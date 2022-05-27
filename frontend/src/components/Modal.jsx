@@ -6,7 +6,7 @@ export default function Modal({ handleHideModal, nft}) {
   return (
     <>
       <div className="fixed inset-0 h-full z-40 flex justify-center items-center">
-        <div className="card w-96 bg-base-100 shadow-xl image-full">
+        <div className="card w-96 bg-base-100 shadow-xl image-full transition ease-in-out duration-300 hover:scale-101">
           <figure>
             <img src={`./images/thumbnails/${nft.name}.jpg`} alt={nft.name} />
           </figure>
