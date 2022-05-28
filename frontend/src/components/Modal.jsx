@@ -1,9 +1,18 @@
-import React from "react";
+import { useState } from "react";
 import buyMarketplaceItem from "../helpers/buyMarketplaceItem";
+import TransactionProgress from "./TransactionProgress"
 
 export default function Modal({ handleHideModal, nft }) {
+  
+  const [ transactionInProgress, setTransactionInProgress ] = useState(false)
+  
+  const toggleTransactioninProgress = () => {
+    setTransactionInProgress(!transactionInProgress)
+  }
+
   return (
     <>
+    { transactionInProgress && <TransactionProgress />}
       <div className="fixed inset-0 h-full z-40 flex justify-center items-center">
         <div className="card card-compact w-96 bg-base-100 shadow-xl transition ease-in-out duration-300 hover:scale-10003">
           <figure>
@@ -19,7 +28,7 @@ export default function Modal({ handleHideModal, nft }) {
                 {nft.name}
                 {nft.sold && <div class="badge badge-secondary">SOLD OUT</div>}
               </h2>
-              <p>Trotter {nft.collection}</p>
+              <p>Trotter {nft.collection} Collection</p>
             </div>
 
             <button
@@ -42,8 +51,12 @@ export default function Modal({ handleHideModal, nft }) {
                 <button
                   className="btn btn-primary"
                   onClick={async () => {
+                    toggleTransactioninProgress()
                     const result = await buyMarketplaceItem(nft);
-                    if(result === "success") handleHideModal();
+                    if(result) {
+                      toggleTransactioninProgress();
+                      handleHideModal();
+                    }
                   }}
                 >
                   Buy Now
