@@ -26,7 +26,7 @@ function Gallery({ web3Handler, items, account, loading }) {
             items.map((item, idx) => (
               <Carousel.Item key={idx}>
                 <img
-                  style={{ height: 650 }}
+                  style={{ height: 820 }}
                   className="rounded mx-auto d-block"
                   src={`../images/${item.name.split(" ").join("")}.png`}
                   alt={item.name}
