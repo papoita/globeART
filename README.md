@@ -1,37 +1,55 @@
-@[papoita](https://github.com/papoita) | version 1.0.0
+@[papoita](https://github.com/papoita) | version 1.0.1
 
 # globeART project 
 
-This project was completed by [Paola Perez Leiva](https://www.linkedin.com/in/perezleivapaola/), [Yen Nguyen] and [Martha Staus] as final project of LightHouse Labs Web Development Bootcamp. It provided an opportunity to demonstrate our abilities as software developers plus allowed for the experimentation of new technology. 
+This project was completed by [Paola Perez Leiva](https://www.linkedin.com/in/perezleivapaola/), [Yen Nguyen](https://www.linkedin.com/in/yen-hnguyen/) and Martha Staus as final project of LightHouse Labs Web Development Bootcamp. It provided an opportunity to demonstrate our abilities as software developers plus allowed for the experimentation of new technology. 
 
 ## globeART 
-Is a web application that allows users to purchase NFT's when they are visiting a new city. A 3D globea allows users to visually identify locations for which there are available NFTs. By clicking the globe the user is taken to a gallery of all the NFTs. NFTs are created using snowpixel AI (link) and they can be purchased using Metamask (link). Users can store them in their personal collection gallery in the App.
+Is a web application that allows users to purchase NFT's when they are visiting a new city. A 3D globe allows users to visually identify locations for which there are available NFTs. By clicking the globe the user is taken to a gallery of all the NFTs. NFTs are created using [snowpixel AI](https://snowpixel.app/) and they can be purchased using [Metamask](https://metamask.io/). Users can store them in their personal collection gallery in the App.
 
 ## Features:
 
-* A 3D clickable globe shows the location of NFTs.
+* A 3D interactive globe shows the location of NFTs.
 
 * Users can visit the gallery to view all available NFTs, know their price and the location as well as the collection they belong to.
 
 * Users have a personal gallery with their purchased NFTs.
 
-* USer can log into their MEtamask account to facilitate authorization and purchase.
+* Users can log into their Metamask account to facilitate authorization and purchase.
 
 
 ## Techstack
   
  💡 This frontend project is built with React, React-Bootstrap, Bootstrap, Sass, React-icons library.
 
- 💡 3D globe was imported using react-globe-gl to represent the NFT location in a spherical projection.
+ 💡 Color-gradients and color schema were chosen after a little market research into 
+popular web3 sites and 
+famous NFTs such as doodles
+
+ 💡 3D globe was imported using react-globe-gl to represent the NFT location in a spherical projections.
  
- 💡 NFTs are minted using IPFS and the transaction in bitcoin.
+ 💡 Each label is a marker for a 
+collectible piece of art 
+geolocated to several city coordinates around the world
+
+ 💡 Each art piece was curated based on the particular sensation it could bring to the user
  
- 💡 Hardhat was used for the contract creation and deplyment
+ 💡 NFTs were minted using smart contrats written in solidity and stored in IPFS pinhata cloud.
+ 
+ 💡 Hardhat was used as a development environment and ethers.js to connect to the Ethereum network.
 
-## Screenshots
+ 💡 Thinking about the user exoerience we connected metamask, a web3 wallet that will allows our users to seamlessly buy and see thier personal collection.
 
-## Gif
 
+## Demo-video
+!["globeART demo"](/frontend/public/demo_globeART2.mp4)
+
+
+## Deployment
+
+[globeART](https://globeart.netlify.app/) is deployed using netlify BUT smart contracts only exist in the development environment hardhat so unfortunately the minted NFTS and the buying option is not fully functioning in the real world.
+In order for that to be available we need to deploy first to polygon.
+Nevertheless, you can still visit and play with the interactive globe!
 
 ### Dependencies
 
@@ -39,29 +57,17 @@ Is a web application that allows users to purchase NFT's when they are visiting 
 * react-bootstrap
 * bootstrap
 * sass
+* react-globe-gl
 * react-icons
+* hardhat
+* metamask
+* ethers
 
 
-
-## Basic Sample Hardhat Project
-
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
-# globeART Project SetUp
+# Project SetUp
 
 
-## To start a local network:
+## To start a local hardhat network:
 
 ```shell
 npx hardhat node
@@ -78,7 +84,7 @@ npx hardhat --network localhost run scripts/deploy.js
 ```shell
 cd frontend
 npm install
-npm run start:frondend
+npm run start:frontend
 ```
 
 Runs the app in the development mode.\
