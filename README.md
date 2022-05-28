@@ -42,7 +42,11 @@ geolocated to several city coordinates around the world
 
 
 ## Demo-video
-!["globeART demo"](/frontend/public/demo_globeART2.mp4)
+
+
+https://user-images.githubusercontent.com/14196937/170806992-1ca132ab-beff-4169-81f1-d8fc5d0d092c.mp4
+
+
 
 
 ## Deployment
