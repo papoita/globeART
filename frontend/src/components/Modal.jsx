@@ -41,7 +41,10 @@ export default function Modal({ handleHideModal, nft }) {
                 </div>
                 <button
                   className="btn btn-primary"
-                  onClick={() => buyMarketplaceItem(nft)}
+                  onClick={async () => {
+                    const result = await buyMarketplaceItem(nft);
+                    if(result === "success") handleHideModal();
+                  }}
                 >
                   Buy Now
                 </button>
