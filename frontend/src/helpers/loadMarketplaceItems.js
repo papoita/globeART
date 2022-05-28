@@ -23,6 +23,7 @@ export default async function loadMarketplaceItems() {
         itemId: item.itemId._hex,
         seller: item.seller,
         collection: item.collection,
+        sold: item.sold,
         name: metadata.name,
         country: metadata.country,
         image: metadata.image,
