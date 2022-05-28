@@ -15,7 +15,7 @@ module.exports = {
         'spin-slow': 'spin 2.3s linear infinite',
       },
       scale: {
-        '101': '1.01',
+        '10003': '1.003',
         '102': '1.02',
       }
     },
