@@ -10,6 +10,7 @@ export default async function buyMarketplaceItem(item) {
     const contracts = await loadContracts(signer);
     const marketplace = contracts.marketplace
     await (await marketplace.purchaseItem(item.itemId, { value: price })).wait();
+    return "success";
   } catch (error) {
     console.log("Error", error);
   }
