@@ -17,7 +17,7 @@ export default async function loadPurchasedItems(account) {
       account
     );
     const results = await marketplace.queryFilter(filter);
-    //Fetch metadata of each nft and add that to listedItem object.
+    //Fetch metadata of each nft and add that to purchasedItems object.
     const purchasedItems = await Promise.all(
       results.map(async (i) => {
         // fetch arguments from each result
