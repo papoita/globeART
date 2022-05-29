@@ -30,6 +30,7 @@ export default async function buyMarketplaceItem(item) {
     }
   } catch (error) {
     console.log("Error", error);
+    return error;
   }
   return receipt;
 }
