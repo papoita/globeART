@@ -1,20 +1,19 @@
 import { useState } from "react";
 import buyMarketplaceItem from "../helpers/buyMarketplaceItem";
-import TransactionProgress from "./TransactionProgress"
+import TransactionProgress from "./TransactionProgress";
 
 export default function Modal({ handleHideModal, nft }) {
-  
-  const [ transactionInProgress, setTransactionInProgress ] = useState(false)
-  
+  const [transactionInProgress, setTransactionInProgress] = useState(false);
+
   const toggleTransactioninProgress = () => {
-    setTransactionInProgress(!transactionInProgress)
-  }
+    setTransactionInProgress(!transactionInProgress);
+  };
 
   return (
     <>
-    { transactionInProgress && <TransactionProgress />}
       <div className="fixed inset-0 h-full z-40 flex justify-center items-center">
         <div className="card card-compact w-96 bg-base-100 shadow-xl transition ease-in-out duration-300 hover:scale-10003">
+          {transactionInProgress && <TransactionProgress />}
           <figure>
             <img
               className="brightness-75"
@@ -51,9 +50,9 @@ export default function Modal({ handleHideModal, nft }) {
                 <button
                   className="btn btn-primary"
                   onClick={async () => {
-                    toggleTransactioninProgress()
+                    toggleTransactioninProgress();
                     const result = await buyMarketplaceItem(nft);
-                    if(result) {
+                    if (result) {
                       toggleTransactioninProgress();
                       handleHideModal();
                     }
