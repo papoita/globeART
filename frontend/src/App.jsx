@@ -10,6 +10,7 @@ import {
 } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
+import { infuraProvider } from "wagmi/providers/infura"
 import { publicProvider } from "wagmi/providers/public";
 
 import Navbar from "./components/Navbar";
@@ -19,12 +20,15 @@ import MyCollection from "./views/MyCollection";
 
 // import useGeolocation from "./hooks/useGeolocation";
 
+const infuraId = process.env.INFURA_ID
+const alchemyId = process.env.ALCHEMY_ID
+
 const { chains, provider } = configureChains(
-  [chain.polygon, chain.hardhat, chain.localhost],
-  [alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }), publicProvider()]
+  [chain.polygon, chain.hardhat, chain.localhost, chain.rinkeby],
+  [alchemyProvider({ alchemyId }), infuraProvider({ infuraId }), publicProvider()]
 );
 const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
+  appName: "Trotter",
   chains,
 });
 const wagmiClient = createClient({

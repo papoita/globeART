@@ -1,31 +1,67 @@
-import React from "react";
+import { useState } from "react";
 import buyMarketplaceItem from "../helpers/buyMarketplaceItem";
+import TransactionProgress from "./TransactionProgress";
 
-export default function Modal({ handleHideModal, nft}) {
+export default function Modal({ handleHideModal, nft }) {
+  const [transactionInProgress, setTransactionInProgress] = useState(false);
+
+  const toggleTransactioninProgress = () => {
+    setTransactionInProgress(!transactionInProgress);
+  };
 
   return (
     <>
       <div className="fixed inset-0 h-full z-40 flex justify-center items-center">
-        <div className="card w-96 bg-base-100 shadow-xl image-full transition ease-in-out duration-300 hover:scale-101">
+        <div className="card card-compact w-96 bg-base-100 shadow-xl transition ease-in-out duration-300 hover:scale-10003">
+          {transactionInProgress && <TransactionProgress />}
           <figure>
-            <img src={`./images/thumbnails/${nft.name}.jpg`} alt={nft.name} />
+            <img
+              className="brightness-75"
+              src={`./images/thumbnails/${nft.name}.jpg`}
+              alt={nft.name}
+            />
           </figure>
-          <div className="card-body flex flex-col justify-between">
-            <h2 className="card-title font-urbanist text-white text-2xl">{nft.name}</h2>
-          <button
-            className="btn btn-sm btn-circle absolute right-2 top-2"
-            onClick={() => handleHideModal()}
-          >
-            ✕
-          </button>
-            <div className="card-actions align-self-end justify-end">
-              <button
-                className="btn btn-primary"
-                onClick={()=> buyMarketplaceItem(nft)}
-              >
-                Buy Now
-              </button>
+          <div className="card-body flex-row justify-between bg-white">
+            <div className="flex-column">
+              <h2 className="card-title font-urbanist text-black text-3xl">
+                {nft.name}
+                {nft.sold && <div class="badge badge-secondary">SOLD OUT</div>}
+              </h2>
+              <p>Trotter {nft.collection} Collection</p>
             </div>
+
+            <button
+              className="btn btn-sm btn-circle absolute right-2 top-2"
+              onClick={() => handleHideModal()}
+            >
+              ✕
+            </button>
+            {!nft.sold && (
+              <div className="card-actions flex flex-col items-center">
+                <p className="text-lg">Price</p>
+                <div className="flex flex-row items-center">
+                  <img
+                    className="mr-2"
+                    src="./eth-diamond-glyph.png"
+                    alt="eth-icon"
+                  ></img>
+                  <p className="text-xl text-black">{nft.price}</p>
+                </div>
+                <button
+                  className="btn btn-primary"
+                  onClick={async () => {
+                    toggleTransactioninProgress();
+                    const result = await buyMarketplaceItem(nft);
+                    if (result) {
+                      toggleTransactioninProgress();
+                      handleHideModal();
+                    }
+                  }}
+                >
+                  Buy Now
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

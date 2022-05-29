@@ -23,5 +23,9 @@ module.exports = {
     hardhat: {
       chainId: 1337,
     },
+    rinkeby: {
+      url: process.env.INFURA_API_URL,
+      accounts: [process.env.PRIVATE_KEY]
+    }
   },
 };
