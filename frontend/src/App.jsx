@@ -28,7 +28,7 @@ const { chains, provider } = configureChains(
   [alchemyProvider({ alchemyId }), infuraProvider({ infuraId }), publicProvider()]
 );
 const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
+  appName: "Trotter",
   chains,
 });
 const wagmiClient = createClient({
