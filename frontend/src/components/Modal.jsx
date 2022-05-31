@@ -2,7 +2,7 @@ import { useState } from "react";
 import buyMarketplaceItem from "../helpers/buyMarketplaceItem";
 import TransactionProgress from "./TransactionProgress";
 
-export default function Modal({ handleHideModal, nft }) {
+export default function Modal({ handleHideModal, nft, userLocation }) {
   const [transactionInProgress, setTransactionInProgress] = useState(false);
 
   const toggleTransactioninProgress = () => {
@@ -36,7 +36,7 @@ export default function Modal({ handleHideModal, nft }) {
             >
               ✕
             </button>
-            {!nft.sold && (
+            {!nft.sold && (userLocation === nft.name) && (
               <div className="card-actions flex flex-col items-center">
                 <p className="text-lg">Price</p>
                 <div className="flex flex-row items-center">
