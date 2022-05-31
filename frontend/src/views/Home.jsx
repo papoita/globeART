@@ -38,8 +38,6 @@ function Home() {
     setShowModal(false);
   };
 
-  console.log("LOCATION:", location);
-
   const userPoint = [{
     lat: location.coordinates.lat,
     lng: location.coordinates.lon,
@@ -61,7 +59,7 @@ function Home() {
       {isLoaded && (
         <Globe handleShowModal={handleShowModal} markers={markers.current} userPoint={userPoint} />
       )}
-      {showModal && <Modal handleHideModal={handleHideModal} nft={nft} />}
+      {showModal && <Modal handleHideModal={handleHideModal} nft={nft} userLocation={location.city} />}
     </>
   );
 }
