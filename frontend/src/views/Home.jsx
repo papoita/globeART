@@ -4,12 +4,13 @@ import "../App.css";
 import Globe from "../components/globe";
 import Modal from "../components/Modal";
 
-import useLoading from "../hooks/useLoading"
+import useLoading from "../hooks/useLoading";
+import useGeolocation from "../hooks/useGeolocation";
 import { getMarkers } from "../helpers/getMarkers";
-
+import { renderMatches } from "react-router-dom";
 
 function Home() {
-  
+  const { location } = useGeolocation();
   const [showModal, setShowModal] = useState(false);
   const [nft, setNft] = useState({});
 
@@ -29,7 +30,6 @@ function Home() {
     })();
   }, [setIsLoaded]);
 
-
   const handleShowModal = (d) => {
     setShowModal(true);
     setNft(d);
@@ -42,14 +42,18 @@ function Home() {
     <>
       {!isLoaded && (
         <div className="flex justify-center items-center h-screen">
-          <img src="pig-spinner.png" className="animate-spin-slow" alt="Trotter-logo-spinner"></img>
+          <img
+            src="pig-spinner.png"
+            className="animate-spin-slow"
+            alt="Trotter-logo-spinner"
+          ></img>
         </div>
       )}
-  
-      {isLoaded &&
-        <Globe handleShowModal={handleShowModal} markers={markers.current}/>
-      }
-      {showModal && <Modal handleHideModal={handleHideModal} nft={nft} />}
+
+      {isLoaded && (
+        <Globe handleShowModal={handleShowModal} markers={markers.current} userLocation={location} />
+      )}
+      {showModal && <Modal handleHideModal={handleHideModal} nft={nft} userLocation={location.city} />}
     </>
   );
 }
