@@ -1,9 +1,14 @@
 import { useEffect, useRef } from "react";
 import ReactGlobe from "react-globe.gl";
 
-export default function Globe({ handleShowModal, markers, userPoint }) {
+export default function Globe({ handleShowModal, markers, userLocation }) {
   const globeEl = useRef();
-  console.log(userPoint)
+
+  const userPoint = [{
+    lat: userLocation.coordinates.lat,
+    lng: userLocation.coordinates.lon,
+    color: "yellow"
+  }];
 
   useEffect(() => {
     globeEl.current.controls().enableZoom = false;
