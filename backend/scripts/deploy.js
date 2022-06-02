@@ -8,7 +8,7 @@ async function main() {
 
   await token.deployed();
 
-  console.log("GlobeArtNFT deployed to:", token.address);
+  console.log("Token deployed to:", token.address);
   console.log("Shop deployed to:", shop.address);
 
    // Save copies of each contracts abi and address to the frontend.
