@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./GlobeArtNFT.sol";
 
 /// @custom:security-contact <emergency contact email here>
-contract Marketplace is ReentrancyGuard, Ownable, GlobeArtNFT {
+contract Shop is ReentrancyGuard, Ownable, GlobeArtNFT {
     // Variables
     uint public itemCount; 
 
@@ -40,7 +40,7 @@ contract Marketplace is ReentrancyGuard, Ownable, GlobeArtNFT {
         address indexed buyer
     );
 
-    // Make item to offer on the marketplace
+    // Make item to offer in the shop
     function makeItem(IERC721 _nft, uint _tokenId, string memory _collection, uint _price) external onlyOwner {
         
         require(_price > 0, "Price must be greater than zero");
