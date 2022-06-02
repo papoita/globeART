@@ -5,7 +5,6 @@ const tokenAddress = require("../../frontend/src/contractsData/Token-address.jso
 const Token = require("../../frontend/src/contractsData/Token.json");
 
 async function mint(idArray) {
-  const toWei = (num) => ethers.utils.parseEther(num.toString());
 
   [deployer] = await ethers.getSigners();
 
