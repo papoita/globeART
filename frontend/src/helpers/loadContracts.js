@@ -3,8 +3,8 @@ import web3Handler from "./web3Handler";
 
 import ShopAddress from "../contractsData/Shop-address.json";
 import ShopABI from "../contractsData/Shop.json";
-import NFTAddress from "../contractsData/GlobeArtNFT-address.json";
-import NFTAbi from "../contractsData/GlobeArtNFT.json";
+import TokenAddress from "../contractsData/Token-address.json";
+import TokenAbi from "../contractsData/Token.json";
 
 export default async function loadContracts() {
   let shop;
@@ -18,12 +18,12 @@ export default async function loadContracts() {
     signer
   );
   shop = shopContract;
-  const nftContract = new ethers.Contract(
-    NFTAddress.address,
-    NFTAbi.abi,
+  const tokenContract = new ethers.Contract(
+    TokenAddress.address,
+    TokenAbi.abi,
     signer
   );
-  nft = nftContract;
+  nft = tokenContract;
 
   return { nft, shop };
 };
