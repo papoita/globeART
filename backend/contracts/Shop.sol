@@ -1,19 +1,21 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol";
+import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./GlobeArtNFT.sol";
+import "./Token.sol";
 
 /// @custom:security-contact <emergency contact email here>
-contract Shop is ReentrancyGuard, Ownable, GlobeArtNFT {
+contract Shop is ERC1155Holder, ReentrancyGuard, Ownable, Token {
     // Variables
     uint public itemCount; 
 
     struct Item {
         uint itemId;
-        IERC721 nft;
+        IERC1155 nft;
         uint tokenId;
         string collection;
         uint price;
@@ -41,13 +43,13 @@ contract Shop is ReentrancyGuard, Ownable, GlobeArtNFT {
     );
 
     // Make item to offer in the shop
-    function makeItem(IERC721 _nft, uint _tokenId, string memory _collection, uint _price) external onlyOwner {
+    function makeItem(IERC1155 _nft, uint _tokenId, string memory _collection, uint _price) external onlyOwner {
         
         require(_price > 0, "Price must be greater than zero");
         // increment itemCount
         itemCount ++;
         // transfer nft
-        _nft.transferFrom(msg.sender, address(this), _tokenId);
+        _nft.safeTransferFrom(msg.sender, address(this), _tokenId, 1, "");
         // add new item to items mapping
         items[itemCount] = Item (
             itemCount,
@@ -78,7 +80,7 @@ contract Shop is ReentrancyGuard, Ownable, GlobeArtNFT {
         // update item to sold
         item.sold = true;
         // transfer nft to buyer
-        item.nft.transferFrom(address(this), msg.sender, item.tokenId);
+        item.nft.safeTransferFrom(address(this), msg.sender, item.tokenId, 1, "");
         // emit Bought event
         emit Bought(
             _itemId,
@@ -91,5 +93,9 @@ contract Shop is ReentrancyGuard, Ownable, GlobeArtNFT {
     }
     function getPrice(uint _itemId) view public returns(uint){
         return((items[_itemId].price));
+    }
+
+     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC1155, ERC1155Receiver) returns (bool) {
+        return super.supportsInterface(interfaceId);
     }
 }
