@@ -4,11 +4,11 @@ import loadContracts from "./loadContracts";
 
 export default async function loadPurchasedItems(account) {
 
-  const { marketplace, nft } = await loadContracts();
+  const { shop, nft } = await loadContracts();
 
   try {
-    // Fetch purchased items from marketplace by quering Bought events with the buyer set as the user acct
-    const filter = marketplace.filters.Bought(
+    // Fetch purchased items from shop by quering Bought events with the buyer set as the user acct
+    const filter = shop.filters.Bought(
       null,
       null,
       null,
@@ -16,7 +16,7 @@ export default async function loadPurchasedItems(account) {
       null,
       account
     );
-    const results = await marketplace.queryFilter(filter);
+    const results = await shop.queryFilter(filter);
     //Fetch metadata of each nft and add that to purchasedItems object.
     const purchasedItems = await Promise.all(
       results.map(async (i) => {

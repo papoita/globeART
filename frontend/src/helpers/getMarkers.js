@@ -1,10 +1,10 @@
 import axios from "axios";
-import loadMarketplaceItems from "./loadMarketplaceItems";
+import loadShopItems from "./loadShopItems";
 
 export async function getMarkers() {
   let result = [];
 
-  const items = await loadMarketplaceItems();
+  const items = await loadShopItems();
 
   const getCoords = async (item) => {
     let apiURL = `http://api.openweathermap.org/geo/1.0/direct?q=${item.name},${item.country}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;

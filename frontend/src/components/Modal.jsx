@@ -1,5 +1,5 @@
 import { useState } from "react";
-import buyMarketplaceItem from "../helpers/buyMarketplaceItem";
+import buyMarketplaceItem from "../helpers/buyShopItem";
 import TransactionProgress from "./TransactionProgress";
 
 export default function Modal({ handleHideModal, nft, userLocation }) {

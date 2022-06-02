@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import loadContracts from "./loadContracts";
 
-export default async function buyMarketplaceItem(item) {
+export default async function buyShopItem(item) {
   let receipt = null;
 
   try {
@@ -10,8 +10,8 @@ export default async function buyMarketplaceItem(item) {
     const price = ethers.utils.parseEther(item.price);
 
     const contracts = await loadContracts(signer);
-    const marketplace = contracts.marketplace;
-    const purchaseTx = await marketplace.purchaseItem(item.itemId, {
+    const shop = contracts.shop;
+    const purchaseTx = await shop.purchaseItem(item.itemId, {
       value: price,
     });
     
