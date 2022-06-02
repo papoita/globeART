@@ -1,18 +1,18 @@
 async function main() {
 
-  const GlobeArtNFT = await ethers.getContractFactory("GlobeArtNFT");
-  const globeArtNFT = await GlobeArtNFT.deploy();
+  const Token = await ethers.getContractFactory("Token");
+  const token = await Token.deploy();
 
   const Shop = await ethers.getContractFactory("Shop");
   const shop = await Shop.deploy();
 
-  await globeArtNFT.deployed();
+  await token.deployed();
 
-  console.log("GlobeArtNFT deployed to:", globeArtNFT.address);
+  console.log("GlobeArtNFT deployed to:", token.address);
   console.log("Shop deployed to:", shop.address);
 
    // Save copies of each contracts abi and address to the frontend.
-   saveFrontendFiles(globeArtNFT, "GlobeArtNFT");
+   saveFrontendFiles(token, "Token");
    saveFrontendFiles(shop, "Shop");
  }
  
