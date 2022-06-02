@@ -20,11 +20,11 @@ contract Token is ERC1155, Ownable, ERC1155Burnable {
         _setURI(newuri);
     }
 
-    function mint(address account, uint256 id, uint256 amount)
+    function mint(address to, uint256 id, uint256 amount)
         public
         onlyOwner
     {
-        _mint(account, id, amount, "");
+        _mint(to, id, amount, "");
     }
 
     function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts)
