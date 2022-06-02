@@ -12,7 +12,7 @@ export default async function loadShopItems() {
     for (let i = 1; i <= Number(itemCount.toString()); i++) {
       const item = await shop.callStatic.items(i);
       // get uri url from nft contract
-      const uri = await nft.tokenURI(item.tokenId);
+      const uri = await nft.uri(item.tokenId);
       // use uri to fetch the nft metadata stored on ipfs
       const response = await axios.get(uri);
       const metadata = await response.data;
