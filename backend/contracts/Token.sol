@@ -11,7 +11,7 @@ contract Token is ERC1155, Ownable, ERC1155Burnable {
     string public name;
     string public symbol;
 
-    constructor() ERC1155("http://URI/{id}.com") {
+    constructor() ERC1155("https://ipfs.io/ipfs/QmbLE2LT85WjZiaqav8FHTernPCNVm4QrRL82oPXHFchxb/{id}.json") {
         name = "Trotter";
         symbol = "TRTR";
     }
