@@ -1,29 +1,29 @@
 import { ethers } from "ethers";
 import web3Handler from "./web3Handler";
 
-import MarketplaceAddress from "../contractsData/Marketplace-address.json";
-import MarketplaceAbi from "../contractsData/Marketplace.json";
-import NFTAddress from "../contractsData/GlobeArtNFT-address.json";
-import NFTAbi from "../contractsData/GlobeArtNFT.json";
+import ShopAddress from "../contractsData/Shop-address.json";
+import ShopABI from "../contractsData/Shop.json";
+import TokenAddress from "../contractsData/Token-address.json";
+import TokenAbi from "../contractsData/Token.json";
 
 export default async function loadContracts() {
-  let marketplace;
+  let shop;
   let nft;
 
   const signer = await web3Handler();
   // Get deployed copies of contracts
-  const marketplaceContract = new ethers.Contract(
-    MarketplaceAddress.address,
-    MarketplaceAbi.abi,
+  const shopContract = new ethers.Contract(
+    ShopAddress.address,
+    ShopABI.abi,
     signer
   );
-  marketplace = marketplaceContract;
-  const nftContract = new ethers.Contract(
-    NFTAddress.address,
-    NFTAbi.abi,
+  shop = shopContract;
+  const tokenContract = new ethers.Contract(
+    TokenAddress.address,
+    TokenAbi.abi,
     signer
   );
-  nft = nftContract;
+  nft = tokenContract;
 
-  return { nft, marketplace };
+  return { nft, shop };
 };

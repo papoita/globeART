@@ -6,7 +6,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="navbar bg-transparent flex justify-between absolute h-28 items-start p-5">
+      <div className="navbar bg-transparent flex justify-between absolute h-28 p-5">
         <div className="ml-3">
           <a
             href="/"
@@ -18,26 +18,26 @@ export default function Navbar() {
           </a>
         </div>
 
-        <div className="flex flex-col justify-between items-end">
-          <ConnectButton
-            accountStatus={{
-              smallScreen: "avatar",
-              largeScreen: "full",
-            }}
-            chainStatus="icon"
-            showBalance={false}
-          />
+        <div className="flex items-center">
           {data && (
-            <div>
               <a
                 role="button"
                 href="/mycollection"
-                className="btn btn-ghost mt-3"
+                className="btn btn-ghost"
               >
                 My Collection
               </a>
-            </div>
           )}
+          <div className="flex flex-col justify-between items-end">
+            <ConnectButton
+              accountStatus={{
+                smallScreen: "avatar",
+                largeScreen: "full",
+              }}
+              chainStatus="none"
+              showBalance={false}
+            />
+          </div>
         </div>
       </div>
     </>

@@ -28,7 +28,7 @@ function Home() {
         setIsLoaded(false);
       }
     })();
-  }, [setIsLoaded]);
+  }, [isLoaded]);
 
   const handleShowModal = (d) => {
     setShowModal(true);
