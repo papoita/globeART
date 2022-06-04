@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import buyShopItem from "../helpers/buyShopItem";
 import TransactionProgress from "./TransactionProgress";
 
