@@ -1,24 +1,61 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
+import { defaultDotMarkerOptions } from "react-globe.gl";
 import ReactGlobe from "react-globe.gl";
 
-export default function Globe({ handleShowModal, markers, userLocation }) {
-  const globeEl = useRef();
+const MOBILE_BREAKPOINT = 768;
 
-  const userPoint = [{
-    lat: userLocation.coordinates.lat,
-    lng: userLocation.coordinates.lon,
-    color: "yellow"
-  }];
+export default function Globe({ globeEl, handleShowModal, markers, userLocation }) {
+  let isMobile = window.outerWidth <= MOBILE_BREAKPOINT;
+  const [height, setHeight] = useState(isMobile ? window.outerHeight : window.outerWidth * .6);
+  const [width, setWidth] = useState(isMobile ? window.outerHeight * .55 : window.outerWidth);
+  const userLat = userLocation.coordinates.lat;
+  const userLon = userLocation.coordinates.lon;
 
-  useEffect(() => {
+  const userPoint = [
+    {
+      lat: userLat,
+      lng: userLon,
+      color: "yellow",
+    },
+  ];
+
+  const MAP_CENTER = { lat: userLat, lng: userLon, altitude: 2.5 };
+  const ROTATION_SPEED = 500;
+
+  const handleOnLabelClick = (d) => {
+    globeEl.current.pointOfView({ lat: d.lat, lng: d.lng, altitude: 1 }, ROTATION_SPEED);
+    handleShowModal(d);
+  }
+
+  const handleOnGlobeReady = () => {
     globeEl.current.controls().enableZoom = false;
     globeEl.current.controls().autoRotate = true;
-    globeEl.current.controls().autoRotateSpeed = 0.1;
-  }, []);
+    globeEl.current.controls().autoRotateSpeed = 0.1;          
+    globeEl.current.pointOfView(MAP_CENTER, ROTATION_SPEED)    
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      console.log('isMobile', isMobile)
+      if (width <= MOBILE_BREAKPOINT) {
+        isMobile = true;
+      } else if (width > MOBILE_BREAKPOINT) {
+        isMobile = false;
+      }
+      if (isMobile) {
+        setHeight(window.outerHeight);
+        setWidth(window.outerHeight);
+      } else {
+        setHeight(window.outerWidth * .6);
+        setWidth(window.outerWidth);
+      }
+    });
+
+  }, [height, width]);
 
   return (
     <>
-      <div className="flex justify-center h-screen">
+      <div className="flex justify-center h-screen z-30">
         <ReactGlobe
           ref={globeEl}
           globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
@@ -34,14 +71,16 @@ export default function Globe({ handleShowModal, markers, userLocation }) {
           labelDotRadius={0.6}
           labelColor={(d) => d.color}
           labelResolution={2}
-          onLabelClick={(d) => handleShowModal(d)}
+          onLabelClick={(d) => handleOnLabelClick(d)}
+          onGlobeReady={handleOnGlobeReady}
           pointsData={userPoint}
           pointLat={(d)=> d.lat}
           pointLng={(d)=> d.lng}
           pointColor={(d)=> d.color}
           pointAltitude={0}
           pointRadius={1}
-          width={660}
+          height={height}
+          width={width}
         />
       </div>
     </>
