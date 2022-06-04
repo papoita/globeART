@@ -72,12 +72,22 @@ function Home() {
         leaveFrom="scale-100"
         leaveTo="scale-0"
         className="fixed inset-0 h-screen z-40 flex justify-center items-center"
+        onClick={() => {
+          handleHideModal();
+        }}
       >
-        <Modal
-          handleHideModal={handleHideModal}
-          nft={nft}
-          userLocation={location.city}
-        />
+        <div
+          className="modal-content"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <Modal
+            handleHideModal={handleHideModal}
+            nft={nft}
+            userLocation={location.city}
+          />
+        </div>
       </Transition>
     </>
   );
