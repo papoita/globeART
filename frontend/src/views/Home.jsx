@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "../App.css";
+import { Transition } from "@headlessui/react";
 import Globe from "../components/globe";
 import Modal from "../components/Modal";
 
@@ -35,9 +36,11 @@ function Home() {
 
   const handleHideModal = () => {
     const { lat, lng } = globeEl.current.pointOfView();
-    const ROTATION_SPEED = 250;
-    setShowModal(false);
-    globeEl.current.pointOfView({ lat, lng, altitude: 2.5 }, ROTATION_SPEED);
+    const ROTATION_SPEED = 280;
+    setTimeout(() => {
+      setShowModal(false);
+      globeEl.current.pointOfView({ lat, lng, altitude: 2.5 }, ROTATION_SPEED);
+    }, 200);
   };
 
   return (
@@ -60,14 +63,22 @@ function Home() {
           userLocation={location}
         />
       )}
-
-      {showModal && (
+      <Transition
+        show={showModal}
+        enter="transform transition duration-[600ms]"
+        enterFrom="scale-0"
+        enterTo="scale-100"
+        leave="ease-in duration-[300ms]"
+        leaveFrom="scale-100"
+        leaveTo="scale-0"
+        className="fixed inset-0 h-screen z-40 flex justify-center items-center"
+      >
         <Modal
           handleHideModal={handleHideModal}
           nft={nft}
           userLocation={location.city}
         />
-      )}
+      </Transition>
     </>
   );
 }
