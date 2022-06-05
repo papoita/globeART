@@ -30,13 +30,6 @@ export default function Modal({ handleHideModal, nft, userLocation }) {
             </h2>
             <p>Trotter {nft.collection} Collection</p>
           </div>
-
-          <button
-            className="btn btn-sm btn-circle absolute right-2 top-2"
-            onClick={() => handleHideModal()}
-          >
-            ✕
-          </button>
           {!nft.sold && userLocation === nft.name && (
             <div className="card-actions flex flex-col items-center">
               <p className="text-lg">Price</p>
