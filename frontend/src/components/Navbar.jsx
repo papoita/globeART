@@ -30,29 +30,30 @@ export default function Navbar() {
                 )}
               </>
             )}
-             {pathName === "/mycollection" && (
+            {pathName === "/mycollection" && (
               <>
                 {data && (
-                  <a href="/mycollection" className="tab tab-bordered tab-active">
+                  <a
+                    href="/mycollection"
+                    className="tab tab-bordered tab-active"
+                  >
                     My Collection
                   </a>
                 )}
               </>
             )}
           </div>
-
-          
         </div>
         <div className="flex flex-col justify-between items-end ml-3">
-            <ConnectButton
-              accountStatus={{
-                smallScreen: "avatar",
-                largeScreen: "full",
-              }}
-              chainStatus="none"
-              showBalance={false}
-            />
-          </div>
+          <ConnectButton
+            accountStatus={{
+              smallScreen: "avatar",
+              largeScreen: "full",
+            }}
+            chainStatus="none"
+            showBalance={false}
+          />
+        </div>
       </div>
     </>
   );
