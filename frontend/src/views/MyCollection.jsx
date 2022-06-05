@@ -73,13 +73,6 @@ export default function MyCollection() {
             )}
           </div>
         )}
-        <a
-          role="button"
-          href="/"
-          className="absolute btn btn-primary bottom-0 right-0 m-3 mr-9"
-        >
-          Home
-        </a>
       </div>
     </>
   );
