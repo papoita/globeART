@@ -23,7 +23,7 @@ export default async function loadPurchasedItems(account) {
         // fetch arguments from each result
         i = i.args;
         // get uri url from nft contract
-        const uri = await nft.tokenURI(i.tokenId);
+        const uri = await nft.uri(i.tokenId);
         // use uri to fetch the nft metadata stored on ipfs
         const response = await axios.get(uri);
         const metadata = await response.data;

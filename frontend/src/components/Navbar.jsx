@@ -2,12 +2,13 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 
 export default function Navbar() {
-  const { data, isError, isLoading } = useAccount();
+  const { data } = useAccount();
+  const pathName = window.location.pathname;
 
   return (
     <>
-      <div className="navbar bg-transparent flex justify-between absolute h-28 p-5">
-        <div className="ml-3">
+      <div className="navbar bg-transparent flex justify-end absolute items-center h-28 p-5 z-40 flex-wrap">
+        <div className="justify-self-start mr-auto">
           <a
             href="/"
             className="transition ease-in-out duration-300 hover:scale-102 normal-case text-xl
@@ -18,26 +19,40 @@ export default function Navbar() {
           </a>
         </div>
 
-        <div className="flex items-center">
-          {data && (
-              <a
-                role="button"
-                href="/mycollection"
-                className="btn btn-ghost"
-              >
-                My Collection
-              </a>
-          )}
-          <div className="flex flex-col justify-between items-end">
-            <ConnectButton
-              accountStatus={{
-                smallScreen: "avatar",
-                largeScreen: "full",
-              }}
-              chainStatus="none"
-              showBalance={false}
-            />
+        <div className="tabs flex items-center justify-self-end mb-2">
+          <div class="tabs">
+            {pathName === "/" && (
+              <>
+                {data && (
+                  <a href="/mycollection" className="tab tab-bordered">
+                    My Collection
+                  </a>
+                )}
+              </>
+            )}
+            {pathName === "/mycollection" && (
+              <>
+                {data && (
+                  <a
+                    href="/mycollection"
+                    className="tab tab-bordered tab-active"
+                  >
+                    My Collection
+                  </a>
+                )}
+              </>
+            )}
           </div>
+        </div>
+        <div className="flex flex-col justify-between items-end ml-3">
+          <ConnectButton
+            accountStatus={{
+              smallScreen: "avatar",
+              largeScreen: "full",
+            }}
+            chainStatus="none"
+            showBalance={false}
+          />
         </div>
       </div>
     </>
