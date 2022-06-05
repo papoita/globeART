@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import buyShopItem from "../helpers/buyShopItem";
 import TransactionProgress from "./TransactionProgress";
 
@@ -9,9 +9,23 @@ export default function Modal({ handleHideModal, nft, userLocation }) {
     setTransactionInProgress(!transactionInProgress);
   };
 
+  const keydownHandler = ({ key }) => {
+    switch (key) {
+      case "Escape":
+        handleHideModal();
+        break;
+      default:
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", keydownHandler);
+    return () => document.removeEventListener("keydown", keydownHandler);
+  });
+
   return (
     <>
-      <div className="card card-compact w-96 bg-white rounded-sm shadow-custom-lg transition ease-in-out duration-360 hover:scale-10003 hover:-translate-y-1 z-50">
+      <div className="card card-compact w-96 bg-white rounded-sm shadow-custom-lg transition ease-in-out duration-360 hover:scale-10003 hover:-translate-y-1 mr-10 mt-1 z-50">
         {transactionInProgress && <TransactionProgress />}
         <figure className="p-5">
           <img

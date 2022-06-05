@@ -112,28 +112,37 @@ function Home() {
             handleHideModal();
           }}
         >
-          <div
-            className="modal-content"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-          >
-            <Modal
-              handleHideModal={handleHideModal}
-              nft={nft}
-              userLocation={location.city}
-            />
+          <div className="flex flex-col justify-center items-center">
+            <button
+              className="btn btn-sm btn-circle self-end"
+              onClick={handleHideModal}
+            >
+              x
+            </button>
+
+            <div
+              className="modal-content"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              <Modal
+                handleHideModal={handleHideModal}
+                nft={nft}
+                userLocation={location.city}
+              />
+            </div>
           </div>
         </Transition.Child>
         <Transition.Child
-        enter="transition-opacity ease-linear duration-[200ms]"
-        enterFrom="opacity-0"
-        enterTo="opacity-50"
-        leave="transition-opacity ease-linear duration-[200ms]"
-        leaveFrom="opacity-50"
-        leaveTo="opacity-0"
-        className="fixed top-0 right-0 bottom-0 left-0 z-40 bg-black">
-        </Transition.Child>
+          enter="transition-opacity ease-linear duration-[200ms]"
+          enterFrom="opacity-0"
+          enterTo="opacity-50"
+          leave="transition-opacity ease-linear duration-[200ms]"
+          leaveFrom="opacity-50"
+          leaveTo="opacity-0"
+          className="fixed top-0 right-0 bottom-0 left-0 z-40 bg-black"
+        ></Transition.Child>
       </Transition>
     </>
   );
