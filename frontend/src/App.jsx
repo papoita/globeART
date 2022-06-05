@@ -40,7 +40,6 @@ const wagmiClient = createClient({
 });
 
 export default function App() {
-  // const { location } = useGeolocation();
 
   const [account, setAccount] = useState(null);
 
