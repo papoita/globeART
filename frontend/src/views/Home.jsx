@@ -128,9 +128,9 @@ function Home() {
         <Transition.Child
         enter="transition-opacity ease-linear duration-[200ms]"
         enterFrom="opacity-0"
-        enterTo="opacity-40"
+        enterTo="opacity-50"
         leave="transition-opacity ease-linear duration-[200ms]"
-        leaveFrom="opacity-40"
+        leaveFrom="opacity-50"
         leaveTo="opacity-0"
         className="fixed top-0 right-0 bottom-0 left-0 z-40 bg-black">
         </Transition.Child>
