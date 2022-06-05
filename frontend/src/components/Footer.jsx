@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="footer relative items-center p-4 m-3 w-auto rounded-lg text-neutral-content bg-gradient-to-r from-white  to-purple-400 -bottom-2 z-50">
+    <footer className="footer relative items-center p-4 m-3 w-auto rounded-lg text-neutral-content bg-gradient-to-r from-white  to-purple-400 -bottom-2 z-40">
       <div className="grid-flow-col gap-4">
         <a
           href="https://github.com/mjstaus/Trotter"
