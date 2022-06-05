@@ -7,8 +7,8 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="navbar bg-transparent flex justify-between absolute h-28 p-5 z-40">
-        <div className="ml-3">
+      <div className="navbar bg-transparent flex justify-end absolute items-center h-28 p-5 z-40 flex-wrap">
+        <div className="justify-self-start mr-auto">
           <a
             href="/"
             className="transition ease-in-out duration-300 hover:scale-102 normal-case text-xl
@@ -19,13 +19,10 @@ export default function Navbar() {
           </a>
         </div>
 
-        <div className="tabs flex items-center">
-          <div class="tabs mr-3">
+        <div className="tabs flex items-center justify-self-end mb-2">
+          <div class="tabs">
             {pathName === "/" && (
               <>
-                <a href="/" className="tab tab-bordered tab-active">
-                  Home
-                </a>
                 {data && (
                   <a href="/mycollection" className="tab tab-bordered">
                     My Collection
@@ -35,9 +32,6 @@ export default function Navbar() {
             )}
              {pathName === "/mycollection" && (
               <>
-                <a href="/" className="tab tab-bordered">
-                  Home
-                </a>
                 {data && (
                   <a href="/mycollection" className="tab tab-bordered tab-active">
                     My Collection
@@ -47,7 +41,9 @@ export default function Navbar() {
             )}
           </div>
 
-          <div className="flex flex-col justify-between items-end">
+          
+        </div>
+        <div className="flex flex-col justify-between items-end ml-3">
             <ConnectButton
               accountStatus={{
                 smallScreen: "avatar",
@@ -57,7 +53,6 @@ export default function Navbar() {
               showBalance={false}
             />
           </div>
-        </div>
       </div>
     </>
   );
