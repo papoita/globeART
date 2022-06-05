@@ -7,7 +7,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="navbar bg-transparent flex justify-between absolute h-28 p-5 z-50">
+      <div className="navbar bg-transparent flex justify-between absolute h-28 p-5 z-40">
         <div className="ml-3">
           <a
             href="/"

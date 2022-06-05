@@ -11,7 +11,7 @@ export default function Modal({ handleHideModal, nft, userLocation }) {
 
   return (
     <>
-      <div className="card card-compact w-96 bg-white rounded-sm shadow-custom-lg transition ease-in-out duration-360 hover:scale-10003 hover:-translate-y-1 z-40">
+      <div className="card card-compact w-96 bg-white rounded-sm shadow-custom-lg transition ease-in-out duration-360 hover:scale-10003 hover:-translate-y-1 z-50">
         {transactionInProgress && <TransactionProgress />}
         <figure className="p-5">
           <img
