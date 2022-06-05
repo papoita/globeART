@@ -74,7 +74,7 @@ function Home() {
             userLocation={location}
           />
           <button
-            class="btn btn-round absolute bottom-0 right-0 m-3 mr-9"
+            class="btn btn-round absolute bottom-0 right-0 m-3"
             onClick={centerOnLocation}
           >
             <svg
