@@ -2,7 +2,8 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 
 export default function Navbar() {
-  const { data, isError, isLoading } = useAccount();
+  const { data } = useAccount();
+  const pathName = window.location.pathname;
 
   return (
     <>
@@ -18,16 +19,34 @@ export default function Navbar() {
           </a>
         </div>
 
-        <div className="flex items-center">
-          {data && (
-              <a
-                role="button"
-                href="/mycollection"
-                className="btn btn-ghost"
-              >
-                My Collection
-              </a>
-          )}
+        <div className="tabs flex items-center">
+          <div class="tabs mr-3">
+            {pathName === "/" && (
+              <>
+                <a href="/" className="tab tab-bordered tab-active">
+                  Home
+                </a>
+                {data && (
+                  <a href="/mycollection" className="tab tab-bordered">
+                    My Collection
+                  </a>
+                )}
+              </>
+            )}
+             {pathName === "/mycollection" && (
+              <>
+                <a href="/" className="tab tab-bordered">
+                  Home
+                </a>
+                {data && (
+                  <a href="/mycollection" className="tab tab-bordered tab-active">
+                    My Collection
+                  </a>
+                )}
+              </>
+            )}
+          </div>
+
           <div className="flex flex-col justify-between items-end">
             <ConnectButton
               accountStatus={{
