@@ -10,7 +10,7 @@ import {
 } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
-import { infuraProvider } from "wagmi/providers/infura"
+import { infuraProvider } from "wagmi/providers/infura";
 import { publicProvider } from "wagmi/providers/public";
 
 import Navbar from "./components/Navbar";
@@ -18,14 +18,16 @@ import Footer from "./components/Footer";
 import Home from "./views/Home";
 import MyCollection from "./views/MyCollection";
 
-// import useGeolocation from "./hooks/useGeolocation";
-
-const infuraId = process.env.INFURA_ID
-const alchemyId = process.env.ALCHEMY_ID
+const infuraId = process.env.INFURA_ID;
+const alchemyId = process.env.ALCHEMY_ID;
 
 const { chains, provider } = configureChains(
   [chain.polygon, chain.hardhat, chain.localhost, chain.rinkeby],
-  [alchemyProvider({ alchemyId }), infuraProvider({ infuraId }), publicProvider()]
+  [
+    alchemyProvider({ alchemyId }),
+    infuraProvider({ infuraId }),
+    publicProvider(),
+  ]
 );
 const { connectors } = getDefaultWallets({
   appName: "Trotter",
@@ -38,9 +40,7 @@ const wagmiClient = createClient({
 });
 
 export default function App() {
-  {
-    /* const { location } = useGeolocation(); */
-  }
+  // const { location } = useGeolocation();
 
   const [account, setAccount] = useState(null);
 
