@@ -99,31 +99,41 @@ function Home() {
           </button>
         </>
       )}
-      <Transition
-        show={showModal}
-        enter="transform transition duration-[600ms]"
-        enterFrom="scale-0"
-        enterTo="scale-100"
-        leave="ease-in duration-[300ms]"
-        leaveFrom="scale-100"
-        leaveTo="scale-0"
-        className="fixed inset-0 h-screen z-40 flex justify-center items-center"
-        onClick={() => {
-          handleHideModal();
-        }}
-      >
-        <div
-          className="modal-content"
-          onClick={(e) => {
-            e.stopPropagation();
+      <Transition show={showModal}>
+        <Transition.Child
+          enter="transform transition duration-[600ms]"
+          enterFrom="scale-0"
+          enterTo="scale-100"
+          leave="ease-in duration-[300ms]"
+          leaveFrom="scale-100"
+          leaveTo="scale-0"
+          className="fixed inset-0 h-screen z-50 flex justify-center items-center"
+          onClick={() => {
+            handleHideModal();
           }}
         >
-          <Modal
-            handleHideModal={handleHideModal}
-            nft={nft}
-            userLocation={location.city}
-          />
-        </div>
+          <div
+            className="modal-content"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <Modal
+              handleHideModal={handleHideModal}
+              nft={nft}
+              userLocation={location.city}
+            />
+          </div>
+        </Transition.Child>
+        <Transition.Child
+        enter="transition-opacity ease-linear duration-[200ms]"
+        enterFrom="opacity-0"
+        enterTo="opacity-40"
+        leave="transition-opacity ease-linear duration-[200ms]"
+        leaveFrom="opacity-40"
+        leaveTo="opacity-0"
+        className="fixed top-0 right-0 bottom-0 left-0 z-40 bg-black">
+        </Transition.Child>
       </Transition>
     </>
   );
