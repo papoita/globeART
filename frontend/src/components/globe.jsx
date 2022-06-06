@@ -19,14 +19,16 @@ export default function Globe({
   const userLat = userLocation.coordinates.lat;
   const userLon = userLocation.coordinates.lon;
 
-  const userPoint = [
+  const ripple = [
     {
       lat: userLat,
       lng: userLon,
-      color: "yellow",
+      maxR: 3,
+      propagationSpeed: 2,
+      repeatPeriod: 1000,
     },
   ];
-  console.log("WIDTH,", width);
+  const colorInterpolator = (t) => `rgba(255,255,255,${Math.sqrt(1 - t)})`;
 
   const MAP_CENTER = { lat: userLat, lng: userLon, altitude: 2.5 };
   const ROTATION_SPEED = 500;
@@ -63,7 +65,6 @@ export default function Globe({
 
   useEffect(() => {
     window.addEventListener("resize", () => {
-      console.log("isMobile", isMobile);
       if (width <= MOBILE_BREAKPOINT) {
         isMobile = true;
       } else if (width > MOBILE_BREAKPOINT) {
@@ -123,12 +124,11 @@ export default function Globe({
           labelResolution={2}
           onLabelClick={(d) => handleOnLabelClick(d)}
           onGlobeReady={handleOnGlobeReady}
-          pointsData={userPoint}
-          pointLat={(d) => d.lat}
-          pointLng={(d) => d.lng}
-          pointColor={(d) => d.color}
-          pointAltitude={0}
-          pointRadius={1}
+          ringsData={ripple}
+          ringColor={() => colorInterpolator}
+          ringMaxRadius="maxR"
+          ringPropagationSpeed="propagationSpeed"
+          ringRepeatPeriod="repeatPeriod"
           showAtmosphere={true}
           height={height}
           width={width}
