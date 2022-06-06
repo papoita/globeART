@@ -24,7 +24,7 @@ export default function Navbar() {
             {pathName === "/" && (
               <>
                 {data && (
-                  <a href="/mycollection" className="tab tab-bordered">
+                  <a href="/mycollection" className="tab tab-bordered text-white">
                     My Collection
                   </a>
                 )}
