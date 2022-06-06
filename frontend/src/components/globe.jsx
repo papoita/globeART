@@ -3,7 +3,6 @@ import ReactGlobe from "react-globe.gl";
 import * as THREE from "three";
 
 const MOBILE_BREAKPOINT = 768;
-const TABLET_BREAKPOINT = 1440;
 
 export default function Globe({
   globeEl,
@@ -12,12 +11,10 @@ export default function Globe({
   userLocation,
 }) {
   let isMobile = window.outerWidth <= MOBILE_BREAKPOINT;
-  let isTablet = window.outerWidth <= TABLET_BREAKPOINT && window.outerWidth > MOBILE_BREAKPOINT;
-  const [height, setHeight] = useState(
-    isMobile ? window.outerHeight : window.outerWidth * ( window.outerHeight / window.outerWidth)
-  );
+
+  const [height, setHeight] = useState(window.outerHeight);
   const [width, setWidth] = useState(
-    isMobile ? window.outerHeight * 0.75: window.outerWidth
+    isMobile ? window.outerHeight * 0.75 : window.outerWidth
   );
   const userLat = userLocation.coordinates.lat;
   const userLon = userLocation.coordinates.lon;
@@ -29,16 +26,16 @@ export default function Globe({
       color: "yellow",
     },
   ];
-  console.log("WIDTH,", width)
+  console.log("WIDTH,", width);
 
   const MAP_CENTER = { lat: userLat, lng: userLon, altitude: 2.5 };
   const ROTATION_SPEED = 500;
-  
+
   const handleOnLabelClick = (d) => {
-    setWidth(width + 10)
+    setWidth(width + 10);
     globeEl.current.pointOfView(
       { lat: d.lat, lng: d.lng, altitude: 1 },
-      ROTATION_SPEED,
+      ROTATION_SPEED
     );
     setTimeout(() => {
       handleShowModal(d);
@@ -52,20 +49,17 @@ export default function Globe({
     globeEl.current.pointOfView(MAP_CENTER, ROTATION_SPEED);
   };
 
-  
-
   // Add stars
   const N = 300;
-  const stars = [...Array(N).keys()].map(() => ({
+  const stars = [...Array(N).keys()].map((d) => ({
     // opacity: Math.random() + 0.1,
     lat: (Math.random() - 0.5) * 180,
     lng: (Math.random() - 0.5) * 360,
     alt: Math.random() * 2 + 5,
     radius: Math.random() * 1.1,
-    color: `rgba(255,255,255,1)`
+    color: `rgba(255,255,255,1)`,
   }));
   // const [starOpacity, setStarOpacity] = useState(stars);
-
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -95,7 +89,6 @@ export default function Globe({
   //   })();
   // }, [])
 
-
   return (
     <>
       <div className="h-screen z-30">
@@ -108,7 +101,7 @@ export default function Globe({
           customThreeObject={(d) =>
             new THREE.Mesh(
               new THREE.SphereBufferGeometry(d.radius),
-              new THREE.MeshLambertMaterial({ color: d.color})
+              new THREE.MeshLambertMaterial({ color: d.color })
             )
           }
           customThreeObjectUpdate={(obj, d) => {
