@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="footer relative items-center p-4 m-3 w-auto rounded-lg text-neutral-content bg-gradient-to-r from-white  to-purple-400 -bottom-2 z-40 flex justify-between">
+    <footer className="footer relative items-center p-4 m-3 mt-20 w-auto rounded-lg text-neutral-content bg-gradient-to-r from-white  to-purple-400 -bottom-2 z-40 flex justify-between">
         <a
           href="https://github.com/mjstaus/Trotter"
           target="_blank"

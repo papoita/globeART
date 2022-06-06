@@ -6,6 +6,7 @@ coverage
 coverage.json
 typechain
 .DS_Store
+fission.yaml
 
 #Hardhat files
 cache

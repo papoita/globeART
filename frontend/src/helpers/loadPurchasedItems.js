@@ -4,7 +4,7 @@ import loadContracts from "./loadContracts";
 
 export default async function loadPurchasedItems(account) {
 
-  const { shop, nft } = await loadContracts();
+  const { shop, token } = await loadContracts();
 
   try {
     // Fetch purchased items from shop by quering Bought events with the buyer set as the user acct
@@ -17,14 +17,14 @@ export default async function loadPurchasedItems(account) {
       account
     );
     const results = await shop.queryFilter(filter);
-    //Fetch metadata of each nft and add that to purchasedItems object.
+    //Fetch metadata of each token and add that to purchasedItems object.
     const purchasedItems = await Promise.all(
       results.map(async (i) => {
         // fetch arguments from each result
         i = i.args;
-        // get uri url from nft contract
-        const uri = await nft.uri(i.tokenId);
-        // use uri to fetch the nft metadata stored on ipfs
+        // get uri url from token contract
+        const uri = await token.uri(i.tokenId);
+        // use uri to fetch the token metadata stored on ipfs
         const response = await axios.get(uri);
         const metadata = await response.data;
 

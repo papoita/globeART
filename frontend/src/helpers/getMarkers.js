@@ -20,7 +20,6 @@ export async function getMarkers() {
 
     try{
       const res = await(axios.get(apiURL))
-      console.log(res)
       coordinates.lat = res.data[0].lat;
       coordinates.lon = res.data[0].lon;
       return coordinates;

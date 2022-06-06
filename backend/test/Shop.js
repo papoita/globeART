@@ -15,7 +15,7 @@ describe("Shop", function () {
   beforeEach(async function () {
     // Get the ContractFactories and Signers here.
     const Token = await ethers.getContractFactory("Token");
-    Shop = await ethers.getContractFactory("Shop");
+    const Shop = await ethers.getContractFactory("Shop");
     [deployer, addr1, addr2, ...addrs] = await ethers.getSigners();
     
 

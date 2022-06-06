@@ -8,7 +8,7 @@ import TokenAbi from "../contractsData/Token.json";
 
 export default async function loadContracts() {
   let shop;
-  let nft;
+  let token;
 
   const signer = await web3Handler();
   // Get deployed copies of contracts
@@ -23,7 +23,7 @@ export default async function loadContracts() {
     TokenAbi.abi,
     signer
   );
-  nft = tokenContract;
+  token = tokenContract;
 
-  return { nft, shop };
+  return { token, shop };
 };

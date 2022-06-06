@@ -3,7 +3,18 @@ import ReactGlobe from "react-globe.gl";
 import * as THREE from "three";
 
 const MOBILE_BREAKPOINT = 768;
-const TABLET_BREAKPOINT = 1440;
+
+// Custom globe material
+const globeMaterial = new THREE.MeshPhongMaterial();
+globeMaterial.bumpScale = 10;
+new THREE.TextureLoader().load(
+  "//unpkg.com/three-globe/example/img/earth-water.png",
+  (texture) => {
+    globeMaterial.specularMap = texture;
+    globeMaterial.specular = new THREE.Color("grey");
+    globeMaterial.shininess = 6;
+  }
+);
 
 export default function Globe({
   globeEl,
@@ -12,38 +23,46 @@ export default function Globe({
   userLocation,
 }) {
   let isMobile = window.outerWidth <= MOBILE_BREAKPOINT;
-  let isTablet = window.outerWidth <= TABLET_BREAKPOINT && window.outerWidth > MOBILE_BREAKPOINT;
-  const [height, setHeight] = useState(
-    isMobile ? window.outerHeight : window.outerWidth * ( window.outerHeight / window.outerWidth)
-  );
+
+  const [height, setHeight] = useState(window.outerHeight);
   const [width, setWidth] = useState(
-    isMobile ? window.outerHeight * 0.75: window.outerWidth
+    isMobile ? window.outerHeight * 0.75 : window.outerWidth
   );
   const userLat = userLocation.coordinates.lat;
   const userLon = userLocation.coordinates.lon;
 
-  const userPoint = [
+  const ripple = [
     {
       lat: userLat,
       lng: userLon,
-      color: "yellow",
+      maxR: 3,
+      propagationSpeed: 2,
+      repeatPeriod: 1000,
     },
   ];
-  console.log("WIDTH,", width)
+  const colorInterpolator = (t) => `rgba(255,255,255,${Math.sqrt(1 - t)})`;
 
   const MAP_CENTER = { lat: userLat, lng: userLon, altitude: 2.5 };
   const ROTATION_SPEED = 500;
-  
+
   const handleOnLabelClick = (d) => {
-    setWidth(width + 10)
     globeEl.current.pointOfView(
       { lat: d.lat, lng: d.lng, altitude: 1 },
-      ROTATION_SPEED,
+      ROTATION_SPEED
     );
     setTimeout(() => {
       handleShowModal(d);
     }, 200);
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      const directionalLight = globeEl.current
+        .scene()
+        .children.find((obj3d) => obj3d.type === "DirectionalLight");
+      directionalLight && directionalLight.position.set(0, 1, 0.5);
+    });
+  }, []);
 
   const handleOnGlobeReady = () => {
     globeEl.current.controls().enableZoom = false;
@@ -52,24 +71,20 @@ export default function Globe({
     globeEl.current.pointOfView(MAP_CENTER, ROTATION_SPEED);
   };
 
-  
-
   // Add stars
   const N = 300;
-  const stars = [...Array(N).keys()].map(() => ({
+  const stars = [...Array(N).keys()].map((d) => ({
     // opacity: Math.random() + 0.1,
     lat: (Math.random() - 0.5) * 180,
     lng: (Math.random() - 0.5) * 360,
     alt: Math.random() * 2 + 5,
     radius: Math.random() * 1.1,
-    color: `rgba(255,255,255,1)`
+    color: `rgba(255,255,255,1)`,
   }));
   // const [starOpacity, setStarOpacity] = useState(stars);
 
-
   useEffect(() => {
     window.addEventListener("resize", () => {
-      console.log("isMobile", isMobile);
       if (width <= MOBILE_BREAKPOINT) {
         isMobile = true;
       } else if (width > MOBILE_BREAKPOINT) {
@@ -95,20 +110,21 @@ export default function Globe({
   //   })();
   // }, [])
 
-
   return (
     <>
       <div className="h-screen z-30">
         <ReactGlobe
           ref={globeEl}
-          atmosphereAltitude={0.2}
+          atmosphereAltitude={0.15}
           bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
           backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+          globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+          globeMaterial={globeMaterial}
           customLayerData={stars}
           customThreeObject={(d) =>
             new THREE.Mesh(
               new THREE.SphereBufferGeometry(d.radius),
-              new THREE.MeshLambertMaterial({ color: d.color})
+              new THREE.MeshLambertMaterial({ color: d.color })
             )
           }
           customThreeObjectUpdate={(obj, d) => {
@@ -118,7 +134,6 @@ export default function Globe({
             );
           }}
           enableMarkerGlow={true}
-          globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
           labelsData={markers}
           labelAltitude={0.002}
           labelLat={(d) => d.lat}
@@ -130,12 +145,11 @@ export default function Globe({
           labelResolution={2}
           onLabelClick={(d) => handleOnLabelClick(d)}
           onGlobeReady={handleOnGlobeReady}
-          pointsData={userPoint}
-          pointLat={(d) => d.lat}
-          pointLng={(d) => d.lng}
-          pointColor={(d) => d.color}
-          pointAltitude={0}
-          pointRadius={1}
+          ringsData={ripple}
+          ringColor={() => colorInterpolator}
+          ringMaxRadius="maxR"
+          ringPropagationSpeed="propagationSpeed"
+          ringRepeatPeriod="repeatPeriod"
           showAtmosphere={true}
           height={height}
           width={width}

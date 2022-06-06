@@ -3,16 +3,19 @@ import "../App.css";
 import { Transition } from "@headlessui/react";
 import Globe from "../components/globe";
 import Modal from "../components/Modal";
+import TransactionProgress from "../components/TransactionProgress";
 
 import useLoading from "../hooks/useLoading";
 import useGeolocation from "../hooks/useGeolocation";
 import { getMarkers } from "../helpers/getMarkers";
+import buyShopItem from "../helpers/buyShopItem";
 
 function Home() {
   const globeEl = useRef();
   const { location } = useGeolocation();
   const [showModal, setShowModal] = useState(false);
   const [nft, setNft] = useState({});
+  const [transactionInProgress, setTransactionInProgress] = useState(false);
 
   const { isLoaded, setIsLoaded } = useLoading();
   const markers = useRef(null);
@@ -28,6 +31,16 @@ function Home() {
       }
     })();
   }, [isLoaded, location]);
+
+  const handleTransaction = async () => {
+    setTransactionInProgress(true);
+    const result = await buyShopItem(nft);
+    if (result) {
+      setTimeout(() => {
+        setTransactionInProgress(false);
+      }, 200);
+    }
+  };
 
   const handleShowModal = (d) => {
     setShowModal(true);
@@ -130,6 +143,7 @@ function Home() {
                 handleHideModal={handleHideModal}
                 nft={nft}
                 userLocation={location.city}
+                handleTransaction={handleTransaction}
               />
             </div>
           </div>
@@ -143,6 +157,18 @@ function Home() {
           leaveTo="opacity-0"
           className="fixed top-0 right-0 bottom-0 left-0 z-40 bg-black"
         ></Transition.Child>
+      </Transition>
+      <Transition
+        show={transactionInProgress}
+        enter="transform transition ease-in duration-[300ms]"
+        enterFrom="scale-0"
+        enterTo="scale-100"
+        leave="ease-in duration-[300ms]"
+        leaveFrom="scale-100"
+        leaveTo="scale-0"
+        className="z-40 bg-white w-40 opacity-70 absolute top-24 left-6 flex flex-col justify-center items-center rounded-lg pt-3 shadow-custom-lg"
+      >
+        <TransactionProgress />
       </Transition>
     </>
   );
