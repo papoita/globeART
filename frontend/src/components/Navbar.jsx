@@ -20,7 +20,7 @@ export default function Navbar() {
         </div>
 
         <div className="tabs flex items-center justify-self-end mb-2">
-          <div class="tabs">
+          <div className="tabs">
             {pathName === "/" && (
               <>
                 {data && (
