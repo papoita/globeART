@@ -4,6 +4,18 @@ import * as THREE from "three";
 
 const MOBILE_BREAKPOINT = 768;
 
+// Custom globe material
+const globeMaterial = new THREE.MeshPhongMaterial();
+globeMaterial.bumpScale = 10;
+new THREE.TextureLoader().load(
+  "//unpkg.com/three-globe/example/img/earth-water.png",
+  (texture) => {
+    globeMaterial.specularMap = texture;
+    globeMaterial.specular = new THREE.Color("grey");
+    globeMaterial.shininess = 6;
+  }
+);
+
 export default function Globe({
   globeEl,
   handleShowModal,
@@ -34,7 +46,6 @@ export default function Globe({
   const ROTATION_SPEED = 500;
 
   const handleOnLabelClick = (d) => {
-    setWidth(width + 10);
     globeEl.current.pointOfView(
       { lat: d.lat, lng: d.lng, altitude: 1 },
       ROTATION_SPEED
@@ -43,6 +54,15 @@ export default function Globe({
       handleShowModal(d);
     }, 200);
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      const directionalLight = globeEl.current
+        .scene()
+        .children.find((obj3d) => obj3d.type === "DirectionalLight");
+      directionalLight && directionalLight.position.set(0, 1, 0.5);
+    });
+  }, []);
 
   const handleOnGlobeReady = () => {
     globeEl.current.controls().enableZoom = false;
@@ -95,9 +115,11 @@ export default function Globe({
       <div className="h-screen z-30">
         <ReactGlobe
           ref={globeEl}
-          atmosphereAltitude={0.2}
+          atmosphereAltitude={0.15}
           bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
           backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+          globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+          globeMaterial={globeMaterial}
           customLayerData={stars}
           customThreeObject={(d) =>
             new THREE.Mesh(
@@ -112,7 +134,6 @@ export default function Globe({
             );
           }}
           enableMarkerGlow={true}
-          globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
           labelsData={markers}
           labelAltitude={0.002}
           labelLat={(d) => d.lat}
