@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -17,6 +17,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./views/Home";
 import MyCollection from "./views/MyCollection";
+import useGeolocation from "./hooks/useGeolocation";
 
 const infuraId = process.env.INFURA_ID;
 const alchemyId = process.env.ALCHEMY_ID;
@@ -42,6 +43,8 @@ const wagmiClient = createClient({
 export default function App() {
 
   const [account, setAccount] = useState(null);
+  const globeEl = useRef();
+  const { location } = useGeolocation();
 
   return (
     <WagmiConfig client={wagmiClient}>
@@ -54,9 +57,9 @@ export default function App() {
       >
         <Router>
           <div className="bg-black w-full min-h-screen overflow-hidden">
-            <Navbar account={account} setAccount={setAccount} />
+            <Navbar account={account} globeEl={globeEl} location={location} setAccount={setAccount} />
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<Home globeEl={globeEl} location={location} />} />
               <Route
                 path="/mycollection"
                 element={<MyCollection account={account} />}
