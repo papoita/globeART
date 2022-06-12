@@ -129,7 +129,7 @@ function Home({globeEl, location}) {
         leave="ease-in duration-[300ms]"
         leaveFrom="scale-100"
         leaveTo="scale-0"
-        className="z-40 bg-white w-30 p-2 opacity-70 absolute bottom-6 right-6 flex flex-col justify-center items-center rounded-lg pt-3 shadow-custom-lg"
+        className="z-40 w-40 p-2 absolute bottom-6 right-6 flex flex-col justify-center items-center"
       >
         <TransactionProgress />
       </Transition>
