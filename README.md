@@ -8,22 +8,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Features
 
-Users can:
-- Connect to their wallet (Metamask, Rainbow, Coinbase, WalletConnect)
-- See their location on the interactive 3D globe
-- View available NFTs by clicking their markers on the globe
-- Purchase an available NFT if the user's geolocation matches the NFT location
-
-## Look Inside
-
+### Users can connect to their wallet (Metamask, Rainbow, Coinbase, WalletConnect)
 https://user-images.githubusercontent.com/84533333/173244405-9a9f3f40-3b97-4ab7-96c0-4f1dc173feb1.mov
-User can connect to their wallet
+
+### Users can interact in the 3D globe, center the globe on their location, and view available NFTs by clicking their markers on the globe
 
 https://user-images.githubusercontent.com/84533333/173244462-fac24f1a-203f-4ea4-a6fb-1662fb2d1eb8.mov
-Interact with 3D globe, center globe on user's geolocation, click on globe markers to view associated NFTs
+
+### Users can purchase an available NFT if the user's geolocation matches the NFT location, and then view their collection of Trotter NFTs
 
 https://user-images.githubusercontent.com/84533333/173244791-5e1c63cc-6b7a-490f-8ec7-675afd25c389.mov
-Purchase NFT and view user's Trotter collection
 
 
 ## Dependencies
