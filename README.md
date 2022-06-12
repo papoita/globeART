@@ -16,6 +16,14 @@ Users can:
 
 ## Look Inside
 
+https://user-images.githubusercontent.com/84533333/173244405-9a9f3f40-3b97-4ab7-96c0-4f1dc173feb1.mov
+User can connect to their wallet
+
+https://user-images.githubusercontent.com/84533333/173244462-fac24f1a-203f-4ea4-a6fb-1662fb2d1eb8.mov
+Interact with 3D globe, center globe on user's geolocation, click on globe markers to view associated NFTs
+
+https://user-images.githubusercontent.com/84533333/173244791-5e1c63cc-6b7a-490f-8ec7-675afd25c389.mov
+Purchase NFT and view user's Trotter collection
 
 
 ## Dependencies
