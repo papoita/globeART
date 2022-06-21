@@ -2,7 +2,24 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useGeolocation() {
-  const [location, setLocation] = useState({
+  
+  interface Coordinates {
+    lat?: number,
+    lon?: number,
+  }
+  interface Error {
+    code: string,
+    message: string
+  }
+  interface Location {
+    allowLocation: boolean,
+    coordinates?: Coordinates,
+    city?: string,
+    country?: string,
+    error?: Error,
+  }
+
+  const [location, setLocation] = useState<Location>( {
     allowLocation: false,
     coordinates: { lat: null, lon: null },
     city: "",
@@ -10,8 +27,8 @@ export default function useGeolocation() {
   });
 
   const onSuccess = (location) => {
-    let lat = location.coords.latitude;
-    let lon = location.coords.longitude;
+    let lat = location?.coords?.latitude;
+    let lon = location?.coords?.longitude;
     let apiURL = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
 
     axios

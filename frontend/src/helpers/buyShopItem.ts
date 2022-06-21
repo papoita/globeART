@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import loadContracts from "./loadContracts.js";
+import loadContracts from "./loadContracts";
 
 interface Item {
   itemId: number;
