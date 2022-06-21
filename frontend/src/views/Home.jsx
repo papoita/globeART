@@ -6,8 +6,8 @@ import Modal from "../components/Modal";
 import TransactionProgress from "../components/TransactionProgress";
 
 import useLoading from "../hooks/useLoading";
-import { getMarkers } from "../helpers/getMarkers";
-import buyShopItem from "../helpers/buyShopItem";
+import { getMarkers } from "../helpers/getMarkers.ts";
+import buyShopItem from "../helpers/buyShopItem.ts";
 
 function Home({globeEl, location}) {
   const [showModal, setShowModal] = useState(false);

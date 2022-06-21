@@ -2,6 +2,7 @@ import axios from "axios";
 import loadShopItems from "./loadShopItems";
 
 export async function getMarkers() {
+
   // Check for cached items and return them if available
   const cachedMarkers = window.localStorage.getItem('markers');
   if (cachedMarkers?.length) {
@@ -13,10 +14,26 @@ export async function getMarkers() {
 
   const items = await loadShopItems();
 
-  const getCoords = async (item) => {
+  interface Item {
+    price: string;
+    itemId: number;
+    seller: string;
+    collection: string;
+    sold: boolean;
+    name: string;
+    country: string;
+    image: string;
+  }
+
+  const getCoords = async (item: Item) => {
     let apiURL = `http://api.openweathermap.org/geo/1.0/direct?q=${item.name},${item.country}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
 
-    let coordinates = {};
+    interface Coordinates {
+      lon?: number;
+      lat?: number;
+    }
+    
+    let coordinates: Coordinates = {};
 
     try{
       const res = await(axios.get(apiURL))
