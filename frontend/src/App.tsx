@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -42,8 +42,7 @@ const wagmiClient = createClient({
 
 export default function App() {
 
-  const [account, setAccount] = useState(null);
-  const globeEl = useRef();
+  const globeEl = useRef<HTMLElement>();
   const { location } = useGeolocation();
 
   return (
@@ -57,12 +56,12 @@ export default function App() {
       >
         <Router>
           <div className="bg-black w-full min-h-screen overflow-hidden">
-            <Navbar account={account} globeEl={globeEl} location={location} setAccount={setAccount} />
+            <Navbar globeEl={globeEl} location={location} />
             <Routes>
-              <Route exact path="/" element={<Home globeEl={globeEl} location={location} />} />
+              <Route path="/" element={<Home globeEl={globeEl} location={location} />} />
               <Route
                 path="/mycollection"
-                element={<MyCollection account={account} />}
+                element={<MyCollection />}
               />
             </Routes>
             <Footer />
