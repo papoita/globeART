@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactGlobe from "react-globe.gl";
 import * as THREE from "three";
+import { Ref, Marker, UserLocation } from "../interfaces";
 
 const MOBILE_BREAKPOINT = 768;
 
@@ -16,20 +17,29 @@ new THREE.TextureLoader().load(
   }
 );
 
+interface GlobeProps {
+  globeEl: Ref;
+  handleShowModal: (d: Marker) => void;
+  markers: Marker[] | undefined;
+  userLocation: UserLocation;
+}
+
 export default function Globe({
   globeEl,
   handleShowModal,
   markers,
   userLocation,
-}) {
+}: GlobeProps) {
   let isMobile = window.outerWidth <= MOBILE_BREAKPOINT;
 
   const [height, setHeight] = useState(window.outerHeight);
   const [width, setWidth] = useState(
     isMobile ? window.outerHeight * 0.75 : window.outerWidth
   );
-  const userLat = userLocation.coordinates.lat;
-  const userLon = userLocation.coordinates.lon;
+
+  // Create ripple effect around user's geolocation
+  const userLat = userLocation?.coordinates?.lat;
+  const userLon = userLocation?.coordinates?.lon;
 
   const ripple = [
     {
@@ -40,48 +50,49 @@ export default function Globe({
       repeatPeriod: 1000,
     },
   ];
-  const colorInterpolator = (t) => `rgba(255,255,255,${Math.sqrt(1 - t)})`;
+  const colorInterpolator = (t: number) =>
+    `rgba(255,255,255,${Math.sqrt(1 - t)})`;
 
   const MAP_CENTER = { lat: userLat, lng: userLon, altitude: 2.5 };
   const ROTATION_SPEED = 500;
 
-  const handleOnLabelClick = (d) => {
-    globeEl.current.pointOfView(
-      { lat: d.lat, lng: d.lng, altitude: 1 },
+  const handleOnLabelClick = (marker: Marker) => {
+    globeEl?.current?.pointOfView(
+      { lat: marker.lat, lng: marker.lng, altitude: 1 },
       ROTATION_SPEED
     );
     setTimeout(() => {
-      handleShowModal(d);
+      handleShowModal(marker);
     }, 200);
   };
 
   useEffect(() => {
     setTimeout(() => {
-      const directionalLight = globeEl.current
+      const directionalLight = globeEl?.current
         .scene()
-        .children.find((obj3d) => obj3d.type === "DirectionalLight");
+        .children.find((obj3d: any) => obj3d.type === "DirectionalLight");
       directionalLight && directionalLight.position.set(0, 1, 0.5);
     });
   }, []);
 
   const handleOnGlobeReady = () => {
-    globeEl.current.controls().enableZoom = false;
-    globeEl.current.controls().autoRotate = true;
-    globeEl.current.controls().autoRotateSpeed = 0.1;
-    globeEl.current.pointOfView(MAP_CENTER, ROTATION_SPEED);
+    if (globeEl) {
+      globeEl.current.controls().enableZoom = false;
+      globeEl.current.controls().autoRotate = true;
+      globeEl.current.controls().autoRotateSpeed = 0.1;
+      globeEl.current.pointOfView(MAP_CENTER, ROTATION_SPEED);
+    }
   };
 
   // Add stars
   const N = 300;
   const stars = [...Array(N).keys()].map((d) => ({
-    // opacity: Math.random() + 0.1,
     lat: (Math.random() - 0.5) * 180,
     lng: (Math.random() - 0.5) * 360,
     alt: Math.random() * 2 + 5,
     radius: Math.random() * 1.1,
     color: `rgba(255,255,255,1)`,
   }));
-  // const [starOpacity, setStarOpacity] = useState(stars);
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -100,16 +111,6 @@ export default function Globe({
     });
   }, [height, width]);
 
-  // useEffect(() => {
-  //   (function blinkStars() {
-  //     starOpacity.forEach(d => {
-  //       d.opacity === 1 ? d.opacity = 0 : d.opacity += 0.1
-  //     });
-  //     setStarOpacity(starOpacity.slice());
-  //     requestAnimationFrame(blinkStars);
-  //   })();
-  // }, [])
-
   return (
     <>
       <div className="h-screen z-30">
@@ -119,31 +120,32 @@ export default function Globe({
           bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
           backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
           globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+          // @ts-ignore
           globeMaterial={globeMaterial}
           customLayerData={stars}
-          customThreeObject={(d) =>
+          // @ts-ignore
+          customThreeObject={(star: Star) =>
             new THREE.Mesh(
-              new THREE.SphereBufferGeometry(d.radius),
-              new THREE.MeshLambertMaterial({ color: d.color })
+              new THREE.SphereBufferGeometry(star.radius),
+              new THREE.MeshBasicMaterial({ color: star.color })
             )
           }
-          customThreeObjectUpdate={(obj, d) => {
+          customThreeObjectUpdate={(obj, star: any) => {
             Object.assign(
               obj.position,
-              globeEl.current.getCoords(d.lat, d.lng, d.alt)
+              globeEl.current.getCoords(star.lat, star.lng, star.alt)
             );
           }}
-          enableMarkerGlow={true}
           labelsData={markers}
           labelAltitude={0.002}
-          labelLat={(d) => d.lat}
-          labelLng={(d) => d.lng}
-          labelText={(d) => d.name}
+          labelLat={(d: any) => d.lat}
+          labelLng={(d: any) => d.lng}
+          labelText={(d: any) => d.name}
           labelSize={1.2}
           labelDotRadius={0.6}
-          labelColor={(d) => d.color}
+          labelColor={(d: any) => d.color}
           labelResolution={2}
-          onLabelClick={(d) => handleOnLabelClick(d)}
+          onLabelClick={(d: any) => handleOnLabelClick(d)}
           onGlobeReady={handleOnGlobeReady}
           ringsData={ripple}
           ringColor={() => colorInterpolator}

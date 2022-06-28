@@ -1,15 +1,15 @@
 import { ethers } from "ethers";
 import loadContracts from "./loadContracts";
+import { Marker} from "../interfaces";
 
-export default async function buyShopItem(item) {
+export default async function buyShopItem(item: Marker) {
   let receipt = null;
 
   try {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
+    const provider = new ethers.providers.Web3Provider(window.ethereum as any);
     const price = ethers.utils.parseEther(item.price);
 
-    const contracts = await loadContracts(signer);
+    const contracts = await loadContracts();
     const shop = contracts.shop;
     const purchaseTx = await shop.purchaseItem(item.itemId, {
       value: price,

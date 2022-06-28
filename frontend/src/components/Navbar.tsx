@@ -1,7 +1,13 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useAccount } from "wagmi";
+import { useAccount } from "wagmi"; 
+import { Location, Ref } from "../interfaces";
 
-export default function Navbar({location, globeEl}) {
+interface NavbarProps {
+  location: Location;
+  globeEl: Ref;
+}
+
+export default function Navbar({location, globeEl}: NavbarProps) {
   const { data } = useAccount();
   const pathName = window.location.pathname;
 
@@ -65,12 +71,12 @@ export default function Navbar({location, globeEl}) {
           />
         </div>
         <button
-            class="btn btn-round  p-2 py-1 m-3"
+            className="btn btn-round  p-2 py-1 m-3"
             onClick={centerOnLocation}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
