@@ -1,16 +1,8 @@
 import { ethers } from "ethers";
 import loadContracts from "./loadContracts";
+import { Marker} from "../interfaces";
 
-interface Item {
-  itemId: number;
-  tokenId: number;
-  collection: string;
-  price: string;
-  seller: string;
-  sold: boolean;
-}
-
-export default async function buyShopItem(item: Item) {
+export default async function buyShopItem(item: Marker) {
   let receipt = null;
 
   try {

@@ -1,18 +1,20 @@
-import { useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAccount } from "wagmi";
 import useLoading from "../hooks/useLoading";
 import loadPurchasedItems from "../helpers/loadPurchasedItems";
+import { PurchasedItem } from "../interfaces";
 
 export default function MyCollection() {
   const { isLoaded, setIsLoaded } = useLoading();
   const { data } = useAccount();
 
-  const purchases = useRef(null);
+  const [ purchases, setPurchases ] = useState<PurchasedItem[] | null | undefined >(null);
 
   useEffect(() => {
     (async function asyncHandler() {
       try {
-        purchases.current = await loadPurchasedItems(data?.address);
+        const result = await loadPurchasedItems(data?.address);
+        setPurchases(result)
         setIsLoaded(true);
       } catch (error) {
         console.log(error);
@@ -42,8 +44,8 @@ export default function MyCollection() {
 
         {isLoaded && (
           <div className="container max-w-l mx-auto mt-6 flex flex-wrap flex-col md:flex-row justify-center items-center">
-            {purchases?.current.length > 0 ? (
-              purchases?.current.map((item, idx) => (
+            {purchases?.length && purchases?.length > 0 ? (
+              purchases?.map((item, idx) => (
                 <div
                   key={idx}
                   className="card card-compact bg-white rounded-sm m-5 w-72 transition ease-in-out duration-300 hover:scale-10003 hover:shadow-custom-lg"

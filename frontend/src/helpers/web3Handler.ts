@@ -6,9 +6,5 @@ export default async function web3Handler() {
   // Set signer
   const signer = provider.getSigner();
 
-  window.ethereum.on("chainChanged", (chainId) => {
-    window.location.reload();
-  });
-
   return signer;
 };

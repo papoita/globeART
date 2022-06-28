@@ -1,12 +1,21 @@
 import { useEffect } from "react";
+import { Marker } from "../interfaces";
+
+interface ModalProps {
+  handleHideModal: () => void;
+  handleTransaction: () => void;
+  nft: Marker | undefined ;
+  userLocation: string | undefined ;
+}
 
 export default function Modal({
   handleHideModal,
+  handleTransaction,
   nft,
   userLocation,
-  handleTransaction,
-}) {
-  const keydownHandler = ({ key }) => {
+}: ModalProps) {
+
+  const keydownHandler = ({ key } : any) => {
     switch (key) {
       case "Escape":
         handleHideModal();
@@ -26,21 +35,21 @@ export default function Modal({
         <figure className="p-5">
           <img
             className="brightness-75 shadow-inner"
-            src={`./images/thumbnails/${nft.name}.jpg`}
-            alt={nft.name}
+            src={`./images/thumbnails/${nft?.name}.jpg`}
+            alt={nft?.name}
           />
         </figure>
         <div className="card-body flex-row justify-between bg-white">
           <div className="flex-column">
             <h2 className="card-title font-urbanist text-black text-3xl">
-              {nft.name}
-              {nft.sold && (
+              {nft?.name}
+              {nft?.sold && (
                 <div className="badge badge-secondary">SOLD OUT</div>
               )}
             </h2>
-            <p>Trotter {nft.collection} Collection</p>
+            <p>Trotter {nft?.collection} Collection</p>
           </div>
-          {!nft.sold && userLocation === nft.name && (
+          {!nft?.sold && userLocation === nft?.name && (
             <div className="card-actions flex flex-col items-center">
               <p className="text-lg">Price</p>
               <div className="flex flex-row items-center">
@@ -49,11 +58,11 @@ export default function Modal({
                   src="./eth-diamond-glyph.png"
                   alt="eth-icon"
                 ></img>
-                <p className="text-xl text-black">{nft.price}</p>
+                <p className="text-xl text-black">{nft?.price}</p>
               </div>
               <button
                 className="btn btn-primary"
-                onClick={handleTransaction}
+                onClick={() => handleTransaction()}
               >
                 Buy Now
               </button>

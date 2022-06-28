@@ -42,7 +42,7 @@ const wagmiClient = createClient({
 
 export default function App() {
 
-  const globeEl = useRef<HTMLElement>();
+  const globeEl = useRef<HTMLElement>(null!);
   const { location } = useGeolocation();
 
   return (

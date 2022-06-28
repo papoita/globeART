@@ -6,16 +6,22 @@ import Modal from "../components/Modal";
 import TransactionProgress from "../components/TransactionProgress";
 
 import useLoading from "../hooks/useLoading";
-import { getMarkers } from "../helpers/getMarkers.ts";
-import buyShopItem from "../helpers/buyShopItem.ts";
+import { getMarkers } from "../helpers/getMarkers";
+import buyShopItem from "../helpers/buyShopItem";
+import { Location, Marker, Ref } from "../interfaces";
 
-function Home({globeEl, location}) {
+interface HomeProps {
+  location: Location;
+  globeEl: Ref;
+}
+
+function Home({ globeEl, location }: HomeProps) {
   const [showModal, setShowModal] = useState(false);
-  const [nft, setNft] = useState({});
+  const [nft, setNft] = useState<Marker | undefined >(undefined);
   const [transactionInProgress, setTransactionInProgress] = useState(false);
 
   const { isLoaded, setIsLoaded } = useLoading();
-  const markers = useRef(null);
+  const markers = useRef(undefined);
 
   useEffect(() => {
     (async function asyncHandler() {
@@ -31,15 +37,17 @@ function Home({globeEl, location}) {
 
   const handleTransaction = async () => {
     setTransactionInProgress(true);
-    const result = await buyShopItem(nft);
-    if (result) {
-      setTimeout(() => {
-        setTransactionInProgress(false);
-      }, 200);
+    if (nft) {
+      const result = await buyShopItem(nft);
+      if (result) {
+        setTimeout(() => {
+          setTransactionInProgress(false);
+        }, 200);
+      }
     }
   };
 
-  const handleShowModal = (d) => {
+  const handleShowModal = (d: Marker) => {
     setShowModal(true);
     setNft(d);
   };

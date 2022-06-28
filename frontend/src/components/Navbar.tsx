@@ -1,7 +1,13 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useAccount } from "wagmi";
+import { useAccount } from "wagmi"; 
+import { Location, Ref } from "../interfaces";
 
-export default function Navbar({location, globeEl}) {
+interface NavbarProps {
+  location: Location;
+  globeEl: Ref;
+}
+
+export default function Navbar({location, globeEl}: NavbarProps) {
   const { data } = useAccount();
   const pathName = window.location.pathname;
 
