@@ -14,7 +14,7 @@ export default function useGeolocation() {
   const onSuccess = (l: any) => {
     let lat = l.coords?.latitude;
     let lon = l.coords?.longitude;
-    let apiURL = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
+    let apiURL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
 
     axios
       .get(apiURL)

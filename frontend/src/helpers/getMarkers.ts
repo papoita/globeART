@@ -15,7 +15,7 @@ export async function getMarkers() {
   const items = await loadShopItems();
 
   const getCoords = async (item: Item) => {
-    let apiURL = `http://api.openweathermap.org/geo/1.0/direct?q=${item.name},${item.country}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
+    let apiURL = `https://api.openweathermap.org/geo/1.0/direct?q=${item.name},${item.country}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
 
     let coordinates: Coordinates = {};
 
