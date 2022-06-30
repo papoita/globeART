@@ -2,7 +2,7 @@
 
 Trotter is a decentralized application that allows users to purchase collectable NFTs based on the user's geolocation. 
 
-Built with React, Tailwind CSS, Solidity, Ethers, Hardhat
+Built with React, TypeScript, Tailwind CSS, Solidity, Ethers, Hardhat
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -11,7 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### Users can connect to their wallet (Metamask, Rainbow, Coinbase, WalletConnect)
 https://user-images.githubusercontent.com/84533333/173244405-9a9f3f40-3b97-4ab7-96c0-4f1dc173feb1.mov
 
-### Users can interact in the 3D globe, center the globe on their location, and view available NFTs by clicking their markers on the globe
+### Users can interact with the 3D globe, center the globe on their location, and view available NFTs by clicking their markers on the globe
 
 https://user-images.githubusercontent.com/84533333/173244462-fac24f1a-203f-4ea4-a6fb-1662fb2d1eb8.mov
 
