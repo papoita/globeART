@@ -3,7 +3,7 @@ import axios from "axios";
 import { Location } from "../interfaces";
 
 export default function useGeolocation() {
-
+   
   const [location, setLocation] = useState<Location>( {
     allowLocation: false,
     coordinates: { lat: null, lon: null },
@@ -14,7 +14,7 @@ export default function useGeolocation() {
   const onSuccess = (l: any) => {
     let lat = l.coords?.latitude;
     let lon = l.coords?.longitude;
-    let apiURL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_GEOCODING_API}`;
+    let apiURL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=302dd63e3014261e4e3639ec1b4d8716`;
 
     axios
       .get(apiURL)
