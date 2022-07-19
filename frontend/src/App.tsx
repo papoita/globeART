@@ -19,13 +19,11 @@ import Home from "./views/Home";
 import MyCollection from "./views/MyCollection";
 import useGeolocation from "./hooks/useGeolocation";
 
-const infuraId = process.env.INFURA_ID;
-const alchemyId = process.env.ALCHEMY_ID;
+const infuraId = "447bd0a413c84ff3981cd00b3b7c3029";
 
 const { chains, provider } = configureChains(
-  [chain.polygon, chain.hardhat, chain.localhost, chain.rinkeby],
+  [chain.polygon, chain.polygonMumbai, chain.hardhat, chain.localhost, chain.rinkeby],
   [
-    alchemyProvider({ alchemyId }),
     infuraProvider({ infuraId }),
     publicProvider(),
   ]
