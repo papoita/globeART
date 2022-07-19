@@ -1,31 +1,37 @@
 require('dotenv').config();
 require('@nomiclabs/hardhat-waffle');
-
-// This is a sample Hardhat task. To learn how to create your own go to
-// https://hardhat.org/guides/create-task.html
-task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
-  const accounts = await hre.ethers.getSigners();
-
-  for (const account of accounts) {
-    console.log(account.address);
-  }
-});
-
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
+require("@nomiclabs/hardhat-etherscan");
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: '0.8.4',
+  defaultNetwork: "matic",
   networks: {
     hardhat: {
       chainId: 1337,
     },
-    rinkeby: {
-      url: process.env.INFURA_API_URL,
+    matic: {
+      url: process.env.INFURA_MUMBAI_API_URL,
       accounts: [process.env.PRIVATE_KEY]
+    },
+    rinkeby: {
+      url: process.env.INFURA_RINKEBY_API_URL,
+      accounts: [process.env.PRIVATE_KEY]
+    }
+  },
+  etherscan: {
+    apiKey: {
+      polygonMumbai: `${process.env.POLYGONSCAN_API_KEY}`
+    }
+  },
+  solidity: {
+    version: "0.8.4",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
     }
   },
 };
